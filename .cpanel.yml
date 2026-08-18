@@ -1,13 +1,11 @@
 ---
 deployment:
   tasks:
-    - export APPPATH=/home/mpetechm/mpe-staging-app
-    - export PATH=/home/mpetechm/nodevenv/mpe-staging-app/24/bin:$PATH
-    - npm ci
-    - npm run build
-    - /bin/mkdir -p $APPPATH/tmp
-    - /bin/rm -rf $APPPATH/dist $APPPATH/public
-    - /bin/cp -a dist/standalone/dist $APPPATH/dist
-    - /bin/cp -a dist/standalone/public $APPPATH/public
-    - /bin/cp dist/standalone/server.js $APPPATH/server.js
-    - /bin/cp deploy/shinjiru-package.json $APPPATH/package.json
+    - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && npm ci
+    - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && npm run build
+    - /bin/mkdir -p /home/mpetechn/mpe-staging-app/tmp
+    - /bin/rm -rf /home/mpetechn/mpe-staging-app/dist /home/mpetechn/mpe-staging-app/public
+    - /bin/cp -a dist/standalone/dist /home/mpetechn/mpe-staging-app/dist
+    - /bin/cp -a dist/standalone/public /home/mpetechn/mpe-staging-app/public
+    - /bin/cp dist/standalone/server.js /home/mpetechn/mpe-staging-app/server.js
+    - /bin/cp deploy/shinjiru-package.json /home/mpetechn/mpe-staging-app/package.json
