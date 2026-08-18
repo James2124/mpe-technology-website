@@ -35,10 +35,16 @@ jobs:
       - name: Build and test
         run: npm test
 
-      - name: Prepare Passenger restart marker
+      - name: Prepare lightweight Shinjiru package
         run: |
-          mkdir -p dist/standalone/tmp
-          printf '%s\n' "$GITHUB_SHA" > dist/standalone/tmp/restart.txt
+          rm -rf dist/shinjiru
+          mkdir -p dist/shinjiru/tmp
+          cp -a dist/standalone/dist dist/shinjiru/dist
+          cp -a dist/standalone/public dist/shinjiru/public
+          cp dist/standalone/server.js dist/shinjiru/server.js
+          cp deploy/shinjiru-package.json dist/shinjiru/package.json
+          printf '%s\n' "$GITHUB_SHA" > dist/shinjiru/tmp/deployment.txt
+          printf '%s\n' "$GITHUB_SHA" > dist/shinjiru-restart.txt
 
       - name: Install secure FTP client
         run: sudo apt-get update && sudo apt-get install --yes lftp
@@ -58,13 +64,14 @@ jobs:
           FTP_PORT="${FTP_PORT:-21}"
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$FTP_HOST" <<LFTP
           set cmd:fail-exit true
-          set net:max-retries 20
+          set net:max-retries 5
           set net:reconnect-interval-base 5
           set net:reconnect-interval-max 30
-          set net:timeout 60
+          set net:timeout 30
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
           set ssl:verify-certificate true
-          mirror --reverse --continue --verbose --parallel=1 --exclude-glob storage/** --exclude-glob .well-known/** dist/standalone/ "$FTP_REMOTE_DIR"
+          mirror --reverse --continue --verbose --parallel=3 --exclude-glob storage/** --exclude-glob .well-known/** --exclude-glob node_modules/** dist/shinjiru/ "$FTP_REMOTE_DIR"
+          put -O "$FTP_REMOTE_DIR/tmp" -o restart.txt dist/shinjiru-restart.txt
           bye
           LFTP

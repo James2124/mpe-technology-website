@@ -37,7 +37,7 @@ After deployment, visit `https://staging.mpe-technology.com/manage`. The browser
 
 ## GitHub Actions deployment
 
-The workflow `.github/workflows/deploy-shinjiru.yml` builds a standalone Node.js application and uploads it to the protected staging application over explicit FTPS. It runs after a push to `master`, or manually from GitHub **Actions**.
+The workflow `.github/workflows/deploy-shinjiru.yml` builds the Node.js application and uploads a lightweight runtime package to the protected staging application over explicit FTPS. It intentionally leaves `node_modules/` on the server instead of transferring thousands of dependency files over shared FTP. It runs after a push to `master`, or manually from GitHub **Actions**.
 
 Add these GitHub repository secrets under **Settings → Secrets and variables → Actions**:
 
@@ -48,6 +48,8 @@ Add these GitHub repository secrets under **Settings → Secrets and variables �
 - `SHINJIRU_FTP_REMOTE_DIR`: the FTP-visible path to `mpe-staging-app`
 
 The workflow intentionally does not delete remote files and excludes `storage/` and `.well-known/`. The recommended `MPE_STORAGE_DIR` is still outside the deployed directory for stronger protection.
+
+After the first successful upload, return to cPanel **Setup Node.js App**, click **Run NPM Install**, wait for it to finish, and then click **Restart**. Repeat **Run NPM Install** only when `deploy/shinjiru-package.json` changes; normal website and product updates deploy automatically.
 
 ## Important safety boundary
 
