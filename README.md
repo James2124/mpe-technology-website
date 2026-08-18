@@ -1,100 +1,54 @@
-# vinext-starter
+# MP&E Technology website
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Industrial product-catalog website for MP&E Technology. The public website has no cart; customers browse products and submit enquiries. Administrators use `/manage` to add products, upload images, delete products and review enquiries.
 
-## Prerequisites
+## Local development
 
-- Node.js `>=22.13.0`
-
-## Quick Start
+Requires Node.js 22.13 or newer.
 
 ```bash
 npm install
 npm run dev
-npm run build
+npm test
 ```
 
-This starter does not use `wrangler.jsonc`.
+The existing private Sites build continues to use Cloudflare D1 and R2. Shinjiru uses the file storage driver described below.
 
-## Included Shape
+## Shinjiru Node.js settings
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+Use cPanel **Setup Node.js App** with these values:
 
-## Workspace Auth Headers
+- Node.js version: `24.19.0` (or the current recommended Node 24 release)
+- Application mode: `Production`
+- Application root: `mpe-staging-app`
+- Application URL: `staging.mpe-technology.com`
+- Application startup file: `server.js`
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
+Add these environment variables in the same Node.js application screen:
 
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
+- `MPE_STORAGE_DRIVER` = `file`
+- `MPE_STORAGE_DIR` = an absolute private folder outside the application root, for example `/home/CPANEL_USER/mpe-data`
+- `MPE_ADMIN_USERNAME` = the catalog administrator username
+- `MPE_ADMIN_PASSWORD` = a long, unique password
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+Do not commit passwords or FTP credentials. On first launch, the server creates `catalog.json` and `product-images/` inside `MPE_STORAGE_DIR`. Because this directory is outside the application root, deployments do not overwrite products, enquiries or uploaded images.
 
-Treat the full name as optional and fall back to email when it is absent:
+After deployment, visit `https://staging.mpe-technology.com/manage`. The browser asks for the administrator username and password. The form on that page is the product admin area.
 
-```tsx
-import { headers } from "next/headers";
+## GitHub Actions deployment
 
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
+The workflow `.github/workflows/deploy-shinjiru.yml` builds a standalone Node.js application and uploads it to the protected staging application over explicit FTPS. It runs after a push to `master`, or manually from GitHub **Actions**.
 
-  const displayName = fullName ?? email;
-  // ...
-}
-```
+Add these GitHub repository secrets under **Settings → Secrets and variables → Actions**:
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+- `SHINJIRU_FTP_HOST`: the server hostname shown in cPanel FTP Accounts (prefer the hosting server hostname)
+- `SHINJIRU_FTP_PORT`: normally `21`; this secret may be omitted
+- `SHINJIRU_FTP_USERNAME`: a dedicated FTP account restricted to the Node application folder
+- `SHINJIRU_FTP_PASSWORD`: that FTP account's password
+- `SHINJIRU_FTP_REMOTE_DIR`: the FTP-visible path to `mpe-staging-app`
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+The workflow intentionally does not delete remote files and excludes `storage/` and `.well-known/`. The recommended `MPE_STORAGE_DIR` is still outside the deployed directory for stronger protection.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## Important safety boundary
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Staging is deployed only to `staging.mpe-technology.com`. Do not set the FTP remote directory to `/public_html` or the live WordPress document root. The current production website remains untouched until staging has been reviewed and approved.
