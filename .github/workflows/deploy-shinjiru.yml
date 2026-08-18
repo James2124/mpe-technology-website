@@ -87,7 +87,8 @@ jobs:
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
           set ssl:verify-certificate true
-          mirror --reverse --continue --verbose --parallel=3 --exclude-glob storage/** --exclude-glob .well-known/** --exclude-glob node_modules/** dist/shinjiru/ "$FTP_REMOTE_DIR"
+          set mirror:set-permissions false
+          mirror --reverse --continue --verbose --parallel=1 --exclude-glob storage/** --exclude-glob .well-known/** --exclude-glob node_modules/** dist/shinjiru/ "$FTP_REMOTE_DIR"
           put -O "$FTP_REMOTE_DIR/tmp" -o restart.txt dist/shinjiru-restart.txt
           bye
           LFTP
