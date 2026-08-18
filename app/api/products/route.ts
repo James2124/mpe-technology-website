@@ -1,6 +1,5 @@
-import { env } from "cloudflare:workers";
-import { getChatGPTUser } from "../../chatgpt-auth";
-import { claimOrCheckAdmin, createProduct } from "../../../db/products";
+import { getCatalogAdmin, unauthorizedAdminResponse } from "../../admin-auth";
+import { createProduct, saveProductImage } from "../../../db/products";
 
 function field(form: FormData, key: string) {
   return String(form.get(key) ?? "").trim();
@@ -22,8 +21,7 @@ function specs(value: string) {
 }
 
 export async function POST(request: Request) {
-  const user = await getChatGPTUser();
-  if (!user || !(await claimOrCheckAdmin(user))) return new Response("Unauthorized", { status: 401 });
+  if (!(await getCatalogAdmin())) return unauthorizedAdminResponse();
   const form = await request.formData();
   const name = field(form, "name");
   const category = field(form, "category");
@@ -37,11 +35,7 @@ export async function POST(request: Request) {
     if (!["image/png", "image/jpeg", "image/webp"].includes(image.type) || image.size > 8_000_000) {
       return new Response("Image must be PNG, JPEG or WebP and under 8 MB.", { status: 400 });
     }
-    const bucket = (env as unknown as { PRODUCT_IMAGES?: R2Bucket }).PRODUCT_IMAGES;
-    if (!bucket) return new Response("Image storage is unavailable.", { status: 503 });
-    const extension = image.type === "image/png" ? "png" : image.type === "image/webp" ? "webp" : "jpg";
-    const key = `${crypto.randomUUID()}.${extension}`;
-    await bucket.put(key, image.stream(), { httpMetadata: { contentType: image.type } });
+    const key = await saveProductImage(image);
     imagePath = `/api/product-images/${key}`;
   }
 
