@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && npm ci
+    - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && npm ci --include=dev
     - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && npm run build
     - /bin/mkdir -p /home/mpetechn/mpe-staging-app/tmp
     - /bin/rm -rf /home/mpetechn/mpe-staging-app/dist /home/mpetechn/mpe-staging-app/public
