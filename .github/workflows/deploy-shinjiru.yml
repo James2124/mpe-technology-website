@@ -64,7 +64,7 @@ jobs:
             -servername numbat.awedns.com \
             </dev/null 2>/dev/null |
           openssl x509 -noout -subject -issuer -ext subjectAltName
-      - name: Test FTP passive data port
+      - name: Test FTP PASV data port
         env:
           FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
           FTP_PORT: ${{ secrets.SHINJIRU_FTP_PORT }}
@@ -88,29 +88,35 @@ jobs:
           )
           ftp.prot_p()
 
-          control_ip = ftp.sock.getpeername()[0]
-          response = ftp.sendcmd("EPSV")
+          print("Control IP:", ftp.sock.getpeername()[0])
 
-          print("Control IP:", control_ip)
-          print("EPSV response:", response)
+          response = ftp.sendcmd("PASV")
+          print("PASV response:", response)
 
-          match = re.search(r'\(\|\|\|(\d+)\|\)', response)
+          match = re.search(
+              r'\((\d+),(\d+),(\d+),(\d+),(\d+),(\d+)\)',
+              response
+          )
 
           if not match:
-              raise SystemExit("Cannot read EPSV passive port")
+              raise SystemExit("Cannot read PASV response")
 
-          data_port = int(match.group(1))
+          parts = list(map(int, match.groups()))
 
+          data_ip = ".".join(map(str, parts[:4]))
+          data_port = parts[4] * 256 + parts[5]
+
+          print("Passive IP:", data_ip)
           print("Passive port:", data_port)
 
           with socket.create_connection(
-              (control_ip, data_port),
+              (data_ip, data_port),
               timeout=10
           ):
-              print("Passive TCP connection: SUCCESS")
+              print("PASV TCP connection: SUCCESS")
 
           ftp.quit()
-          PY          
+          PY
       - name: Upload standalone application
         env:
           FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
