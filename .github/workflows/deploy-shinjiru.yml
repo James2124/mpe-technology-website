@@ -58,11 +58,13 @@ jobs:
           FTP_PORT="${FTP_PORT:-21}"
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$FTP_HOST" <<LFTP
           set cmd:fail-exit true
-          set net:max-retries 2
-          set net:timeout 30
+          set net:max-retries 20
+          set net:reconnect-interval-base 5
+          set net:reconnect-interval-max 30
+          set net:timeout 60
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
           set ssl:verify-certificate true
-          mirror --reverse --verbose --parallel=3 --exclude-glob storage/** --exclude-glob .well-known/** dist/standalone/ "$FTP_REMOTE_DIR"
+          mirror --reverse --continue --verbose --parallel=1 --exclude-glob storage/** --exclude-glob .well-known/** dist/standalone/ "$FTP_REMOTE_DIR"
           bye
           LFTP
