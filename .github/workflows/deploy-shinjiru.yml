@@ -64,59 +64,12 @@ jobs:
             -servername numbat.awedns.com \
             </dev/null 2>/dev/null |
           openssl x509 -noout -subject -issuer -ext subjectAltName
-      - name: Test FTP PASV data port
-        env:
-          FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
-          FTP_PORT: ${{ secrets.SHINJIRU_FTP_PORT }}
-          FTP_USERNAME: ${{ secrets.SHINJIRU_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.SHINJIRU_FTP_PASSWORD }}
+          
+      - name: Test Shinjiru SSH
         run: |
-          python - <<'PY'
-          import os
-          import re
-          import socket
-          import ftplib
-
-          host = os.environ["FTP_HOST"]
-          port = int(os.environ.get("FTP_PORT") or 21)
-
-          ftp = ftplib.FTP_TLS(timeout=15)
-          ftp.connect(host, port)
-          ftp.login(
-              os.environ["FTP_USERNAME"],
-              os.environ["FTP_PASSWORD"]
-          )
-          ftp.prot_p()
-
-          print("Control IP:", ftp.sock.getpeername()[0])
-
-          response = ftp.sendcmd("PASV")
-          print("PASV response:", response)
-
-          match = re.search(
-              r'\((\d+),(\d+),(\d+),(\d+),(\d+),(\d+)\)',
-              response
-          )
-
-          if not match:
-              raise SystemExit("Cannot read PASV response")
-
-          parts = list(map(int, match.groups()))
-
-          data_ip = ".".join(map(str, parts[:4]))
-          data_port = parts[4] * 256 + parts[5]
-
-          print("Passive IP:", data_ip)
-          print("Passive port:", data_port)
-
-          with socket.create_connection(
-              (data_ip, data_port),
-              timeout=10
-          ):
-              print("PASV TCP connection: SUCCESS")
-
-          ftp.quit()
-          PY
+          echo "Testing SSH port 22..."
+          nc -vz -w 10 numbat.awedns.com 22
+          
       - name: Upload standalone application
         env:
           FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
