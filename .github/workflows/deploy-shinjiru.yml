@@ -64,7 +64,53 @@ jobs:
             -servername numbat.awedns.com \
             </dev/null 2>/dev/null |
           openssl x509 -noout -subject -issuer -ext subjectAltName
-          
+      - name: Test FTP passive data port
+        env:
+          FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
+          FTP_PORT: ${{ secrets.SHINJIRU_FTP_PORT }}
+          FTP_USERNAME: ${{ secrets.SHINJIRU_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.SHINJIRU_FTP_PASSWORD }}
+        run: |
+          python - <<'PY'
+          import os
+          import re
+          import socket
+          import ftplib
+
+          host = os.environ["FTP_HOST"]
+          port = int(os.environ.get("FTP_PORT") or 21)
+
+          ftp = ftplib.FTP_TLS(timeout=15)
+          ftp.connect(host, port)
+          ftp.login(
+              os.environ["FTP_USERNAME"],
+              os.environ["FTP_PASSWORD"]
+          )
+          ftp.prot_p()
+
+          control_ip = ftp.sock.getpeername()[0]
+          response = ftp.sendcmd("EPSV")
+
+          print("Control IP:", control_ip)
+          print("EPSV response:", response)
+
+          match = re.search(r'\(\|\|\|(\d+)\|\)', response)
+
+          if not match:
+              raise SystemExit("Cannot read EPSV passive port")
+
+          data_port = int(match.group(1))
+
+          print("Passive port:", data_port)
+
+          with socket.create_connection(
+              (control_ip, data_port),
+              timeout=10
+          ):
+              print("Passive TCP connection: SUCCESS")
+
+          ftp.quit()
+          PY          
       - name: Upload standalone application
         env:
           FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
