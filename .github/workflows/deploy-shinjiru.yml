@@ -63,7 +63,6 @@ jobs:
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
           set ssl:verify-certificate true
-          mkdir -p "$FTP_REMOTE_DIR"
           mirror --reverse --verbose --parallel=3 --exclude-glob storage/** --exclude-glob .well-known/** dist/standalone/ "$FTP_REMOTE_DIR"
           bye
           LFTP
