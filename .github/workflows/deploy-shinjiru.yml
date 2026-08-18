@@ -49,12 +49,19 @@ jobs:
       - name: Install secure FTP client
         run: sudo apt-get update && sudo apt-get install --yes lftp
         
-      - name: Check FTP certificate
+      - name: Check FTP hostname
         run: |
-          openssl s_client \
+          echo "DNS:"
+          getent ahostsv4 numbat.awedns.com
+
+          echo "FTP port:"
+          nc -vz -w 10 numbat.awedns.com 21
+
+          echo "Certificate:"
+          timeout 15 openssl s_client \
             -starttls ftp \
-            -connect ftp.mpe-technology.com:21 \
-            -servername ftp.mpe-technology.com \
+            -connect numbat.awedns.com:21 \
+            -servername numbat.awedns.com \
             </dev/null 2>/dev/null |
           openssl x509 -noout -subject -issuer -ext subjectAltName
           
