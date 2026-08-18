@@ -88,6 +88,7 @@ jobs:
           set ftp:ssl-protect-data true
           set ssl:verify-certificate true
           set mirror:set-permissions false
+          set ftp:prefer-epsv true
 
           pwd
           ls
