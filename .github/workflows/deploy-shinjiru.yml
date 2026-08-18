@@ -48,7 +48,16 @@ jobs:
 
       - name: Install secure FTP client
         run: sudo apt-get update && sudo apt-get install --yes lftp
-
+        
+      - name: Check FTP certificate
+        run: |
+          openssl s_client \
+            -starttls ftp \
+            -connect ftp.mpe-technology.com:21 \
+            -servername ftp.mpe-technology.com \
+            </dev/null 2>/dev/null |
+          openssl x509 -noout -subject -issuer -ext subjectAltName
+          
       - name: Upload standalone application
         env:
           FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
