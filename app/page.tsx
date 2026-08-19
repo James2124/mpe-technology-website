@@ -1,3 +1,4 @@
+import { CursorEffects } from "./components/CursorEffects";
 import { HeroVisual } from "./components/HeroVisual";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -42,6 +43,7 @@ export default async function Home() {
 
   return (
     <main>
+      <ScrollReveal />
       <ScrollReveal />
       <SiteHeader />
 
@@ -190,6 +192,7 @@ export default async function Home() {
               <a
                 className="home-product-image"
                 href={`/products/${product.slug}`}
+                data-cursor-effect
               >
                 <span>
                   /{String(index + 1).padStart(2, "0")}
