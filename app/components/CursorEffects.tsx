@@ -120,6 +120,111 @@ export function CursorEffects() {
       });
     });
 
+    const magneticButtons = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "[data-magnetic]",
+      ),
+    );
+    
+    magneticButtons.forEach((button) => {
+      const handleMove = (event: PointerEvent) => {
+        const bounds = button.getBoundingClientRect();
+    
+        if (!bounds.width || !bounds.height) {
+          return;
+        }
+    
+        const x =
+          (event.clientX - bounds.left) /
+            bounds.width -
+          0.5;
+    
+        const y =
+          (event.clientY - bounds.top) /
+            bounds.height -
+          0.5;
+    
+        /*
+         * 整个按钮轻微跟随。
+         */
+        button.style.setProperty(
+          "--button-magnetic-x",
+          `${(x * 12).toFixed(2)}px`,
+        );
+    
+        button.style.setProperty(
+          "--button-magnetic-y",
+          `${(y * 8).toFixed(2)}px`,
+        );
+    
+        /*
+         * Arrow 移动幅度稍微大一点，
+         * 制造 layer/depth 感。
+         */
+        button.style.setProperty(
+          "--button-arrow-x",
+          `${(x * 10).toFixed(2)}px`,
+        );
+    
+        button.style.setProperty(
+          "--button-arrow-y",
+          `${(y * 6).toFixed(2)}px`,
+        );
+    
+        button.classList.add(
+          "is-magnetic-active",
+        );
+      };
+    
+      const handleLeave = () => {
+        button.style.setProperty(
+          "--button-magnetic-x",
+          "0px",
+        );
+    
+        button.style.setProperty(
+          "--button-magnetic-y",
+          "0px",
+        );
+    
+        button.style.setProperty(
+          "--button-arrow-x",
+          "0px",
+        );
+    
+        button.style.setProperty(
+          "--button-arrow-y",
+          "0px",
+        );
+    
+        button.classList.remove(
+          "is-magnetic-active",
+        );
+      };
+    
+      button.addEventListener(
+        "pointermove",
+        handleMove,
+      );
+    
+      button.addEventListener(
+        "pointerleave",
+        handleLeave,
+      );
+    
+      cleanups.push(() => {
+        button.removeEventListener(
+          "pointermove",
+          handleMove,
+        );
+    
+        button.removeEventListener(
+          "pointerleave",
+          handleLeave,
+        );
+      });
+    });
+
     return () => {
       cleanups.forEach((cleanup) => cleanup());
     };
