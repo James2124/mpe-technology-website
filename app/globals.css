@@ -1347,7 +1347,10 @@ textarea { resize: vertical; }
 /* ---------- Why MP&E motion ---------- */
 
 .why-visual {
-  --why-scroll: 0;
+  --why-ring-outer-y: 0px;
+  --why-ring-inner-y: 0px;
+  --why-type-y: 0px;
+  --why-badge-y: 0px;
 
   isolation: isolate;
 }
@@ -1391,11 +1394,11 @@ textarea { resize: vertical; }
     rgba(255, 255, 255, .3);
 
   translate:
-    -50%
-    calc(
-      -50% +
-      var(--why-scroll) * 24px
-    );
+   -50%
+   calc(
+     -50% +
+     var(--why-ring-outer-y)
+  );
 
   animation:
     mpe-why-ring-outer
@@ -1415,7 +1418,7 @@ textarea { resize: vertical; }
     -50%
     calc(
       -50% +
-      var(--why-scroll) * -18px
+      var(--why-ring-inner-y)
     );
 
   animation:
@@ -1475,31 +1478,31 @@ textarea { resize: vertical; }
 
   translate:
     0
-    calc(
-      var(--why-scroll) * -34px
-    );
+    var(--why-type-y);
 
-  will-change: translate;
+  will-change: auto;
 }
 
 /* ---------- Badge parallax ---------- */
-
 .why-visual .why-badge {
   z-index: 4;
 
   translate:
     0
-    calc(
-      var(--why-scroll) * 42px
-    );
+    var(--why-badge-y);
 
   box-shadow:
     0 22px 45px
     rgba(20, 34, 24, .22);
 
-  will-change:
-    translate,
-    transform;
+  will-change: auto;
+}
+
+.why-visual.is-parallax-active
+.big-type,
+.why-visual.is-parallax-active
+.why-badge {
+  will-change: translate;
 }
 
 /*
@@ -1578,40 +1581,10 @@ textarea { resize: vertical; }
 @media (max-width: 680px) {
   .why-ring-outer {
     width: 76%;
-
-    translate:
-      -50%
-      calc(
-        -50% +
-        var(--why-scroll) * 12px
-      );
   }
 
   .why-ring-inner {
     width: 48%;
-
-    translate:
-      -50%
-      calc(
-        -50% +
-        var(--why-scroll) * -8px
-      );
-  }
-
-  .why-visual .big-type {
-    translate:
-      0
-      calc(
-        var(--why-scroll) * -15px
-      );
-  }
-
-  .why-visual .why-badge {
-    translate:
-      0
-      calc(
-        var(--why-scroll) * 16px
-      );
   }
 }
 
@@ -2353,6 +2326,65 @@ textarea:focus::placeholder {
   }
 }
 
+/* ---------- Motion performance cleanup ---------- */
+
+/*
+  默认不要一直占用 compositor layer。
+*/
+
+[data-magnetic],
+[data-magnetic] > span,
+.home-product-image[data-cursor-effect] img {
+  will-change: auto;
+}
+
+/*
+  Cursor 真正进入时才启用。
+*/
+
+[data-magnetic].is-magnetic-active,
+[data-magnetic].is-magnetic-active > span {
+  will-change: translate;
+}
+
+.home-product-image[data-cursor-effect]
+.is-cursor-active img {
+  will-change:
+    translate,
+    transform;
+}
+
+/* ---------- Touch interaction cleanup ---------- */
+
+@media (hover: none), (pointer: coarse) {
+  .category-card:hover,
+  .home-products article:hover,
+  .product-card:hover,
+  .related-grid > a:hover,
+  .feature-list li:hover,
+  .spec-section dl > div:hover,
+  .contact-points > div:hover {
+    transform: none;
+  }
+
+  .feature-list li:hover,
+  .contact-points > div:hover {
+    padding-left: 0;
+  }
+
+  .spec-section dl > div:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .home-products article:hover
+  .home-product-image,
+  .product-card:hover
+  .product-image {
+    transform: none;
+  }
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2367,5 +2399,25 @@ textarea:focus::placeholder {
     animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
+  }
+   /*
+    Reduced Motion 用户：
+    Header 不自动滑走。
+  */
+
+  .site-header.is-hidden {
+    transform: none !important;
+  }
+
+  /*
+    Cursor / parallax 强制归零。
+  */
+
+  [data-magnetic],
+  [data-magnetic] > span,
+  .home-product-image[data-cursor-effect] img,
+  .why-visual .big-type,
+  .why-visual .why-badge {
+    translate: 0 0 !important;
   }
 }
