@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function CursorEffects() {
+  const pathname = usePathname();
+  
   useEffect(() => {
     const supportsPointer = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
@@ -228,7 +231,7 @@ export function CursorEffects() {
     return () => {
       cleanups.forEach((cleanup) => cleanup());
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
