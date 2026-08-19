@@ -886,6 +886,296 @@ textarea { resize: vertical; }
   }
 }
 
+/* ---------- Hero mouse parallax and auto light ---------- */
+
+.hero-visual {
+  --hero-product-x: 0px;
+  --hero-product-y: 0px;
+
+  --hero-grid-x: 0px;
+  --hero-grid-y: 0px;
+
+  --hero-detail-x: 0px;
+  --hero-detail-y: 0px;
+
+  --hero-light-x: 0px;
+  --hero-light-y: 0px;
+
+  --hero-tilt-x: 0deg;
+  --hero-tilt-y: 0deg;
+
+  isolation: isolate;
+  perspective: 1100px;
+}
+
+/*
+  圆形轨道保持在背景层。
+*/
+
+.hero-visual::before,
+.hero-visual::after {
+  z-index: 0;
+}
+
+/*
+  Grid 和产品往不同方向移动，
+  制造前后景深。
+*/
+
+.hero-visual .visual-grid {
+  z-index: 0;
+
+  transform:
+    translate3d(
+      var(--hero-grid-x),
+      var(--hero-grid-y),
+      0
+    )
+    scale(1.08);
+
+  will-change:
+    transform,
+    background-position;
+}
+
+/*
+  自动光晕外层负责 mouse movement。
+*/
+
+.hero-light {
+  position: absolute;
+  inset: -24%;
+  z-index: 1;
+
+  pointer-events: none;
+
+  transform:
+    translate3d(
+      var(--hero-light-x),
+      var(--hero-light-y),
+      0
+    );
+
+  will-change: transform;
+}
+
+/*
+  呼吸光晕。
+*/
+
+.hero-light::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(255, 255, 255, .58) 0%,
+      rgba(255, 255, 255, .22) 21%,
+      rgba(255, 255, 255, .08) 37%,
+      transparent 60%
+    );
+
+  filter: blur(11px);
+  mix-blend-mode: screen;
+
+  animation:
+    mpe-light-breathe
+    5.8s
+    ease-in-out
+    infinite;
+}
+
+/*
+  自动扫光。
+*/
+
+.hero-light::after {
+  content: "";
+
+  position: absolute;
+  top: -8%;
+  bottom: -8%;
+  left: -38%;
+
+  width: 28%;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(255, 255, 255, .07) 22%,
+      rgba(255, 255, 255, .4) 50%,
+      rgba(255, 255, 255, .07) 78%,
+      transparent 100%
+    );
+
+  filter: blur(9px);
+  mix-blend-mode: screen;
+
+  animation:
+    mpe-light-sweep
+    8s
+    var(--motion-ease-soft)
+    infinite;
+}
+
+/*
+  产品外层负责 mouse parallax。
+  产品图片本身继续保留原本的 floating animation。
+*/
+
+.hero-product-parallax {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  pointer-events: none;
+
+  transform-style: preserve-3d;
+
+  transform:
+    translate3d(
+      var(--hero-product-x),
+      var(--hero-product-y),
+      0
+    )
+    rotateX(var(--hero-tilt-x))
+    rotateY(var(--hero-tilt-y));
+
+  transform-origin: center;
+  will-change: transform;
+}
+
+.hero-product-parallax img {
+  pointer-events: none;
+  user-select: none;
+
+  transition:
+    filter .4s ease;
+}
+
+/*
+  鼠标进入时，产品阴影稍微加强。
+*/
+
+.hero-visual.is-interacting
+.hero-product-parallax img {
+  filter:
+    drop-shadow(
+      0 42px 42px
+      rgba(22, 51, 26, .3)
+    )
+    saturate(1.04);
+}
+
+/*
+  编号与产品说明轻微移动。
+*/
+
+.hero-visual .visual-index {
+  z-index: 3;
+
+  transform:
+    translate3d(
+      var(--hero-detail-x),
+      var(--hero-detail-y),
+      0
+    );
+
+  will-change: transform;
+}
+
+.hero-visual .product-note {
+  transform:
+    translate3d(
+      var(--hero-detail-x),
+      var(--hero-detail-y),
+      0
+    );
+
+  will-change: transform;
+}
+
+.hero-visual .orbit-label {
+  z-index: 3;
+}
+
+/* ---------- Light keyframes ---------- */
+
+@keyframes mpe-light-breathe {
+  0%,
+  100% {
+    opacity: .45;
+    transform: scale(.93);
+  }
+
+  50% {
+    opacity: .88;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes mpe-light-sweep {
+  0%,
+  16% {
+    opacity: 0;
+
+    transform:
+      translate3d(-20%, 0, 0)
+      skewX(-14deg);
+  }
+
+  29% {
+    opacity: .52;
+  }
+
+  58% {
+    opacity: 0;
+
+    transform:
+      translate3d(520%, 0, 0)
+      skewX(-14deg);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate3d(520%, 0, 0)
+      skewX(-14deg);
+  }
+}
+
+/*
+  没有精准鼠标的设备不执行 parallax。
+  自动光影仍然可以正常播放。
+*/
+
+@media (hover: none), (pointer: coarse) {
+  .hero-product-parallax {
+    transform: none;
+  }
+
+  .hero-visual .visual-grid {
+    transform: scale(1.08);
+  }
+
+  .hero-visual .visual-index,
+  .hero-visual .product-note {
+    transform: none;
+  }
+
+  .hero-light {
+    transform: none;
+  }
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
