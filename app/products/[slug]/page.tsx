@@ -39,36 +39,36 @@ export default async function ProductPage({
   return (
     <main>
       <SiteHeader />
-      <div className="product-breadcrumb">
+      <div className="product-breadcrumb" data-reveal="fade">
         <a href="/products">Products</a><span>/</span><span>{product.category}</span><span>/</span><strong>{product.name}</strong>
       </div>
       <section className="product-detail">
-        <div className="detail-image">
+        <div className="detail-image" data-reveal="left">
           <span className="detail-tag">{product.category}</span>
           {product.imagePath ? <img src={product.imagePath} alt={product.name} /> : <span className="image-placeholder">MP&amp;E</span>}
           <span className="detail-mark">MP&amp;E / TRANSMISSION</span>
         </div>
-        <div className="detail-copy">
+        <div className="detail-copy" data-reveal="right" data-reveal-delay="1">
           <p className="eyebrow"><span /> PRODUCT DETAIL</p>
           <h1>{product.name}</h1>
           <p className="detail-subtitle">{product.subtitle}</p>
           <p className="detail-description">{product.description}</p>
-          <ul className="feature-list">
+          <ul className="feature-list" data-reveal="stagger" data-reveal-delay="1">
             {product.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}
           </ul>
           <div className="detail-actions">
-            <a className="primary-btn" href={`/contact?product=${encodeURIComponent(product.name)}`}>Enquire about this product <span>→</span></a>
+            <a className="primary-btn" href={`/contact?product=${encodeURIComponent(product.name)}`} data-magnetic>Enquire about this product <span>→</span></a>
             {product.externalUrl && <a className="text-link" href={product.externalUrl} target="_blank" rel="noreferrer">View Shopee store <span>↗</span></a>}
           </div>
         </div>
       </section>
       <section className="spec-section">
-        <div>
+        <div data-reveal="left">
           <p className="eyebrow"><span /> AT A GLANCE</p>
           <h2>Product<br /><em>specification.</em></h2>
           <p>Specifications shown are a product-family guide. Confirm your required size and configuration with our team before ordering.</p>
         </div>
-        <dl>
+        <dl data-reveal="stagger" data-reveal-delay="1">
           {Object.entries(product.specs).map(([label, value]) => (
             <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
           ))}
@@ -76,11 +76,11 @@ export default async function ProductPage({
       </section>
       {related.length > 0 && (
         <section className="related-section">
-          <div className="section-heading inline">
+          <div className="section-heading inline" data-reveal="up">
             <h2>Related <em>products.</em></h2>
             <a className="text-link" href="/products">All products ↗</a>
           </div>
-          <div className="related-grid">
+          <div className="related-grid" data-reveal="stagger" data-reveal-delay="1">
             {related.map((item) => (
               <a href={`/products/${item.slug}`} key={item.id}>
                 {item.imagePath && <img src={item.imagePath} alt={item.name} />}
