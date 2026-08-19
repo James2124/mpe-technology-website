@@ -20,8 +20,18 @@
       "_framework-BgSIrAUN.js"
     ]
   },
+  "app/components/ScrollReveal.tsx": {
+    "file": "_next/static/chunks/ScrollReveal-BanMcy3c.js",
+    "name": "ScrollReveal",
+    "src": "app/components/ScrollReveal.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-C3rn8Rwp.js",
+    "file": "_next/static/chunks/layout-segment-context-C5D7HXkY.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -32,7 +42,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-BwAm7QBc.js",
+    "file": "_next/static/chunks/index-DnhlB2z7.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -43,7 +53,8 @@
     "dynamicImports": [
       "virtual:vinext-app-browser-entry",
       "node_modules/vinext/dist/shims/layout-segment-context.js",
-      "app/components/ProductExplorer.tsx"
+      "app/components/ProductExplorer.tsx",
+      "app/components/ScrollReveal.tsx"
     ]
   }
 }
