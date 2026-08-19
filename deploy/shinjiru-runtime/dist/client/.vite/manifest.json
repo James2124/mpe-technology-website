@@ -10,8 +10,18 @@
     "file": "_next/static/chunks/rolldown-runtime-C60lm6uB.js",
     "name": "rolldown-runtime"
   },
+  "app/components/CursorEffects.tsx": {
+    "file": "_next/static/chunks/CursorEffects-BXg1GUNL.js",
+    "name": "CursorEffects",
+    "src": "app/components/CursorEffects.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
   "app/components/HeroVisual.tsx": {
-    "file": "_next/static/chunks/HeroVisual-DemJ8mQO.js",
+    "file": "_next/static/chunks/HeroVisual-CMjeuRh5.js",
     "name": "HeroVisual",
     "src": "app/components/HeroVisual.tsx",
     "isDynamicEntry": true,
@@ -21,7 +31,7 @@
     ]
   },
   "app/components/ProductExplorer.tsx": {
-    "file": "_next/static/chunks/ProductExplorer-wjMUAxqR.js",
+    "file": "_next/static/chunks/ProductExplorer-ClLDP4F_.js",
     "name": "ProductExplorer",
     "src": "app/components/ProductExplorer.tsx",
     "isDynamicEntry": true,
@@ -31,7 +41,7 @@
     ]
   },
   "app/components/ScrollReveal.tsx": {
-    "file": "_next/static/chunks/ScrollReveal-C5em8w2c.js",
+    "file": "_next/static/chunks/ScrollReveal-C_l2TIGk.js",
     "name": "ScrollReveal",
     "src": "app/components/ScrollReveal.tsx",
     "isDynamicEntry": true,
@@ -41,7 +51,7 @@
     ]
   },
   "app/components/SiteHeader.tsx": {
-    "file": "_next/static/chunks/SiteHeader-flVnhAaU.js",
+    "file": "_next/static/chunks/SiteHeader-DPiOjBOY.js",
     "name": "SiteHeader",
     "src": "app/components/SiteHeader.tsx",
     "isDynamicEntry": true,
@@ -51,7 +61,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-DfCLWtyG.js",
+    "file": "_next/static/chunks/layout-segment-context-D3wYSUZe.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -62,7 +72,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-Du4iDH3D.js",
+    "file": "_next/static/chunks/index-Bw3GUjOb.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -75,6 +85,7 @@
       "node_modules/vinext/dist/shims/layout-segment-context.js",
       "app/components/SiteHeader.tsx",
       "app/components/ProductExplorer.tsx",
+      "app/components/CursorEffects.tsx",
       "app/components/HeroVisual.tsx",
       "app/components/ScrollReveal.tsx"
     ]
