@@ -1344,6 +1344,277 @@ textarea { resize: vertical; }
   }
 }
 
+/* ---------- Why MP&E motion ---------- */
+
+.why-visual {
+  --why-scroll: 0;
+
+  isolation: isolate;
+}
+
+/*
+  关闭原本 pseudo-element 圆环。
+  现在改用真实 element，才能分别控制 animation。
+*/
+
+.why-visual::before,
+.why-visual::after {
+  content: none;
+}
+
+/* ---------- Rings ---------- */
+
+.why-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transform-origin: center;
+
+  will-change:
+    transform,
+    translate;
+}
+
+.why-ring-outer {
+  width: 68%;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, .3);
+
+  translate:
+    -50%
+    calc(
+      -50% +
+      var(--why-scroll) * 24px
+    );
+
+  animation:
+    mpe-why-ring-outer
+    26s
+    linear
+    infinite;
+}
+
+.why-ring-inner {
+  width: 43%;
+
+  border:
+    1px dashed
+    rgba(255, 255, 255, .38);
+
+  translate:
+    -50%
+    calc(
+      -50% +
+      var(--why-scroll) * -18px
+    );
+
+  animation:
+    mpe-why-ring-inner
+    19s
+    linear
+    infinite;
+}
+
+/*
+  圆环上增加小定位点，
+  旋转时会更明显，但不会太花。
+*/
+
+.why-ring-outer::before {
+  content: "";
+
+  position: absolute;
+
+  width: 12px;
+  height: 12px;
+
+  top: 8%;
+  left: 22%;
+
+  border-radius: 50%;
+
+  background: var(--lime);
+
+  box-shadow:
+    0 0 0 7px
+    rgba(180, 211, 52, .12);
+}
+
+.why-ring-inner::before {
+  content: "";
+
+  position: absolute;
+
+  width: 7px;
+  height: 7px;
+
+  right: 4%;
+  top: 47%;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, .8);
+}
+
+/* ---------- MP&E big text ---------- */
+
+.why-visual .big-type {
+  position: relative;
+
+  z-index: 2;
+
+  translate:
+    0
+    calc(
+      var(--why-scroll) * -34px
+    );
+
+  will-change: translate;
+}
+
+/* ---------- Badge parallax ---------- */
+
+.why-visual .why-badge {
+  z-index: 4;
+
+  translate:
+    0
+    calc(
+      var(--why-scroll) * 42px
+    );
+
+  box-shadow:
+    0 22px 45px
+    rgba(20, 34, 24, .22);
+
+  will-change:
+    translate,
+    transform;
+}
+
+/*
+  Badge 内层负责 floating。
+  外层负责 scroll parallax。
+  这样两种效果不会互相覆盖。
+*/
+
+.why-badge > span {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  animation:
+    mpe-why-badge-float
+    4.8s
+    ease-in-out
+    infinite;
+}
+
+/* ---------- Ambient glow ---------- */
+
+.why-visual {
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(180, 211, 52, .18),
+      transparent 38%
+    ),
+    var(--green);
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes mpe-why-ring-outer {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mpe-why-ring-inner {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes mpe-why-badge-float {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      rotate(-2deg);
+  }
+
+  50% {
+    transform:
+      translate3d(0, -12px, 0)
+      rotate(2deg);
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 680px) {
+  .why-ring-outer {
+    width: 76%;
+
+    translate:
+      -50%
+      calc(
+        -50% +
+        var(--why-scroll) * 12px
+      );
+  }
+
+  .why-ring-inner {
+    width: 48%;
+
+    translate:
+      -50%
+      calc(
+        -50% +
+        var(--why-scroll) * -8px
+      );
+  }
+
+  .why-visual .big-type {
+    translate:
+      0
+      calc(
+        var(--why-scroll) * -15px
+      );
+  }
+
+  .why-visual .why-badge {
+    translate:
+      0
+      calc(
+        var(--why-scroll) * 16px
+      );
+  }
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
