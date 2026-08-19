@@ -1,3 +1,5 @@
+import { CursorEffects } from "./components/CursorEffects";
+import { ScrollReveal } from "./components/ScrollReveal";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { absoluteUrl } from "./lib/url";
@@ -23,7 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-MY">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ScrollReveal />
+        <CursorEffects />
+      
+        {children}
+      </body>
     </html>
   );
 }
