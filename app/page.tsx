@@ -1,5 +1,5 @@
 import { CursorEffects } from "./components/CursorEffects";
-import { WhyVisual } from "./components/WhyVisual";
+import { WhyVisual } from "./components/WhyVisual"; 
 import { HeroVisual } from "./components/HeroVisual";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
