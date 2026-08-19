@@ -1,12 +1,12 @@
 export default {
-  "bootstrapScriptContent": "import(\"/_next/static/chunks/index-CC4sIj2i.js\")",
+  "bootstrapScriptContent": "import(\"/_next/static/chunks/index-BaMhzOhP.js\")",
   "clientReferenceDeps": {
     "a6f552030a57": {
       "js": [
         "/_next/static/chunks/CursorEffects-BXg1GUNL.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js",
-        "/_next/static/chunks/index-CC4sIj2i.js"
+        "/_next/static/chunks/index-BaMhzOhP.js"
       ],
       "css": []
     },
@@ -15,7 +15,7 @@ export default {
         "/_next/static/chunks/HeroVisual-CMjeuRh5.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js",
-        "/_next/static/chunks/index-CC4sIj2i.js"
+        "/_next/static/chunks/index-BaMhzOhP.js"
       ],
       "css": []
     },
@@ -24,7 +24,7 @@ export default {
         "/_next/static/chunks/ProductExplorer-ClLDP4F_.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js",
-        "/_next/static/chunks/index-CC4sIj2i.js"
+        "/_next/static/chunks/index-BaMhzOhP.js"
       ],
       "css": []
     },
@@ -33,7 +33,7 @@ export default {
         "/_next/static/chunks/ScrollReveal-C_l2TIGk.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js",
-        "/_next/static/chunks/index-CC4sIj2i.js"
+        "/_next/static/chunks/index-BaMhzOhP.js"
       ],
       "css": []
     },
@@ -42,13 +42,22 @@ export default {
         "/_next/static/chunks/SiteHeader-DPiOjBOY.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js",
-        "/_next/static/chunks/index-CC4sIj2i.js"
+        "/_next/static/chunks/index-BaMhzOhP.js"
+      ],
+      "css": []
+    },
+    "4299d8bc92de": {
+      "js": [
+        "/_next/static/chunks/WhyVisual-DvG7rHXK.js",
+        "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
+        "/_next/static/chunks/framework-BgSIrAUN.js",
+        "/_next/static/chunks/index-BaMhzOhP.js"
       ],
       "css": []
     },
     "9276801271d6": {
       "js": [
-        "/_next/static/chunks/index-CC4sIj2i.js",
+        "/_next/static/chunks/index-BaMhzOhP.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js"
       ],
@@ -56,7 +65,7 @@ export default {
     },
     "0b874ad30386": {
       "js": [
-        "/_next/static/chunks/index-CC4sIj2i.js",
+        "/_next/static/chunks/index-BaMhzOhP.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js"
       ],
@@ -64,7 +73,7 @@ export default {
     },
     "593f344dc510": {
       "js": [
-        "/_next/static/chunks/index-CC4sIj2i.js",
+        "/_next/static/chunks/index-BaMhzOhP.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js"
       ],
@@ -72,7 +81,7 @@ export default {
     },
     "bad85346fc72": {
       "js": [
-        "/_next/static/chunks/index-CC4sIj2i.js",
+        "/_next/static/chunks/index-BaMhzOhP.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js"
       ],
@@ -80,16 +89,16 @@ export default {
     },
     "15c18cfaeeff": {
       "js": [
-        "/_next/static/chunks/layout-segment-context-DMwH-KLw.js",
+        "/_next/static/chunks/layout-segment-context-DhLZupWr.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
-        "/_next/static/chunks/index-CC4sIj2i.js",
+        "/_next/static/chunks/index-BaMhzOhP.js",
         "/_next/static/chunks/framework-BgSIrAUN.js"
       ],
       "css": []
     },
     "8c0f216c4604": {
       "js": [
-        "/_next/static/chunks/index-CC4sIj2i.js",
+        "/_next/static/chunks/index-BaMhzOhP.js",
         "/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
         "/_next/static/chunks/framework-BgSIrAUN.js"
       ],
@@ -100,7 +109,7 @@ export default {
     "app/layout.tsx": {
       "js": [],
       "css": [
-        "/_next/static/css/index.CCc33HZS.css"
+        "/_next/static/css/index.CqHNc8Sa.css"
       ]
     }
   }
