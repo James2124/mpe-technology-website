@@ -1,0 +1,1 @@
+import{c as e}from"./products-D43KdZzX.js";async function t(t,{params:n}){let{key:r}=await n,i=await e(r);if(!i)return new Response(`Not found`,{status:404});let a=new Headers({"cache-control":`public, max-age=31536000, immutable`,"content-type":i.contentType,etag:i.etag});return new Response(i.body,{headers:a})}export{t as GET};

@@ -1,1 +1,0 @@
-import{t as e}from"./framework~index~page~layout~template~app-page-cache-render~app-page-cache~app-route-handler~fz2tke2x-hdJb5QUU.js";var t=e();function n({children:e}){return(0,t.jsx)(`div`,{className:`page-transition`,children:e})}export{n as default};
