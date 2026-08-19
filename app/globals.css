@@ -318,7 +318,6 @@ textarea { resize: vertical; }
   .enquiry-table article { grid-template-columns: 1fr; }
 }
 
-@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 
 /* ==================================================
    MP&E MOTION SYSTEM
@@ -596,6 +595,91 @@ textarea { resize: vertical; }
 .why-copy li:hover {
   transform: translateX(10px);
   background: rgba(77, 158, 67, .05);
+}
+
+/* ---------- Scroll reveal ---------- */
+
+.home-cta-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
+  没有 JavaScript 时，内容保持正常显示。
+  只有 ScrollReveal 成功启动后，reveal-ready 才会隐藏元素。
+*/
+
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 38px, 0) scale(.985);
+
+  transition:
+    opacity .85s var(--motion-ease-soft) var(--reveal-delay, 0ms),
+    transform .85s var(--motion-ease-soft) var(--reveal-delay, 0ms);
+
+  will-change: opacity, transform;
+}
+
+/* 只做透明度变化 */
+
+.reveal-ready [data-reveal="fade"] {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* 从左边进入 */
+
+.reveal-ready [data-reveal="left"] {
+  transform: translate3d(-48px, 0, 0) scale(.985);
+}
+
+/* 从右边进入 */
+
+.reveal-ready [data-reveal="right"] {
+  transform: translate3d(48px, 0, 0) scale(.985);
+}
+
+/* 延迟时间 */
+
+[data-reveal-delay="1"] {
+  --reveal-delay: 120ms;
+}
+
+[data-reveal-delay="2"] {
+  --reveal-delay: 240ms;
+}
+
+[data-reveal-delay="3"] {
+  --reveal-delay: 360ms;
+}
+
+/* 进入可视范围后的最终状态 */
+
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* 手机版避免左右动画太大 */
+
+@media (max-width: 680px) {
+  .reveal-ready [data-reveal] {
+    transform: translate3d(0, 26px, 0) scale(.99);
+  }
+
+  .reveal-ready [data-reveal="fade"] {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .reveal-ready [data-reveal="left"],
+  .reveal-ready [data-reveal="right"] {
+    transform: translate3d(0, 26px, 0) scale(.99);
+  }
+
+  .reveal-ready [data-reveal].is-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 /* ---------- Accessibility ---------- */
