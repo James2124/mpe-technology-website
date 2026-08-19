@@ -1,4 +1,4 @@
-name: Deploy staging to Shinjiru
+name: Build Shinjiru Runtime
 
 on:
   workflow_dispatch:
@@ -7,15 +7,17 @@ on:
       - master
 
 concurrency:
-  group: shinjiru-staging
+  group: shinjiru-runtime-build
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    name: Build and upload staging
+  build:
+    name: Build Shinjiru runtime
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
+
     env:
       MPE_STORAGE_DRIVER: file
 
@@ -35,70 +37,36 @@ jobs:
       - name: Build and test
         run: npm test
 
-      - name: Prepare lightweight Shinjiru package
+      - name: Prepare Shinjiru runtime
         run: |
           rm -rf dist/shinjiru
           mkdir -p dist/shinjiru/tmp
+
           cp -a dist/standalone/dist dist/shinjiru/dist
           cp -a dist/standalone/public dist/shinjiru/public
           cp dist/standalone/server.js dist/shinjiru/server.js
           cp deploy/shinjiru-package.json dist/shinjiru/package.json
+
           printf '%s\n' "$GITHUB_SHA" > dist/shinjiru/tmp/deployment.txt
-          printf '%s\n' "$GITHUB_SHA" > dist/shinjiru-restart.txt
 
-      - name: Install secure FTP client
-        run: sudo apt-get update && sudo apt-get install --yes lftp
-        
-      - name: Check FTP hostname
+      - name: Publish Shinjiru runtime to repository
         run: |
-          echo "DNS:"
-          getent ahostsv4 numbat.awedns.com
+          rm -rf deploy/shinjiru-runtime
+          mkdir -p deploy/shinjiru-runtime
 
-          echo "FTP port:"
-          nc -vz -w 10 numbat.awedns.com 21
+          cp -a dist/shinjiru/. deploy/shinjiru-runtime/
 
-          echo "Certificate:"
-          timeout 15 openssl s_client \
-            -starttls ftp \
-            -connect numbat.awedns.com:21 \
-            -servername numbat.awedns.com \
-            </dev/null 2>/dev/null |
-          openssl x509 -noout -subject -issuer -ext subjectAltName
-          
-      - name: Test Shinjiru SSH
-        run: |
-          echo "Testing SSH port 22..."
-          nc -vz -w 10 numbat.awedns.com 22
-          
-      - name: Upload standalone application
-        env:
-          FTP_HOST: ${{ secrets.SHINJIRU_FTP_HOST }}
-          FTP_PORT: ${{ secrets.SHINJIRU_FTP_PORT }}
-          FTP_USERNAME: ${{ secrets.SHINJIRU_FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.SHINJIRU_FTP_PASSWORD }}
-          FTP_REMOTE_DIR: ${{ secrets.SHINJIRU_FTP_REMOTE_DIR }}
-        run: |
-          : "${FTP_HOST:?Missing SHINJIRU_FTP_HOST}"
-          : "${FTP_USERNAME:?Missing SHINJIRU_FTP_USERNAME}"
-          : "${FTP_PASSWORD:?Missing SHINJIRU_FTP_PASSWORD}"
-          : "${FTP_REMOTE_DIR:?Missing SHINJIRU_FTP_REMOTE_DIR}"
-          FTP_PORT="${FTP_PORT:-21}"
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$FTP_HOST" <<LFTP
-          set cmd:fail-exit true
-          set net:max-retries 5
-          set net:reconnect-interval-base 5
-          set net:reconnect-interval-max 30
-          set net:timeout 30
-          set ftp:ssl-force true
-          set ftp:ssl-protect-data true
-          set ssl:verify-certificate true
-          set mirror:set-permissions false
-          set ftp:prefer-epsv true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          pwd
-          ls
-          
-          mirror --reverse --continue --verbose --parallel=1 --exclude-glob storage/** --exclude-glob .well-known/** --exclude-glob node_modules/** dist/shinjiru/ "$FTP_REMOTE_DIR"
-          put -O "$FTP_REMOTE_DIR/tmp" -o restart.txt dist/shinjiru-restart.txt
-          bye
-          LFTP
+          git add -A deploy/shinjiru-runtime
+
+          echo "Runtime changes:"
+          git status --short deploy/shinjiru-runtime
+
+          if git diff --cached --quiet; then
+            echo "Runtime has no changes. Nothing to commit."
+          else
+            git commit -m "Build Shinjiru runtime"
+            git push origin HEAD:master
+          fi
