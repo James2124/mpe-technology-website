@@ -64,7 +64,7 @@ export default async function Home() {
           <h2>Everything between<br />power and <em>motion.</em></h2>
           <p>Find the core components that connect, reduce and transfer power across your machinery.</p>
         </div>
-        <div className="category-grid" data-reveal="up" data-reveal-delay="1">
+        <div className="category-grid" data-reveal="stagger" data-reveal-delay="1">
           {categories.map((category) => (
             <a className="category-card" href={category.href} key={category.number}>
               <span>{category.number}</span>
@@ -84,7 +84,7 @@ export default async function Home() {
           </div>
           <a className="text-link light-link" href="/products">View all products <span>↗</span></a>
         </div>
-        <div className="home-products" data-reveal="up" data-reveal-delay="1">
+        <div className="home-products" data-reveal="stagger" data-reveal-delay="1">
           {featured.map((product, index) => (
             <article key={product.id}>
               <a className="home-product-image" href={`/products/${product.slug}`}>
