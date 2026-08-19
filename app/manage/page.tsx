@@ -1,7 +1,19 @@
+import type { Metadata } from "next";
 import { requireCatalogAdmin } from "../admin-auth";
 import { listEnquiries, listProducts } from "../../db/products";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title:
+    "Catalog Manager | MP&E Technology",
+
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+  },
+};
 
 export default async function ManagePage() {
   const admin = await requireCatalogAdmin("/manage");
