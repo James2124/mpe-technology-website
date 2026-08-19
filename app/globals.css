@@ -1176,6 +1176,95 @@ textarea { resize: vertical; }
   }
 }
 
+/* ---------- Product cursor spotlight ---------- */
+
+.home-product-image[data-cursor-effect] {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --mag-x: 0px;
+  --mag-y: 0px;
+
+  isolation: isolate;
+}
+
+.home-product-image[data-cursor-effect]::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle 190px at
+      var(--spot-x)
+      var(--spot-y),
+      rgba(180, 211, 52, .34) 0%,
+      rgba(180, 211, 52, .16) 28%,
+      rgba(255, 255, 255, .08) 45%,
+      transparent 70%
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity .4s ease;
+
+  mix-blend-mode: multiply;
+}
+
+.home-product-image[data-cursor-effect].is-cursor-active::before {
+  opacity: 1;
+}
+
+.home-product-image[data-cursor-effect] > span {
+  z-index: 4;
+}
+
+.home-product-image[data-cursor-effect] img {
+  translate:
+    var(--mag-x)
+    var(--mag-y);
+
+  transition:
+    translate .22s var(--motion-ease),
+    transform .55s var(--motion-ease),
+    filter .4s ease;
+
+  will-change:
+    translate,
+    transform;
+}
+
+.home-product-image[data-cursor-effect].is-cursor-active {
+  box-shadow:
+    0 28px 65px
+    rgba(0, 0, 0, .28);
+}
+
+.home-product-image[data-cursor-effect].is-cursor-active img {
+  filter:
+    drop-shadow(
+      0 28px 28px
+      rgba(20, 34, 24, .2)
+    );
+}
+
+/* Touch device 不需要 cursor effects */
+
+@media (hover: none), (pointer: coarse) {
+  .home-product-image[data-cursor-effect]::before {
+    display: none;
+  }
+
+  .home-product-image[data-cursor-effect] img {
+    translate: 0 0;
+  }
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
