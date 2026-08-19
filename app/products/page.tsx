@@ -19,7 +19,7 @@ export default async function ProductsPage({
   return (
     <main>
       <SiteHeader />
-      <section className="page-hero catalog-hero">
+      <section className="page-hero catalog-hero" data-reveal="up">
         <p className="eyebrow"><span /> PRODUCT CATALOG</p>
         <h1>Power, connected.</h1>
         <p>Browse our core range of mechanical power-transmission components. No checkout—just clear product information and a direct path to enquiry.</p>
@@ -27,9 +27,9 @@ export default async function ProductsPage({
       <section className="catalog-section">
         <ProductExplorer products={products} initialCategory={params.category} />
       </section>
-      <section className="catalog-cta">
+      <section className="catalog-cta" data-reveal="up">
         <div><span>Can’t find the exact model?</span><strong>Send us a photo or part number.</strong></div>
-        <a className="lime-btn dark-text" href="/contact">Ask for a product match <span>→</span></a>
+        <a className="lime-btn dark-text" href="/contact" data-magnetic>Ask for a product match <span>→</span></a>
       </section>
       <SiteFooter />
     </main>
