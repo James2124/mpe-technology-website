@@ -1855,6 +1855,238 @@ textarea { resize: vertical; }
   padding-left: 40px;
 }
 
+/* ---------- Contact form motion ---------- */
+
+/*
+  Label smooth state
+*/
+
+.contact-form-wrap label > span {
+  transition:
+    color .3s ease,
+    translate .3s var(--motion-ease);
+}
+
+.contact-form-wrap label:focus-within > span {
+  color: var(--green);
+  translate: 4px 0;
+}
+
+/*
+  Input interaction
+*/
+
+.contact-form-wrap input,
+.contact-form-wrap textarea,
+.contact-form-wrap select {
+  transition:
+    border-color .3s ease,
+    box-shadow .35s var(--motion-ease),
+    background-color .3s ease,
+    transform .35s var(--motion-ease);
+}
+
+.contact-form-wrap input:hover,
+.contact-form-wrap textarea:hover,
+.contact-form-wrap select:hover {
+  border-color:
+    rgba(77, 158, 67, .55);
+}
+
+.contact-form-wrap input:focus,
+.contact-form-wrap textarea:focus,
+.contact-form-wrap select:focus {
+  border-color: var(--green);
+
+  background:
+    rgba(77, 158, 67, .035);
+
+  box-shadow:
+    inset 3px 0 var(--green),
+    0 16px 32px
+    rgba(20, 34, 24, .08);
+
+  transform:
+    translateY(-2px);
+}
+
+/*
+  Placeholder 稍微淡出，
+  让用户输入时感觉更 clean。
+*/
+
+.contact-form-wrap
+input::placeholder,
+.contact-form-wrap
+textarea::placeholder {
+  transition:
+    opacity .25s ease;
+}
+
+.contact-form-wrap
+input:focus::placeholder,
+.contact-form-wrap
+textarea:focus::placeholder {
+  opacity: .42;
+}
+
+/* ---------- Contact points ---------- */
+
+.contact-points > div {
+  transition:
+    background-color .35s ease,
+    transform .4s var(--motion-ease),
+    padding .4s var(--motion-ease);
+}
+
+.contact-points > div:hover {
+  transform:
+    translateX(8px);
+
+  padding-left: 10px;
+
+  background:
+    rgba(255, 255, 255, .035);
+}
+
+.contact-points > div > span {
+  transition:
+    color .3s ease,
+    transform .35s var(--motion-ease);
+}
+
+.contact-points > div:hover > span {
+  color: #fff;
+
+  transform:
+    scale(1.12);
+}
+
+/* ---------- Contact success state ---------- */
+
+.success-message > span {
+  position: relative;
+
+  animation:
+    mpe-success-pop
+    .75s
+    var(--motion-ease)
+    both;
+
+  box-shadow:
+    0 0 0 0
+    rgba(180, 211, 52, .28);
+}
+
+.success-message > span::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -10px;
+
+  border:
+    1px solid
+    rgba(180, 211, 52, .45);
+
+  border-radius: 50%;
+
+  animation:
+    mpe-success-ring
+    2.4s
+    ease-out
+    infinite;
+}
+
+@keyframes mpe-success-pop {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(.5)
+      rotate(-12deg);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+@keyframes mpe-success-ring {
+  0% {
+    opacity: .8;
+    transform: scale(.75);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+/* ---------- Form submit ---------- */
+
+.form-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.form-submit::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: -45%;
+
+  width: 30%;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent,
+      rgba(255, 255, 255, .24),
+      transparent
+    );
+
+  transform:
+    skewX(-15deg);
+
+  transition:
+    left .65s
+    var(--motion-ease);
+}
+
+.form-submit:hover::before {
+  left: 120%;
+}
+
+.form-submit > span {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 680px) {
+  .contact-points > div:hover {
+    transform: none;
+    padding-left: 0;
+  }
+
+  .contact-form-wrap input:focus,
+  .contact-form-wrap textarea:focus,
+  .contact-form-wrap select:focus {
+    transform: none;
+  }
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
