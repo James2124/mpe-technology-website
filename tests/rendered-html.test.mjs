@@ -31,6 +31,6 @@ test("uses native anchors for shared-hosting navigation", async () => {
   )).join("\n");
 
   assert.doesNotMatch(source, /from ["']next\/link["']/);
-  assert.match(source, /<a className="primary-btn" href="\/products">/);
+  assert.match(source, /<a\s+className="primary-btn"\s+href="\/products"[^>]*>/, );
   assert.match(source, /<a href={`\/products\/\${product\.slug}`}>/);
 });
