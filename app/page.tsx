@@ -44,7 +44,7 @@ export default async function Home() {
   return (
     <main>
       <ScrollReveal />
-      <ScrollReveal />
+      <CursorEffects />
       <SiteHeader />
 
       <section className="hero">
@@ -65,7 +65,7 @@ export default async function Home() {
           </p>
 
           <div className="hero-actions">
-            <a className="primary-btn" href="/products">
+            <a className="primary-btn" href="/products" data-magnetic>
               Explore products <span>→</span>
             </a>
 
@@ -320,7 +320,7 @@ export default async function Home() {
 
           <a
             className="lime-btn"
-            href="/contact"
+            href="/contact" data-magnetic
           >
             Send us your requirement <span>→</span>
           </a>
