@@ -42,8 +42,6 @@ export default async function Home() {
 
   return (
     <main>
-      <ScrollReveal />
-      <CursorEffects />
       <SiteHeader />
 
       <section className="hero">
