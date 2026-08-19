@@ -1,11 +1,14 @@
 ---
 deployment:
   tasks:
-    - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && npm ci --include=dev
-    - source /home/mpetechn/nodevenv/mpe-staging-app/24/bin/activate && RAYON_NUM_THREADS=1 npm run build
     - /bin/mkdir -p /home/mpetechn/mpe-staging-app/tmp
-    - /bin/rm -rf /home/mpetechn/mpe-staging-app/dist /home/mpetechn/mpe-staging-app/public
-    - /bin/cp -a dist/standalone/dist /home/mpetechn/mpe-staging-app/dist
-    - /bin/cp -a dist/standalone/public /home/mpetechn/mpe-staging-app/public
-    - /bin/cp dist/standalone/server.js /home/mpetechn/mpe-staging-app/server.js
-    - /bin/cp deploy/shinjiru-package.json /home/mpetechn/mpe-staging-app/package.json
+    - /bin/rm -rf /home/mpetechn/mpe-staging-app/dist
+    - /bin/rm -rf /home/mpetechn/mpe-staging-app/public
+    - /bin/rm -f /home/mpetechn/mpe-staging-app/server.js
+    - /bin/rm -f /home/mpetechn/mpe-staging-app/package.json
+    - /bin/cp -a deploy/shinjiru-runtime/dist /home/mpetechn/mpe-staging-app/dist
+    - /bin/cp -a deploy/shinjiru-runtime/public /home/mpetechn/mpe-staging-app/public
+    - /bin/cp deploy/shinjiru-runtime/server.js /home/mpetechn/mpe-staging-app/server.js
+    - /bin/cp deploy/shinjiru-runtime/package.json /home/mpetechn/mpe-staging-app/package.json
+    - /bin/cp deploy/shinjiru-runtime/tmp/deployment.txt /home/mpetechn/mpe-staging-app/tmp/deployment.txt
+    - touch /home/mpetechn/mpe-staging-app/tmp/restart.txt
