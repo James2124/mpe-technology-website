@@ -1,4 +1,5 @@
 import { CursorEffects } from "./components/CursorEffects";
+import { WhyVisual } from "./components/WhyVisual";
 import { HeroVisual } from "./components/HeroVisual";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -224,22 +225,7 @@ export default async function Home() {
         className="section why-section"
         id="why-us"
       >
-        <div
-          className="why-visual"
-          data-reveal="left"
-        >
-          <span className="big-type">
-            MP&amp;E
-          </span>
-
-          <div className="why-badge">
-            EST.
-            <br />
-            FOR
-            <br />
-            INDUSTRY
-          </div>
-        </div>
+        <WhyVisual />
 
         <div
           className="why-copy"
