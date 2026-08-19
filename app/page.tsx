@@ -1,3 +1,4 @@
+import { HeroVisual } from "./components/HeroVisual";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { ScrollReveal } from "./components/ScrollReveal";
