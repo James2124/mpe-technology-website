@@ -1,18 +1,24 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.documentElement;
 
     const targets = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+      document.querySelectorAll<HTMLElement>(
+        "[data-reveal]",
+      ),
     );
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
     if (
       prefersReducedMotion ||
@@ -32,9 +38,10 @@ export function ScrollReveal() {
             return;
           }
 
-          entry.target.classList.add("is-visible");
+          entry.target.classList.add(
+            "is-visible",
+          );
 
-          // 只播放一次，出现后不再隐藏
           observer.unobserve(entry.target);
         });
       },
@@ -52,9 +59,12 @@ export function ScrollReveal() {
 
     return () => {
       observer.disconnect();
-      root.classList.remove("reveal-ready");
+
+      root.classList.remove(
+        "reveal-ready",
+      );
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
