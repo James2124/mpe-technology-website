@@ -1,5 +1,6 @@
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
+import { ScrollReveal } from "./components/ScrollReveal";
 import { listProducts } from "../db/products";
 
 export const dynamic = "force-dynamic";
@@ -17,6 +18,7 @@ export default async function Home() {
 
   return (
     <main>
+      <ScrollReveal />
       <SiteHeader />
       <section className="hero">
         <div className="hero-copy">
@@ -50,19 +52,19 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="trust-strip">
+      <section className="trust-strip" data-reveal="fade">
         <p><span>●</span> Practical product guidance</p>
         <p><span>●</span> Industrial-grade components</p>
         <p><span>●</span> Local enquiry support</p>
       </section>
 
       <section className="section category-section">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal="up">
           <p className="eyebrow"><span /> OUR PRODUCT RANGE</p>
           <h2>Everything between<br />power and <em>motion.</em></h2>
           <p>Find the core components that connect, reduce and transfer power across your machinery.</p>
         </div>
-        <div className="category-grid">
+        <div className="category-grid" data-reveal="up" data-reveal-delay="1">
           {categories.map((category) => (
             <a className="category-card" href={category.href} key={category.number}>
               <span>{category.number}</span>
@@ -75,14 +77,14 @@ export default async function Home() {
       </section>
 
       <section className="section featured-section">
-        <div className="section-heading inline">
+        <div className="section-heading inline" data-reveal="up">
           <div>
             <p className="eyebrow light"><span /> SELECTED PRODUCTS</p>
             <h2>Built for the<br /><em>real world.</em></h2>
           </div>
           <a className="text-link light-link" href="/products">View all products <span>↗</span></a>
         </div>
-        <div className="home-products">
+        <div className="home-products" data-reveal="up" data-reveal-delay="1">
           {featured.map((product, index) => (
             <article key={product.id}>
               <a className="home-product-image" href={`/products/${product.slug}`}>
@@ -98,11 +100,11 @@ export default async function Home() {
       </section>
 
       <section className="section why-section" id="why-us">
-        <div className="why-visual">
+        <div className="why-visual" data-reveal="left">
           <span className="big-type">MP&amp;E</span>
           <div className="why-badge">EST.<br />FOR<br />INDUSTRY</div>
         </div>
-        <div className="why-copy">
+        <div className="why-copy" data-reveal="right" data-reveal-delay="1">
           <p className="eyebrow"><span /> WHY MP&amp;E</p>
           <h2>The right part.<br />The right <em>fit.</em></h2>
           <p className="why-lede">
@@ -118,9 +120,20 @@ export default async function Home() {
       </section>
 
       <section className="section home-cta">
-        <p className="eyebrow light"><span /> NEED A PRODUCT MATCH?</p>
-        <h2>Let’s keep your<br />operation <em>moving.</em></h2>
-        <a className="lime-btn" href="/contact">Send us your requirement <span>→</span></a>
+        <div className="home-cta-content" data-reveal="up">
+          <p className="eyebrow light">
+            <span /> NEED A PRODUCT MATCH?
+          </p>
+      
+          <h2>
+            Let’s keep your<br />
+            operation <em>moving.</em>
+          </h2>
+      
+          <a className="lime-btn" href="/contact">
+            Send us your requirement <span>→</span>
+          </a>
+        </div>
       </section>
       <SiteFooter />
     </main>
