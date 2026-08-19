@@ -17,26 +17,26 @@
       "_navigation-errors-JBYRhaiw.js"
     ]
   },
-  "_app-page-cache-finalizer-Dwfw9Kvx.js": {
-    "file": "_next/static/app-page-cache-finalizer-Dwfw9Kvx.js",
+  "_app-page-cache-finalizer-BjgoDkIO.js": {
+    "file": "_next/static/app-page-cache-finalizer-BjgoDkIO.js",
     "name": "app-page-cache-finalizer",
     "imports": [
-      "_instrumentation-D6fNNjN1.js",
-      "_cache-control-CEwGaKh5.js",
-      "_text-stream-C3OhGNsH.js",
+      "_instrumentation-DPxLaeuq.js",
+      "_cache-control-CXf8eOBx.js",
+      "_text-stream-UC6WOv1C.js",
       "_headers-Dj_GgySR.js"
     ]
   },
-  "_app-page-stream-aV4fR0fb.js": {
-    "file": "_next/static/app-page-stream-aV4fR0fb.js",
+  "_app-page-stream-DOiF86Jg.js": {
+    "file": "_next/static/app-page-stream-DOiF86Jg.js",
     "name": "app-page-stream",
     "imports": [
       "_rolldown-runtime-DUnMT5BP.js",
       "_framework~index~page~layout~app-page-cache-render~app-page-cache~app-route-handler-dispatch~hnpaniju-Bw-0z1Rm.js",
-      "_cache-control-CEwGaKh5.js",
-      "_text-stream-C3OhGNsH.js",
+      "_cache-control-CXf8eOBx.js",
+      "_text-stream-UC6WOv1C.js",
       "_headers-Dj_GgySR.js",
-      "_implicit-tags-btGt3I1R.js",
+      "_implicit-tags-BqzoaA5g.js",
       "_headers-DATCeahr.js"
     ]
   },
@@ -48,18 +48,18 @@
       "_record-Cz3MrZeO.js"
     ]
   },
-  "_app-segment-config-CqCe3hCB.js": {
-    "file": "_next/static/app-segment-config-CqCe3hCB.js",
+  "_app-segment-config-CF4BFLEB.js": {
+    "file": "_next/static/app-segment-config-CF4BFLEB.js",
     "name": "app-segment-config",
     "imports": [
       "_rolldown-runtime-DUnMT5BP.js",
       "_rsc-_d4XeCdl.js",
       "_framework~index~page~layout~app-page-cache-render~app-page-cache~app-route-handler-dispatch~hnpaniju-Bw-0z1Rm.js",
-      "_instrumentation-D6fNNjN1.js",
-      "_cache-control-CEwGaKh5.js",
+      "_instrumentation-DPxLaeuq.js",
+      "_cache-control-CXf8eOBx.js",
       "_headers-Dj_GgySR.js",
       "_root-params-DyddOBHL.js",
-      "_implicit-tags-btGt3I1R.js",
+      "_implicit-tags-BqzoaA5g.js",
       "_headers-DATCeahr.js",
       "_navigation-errors-JBYRhaiw.js",
       "_parse-cookie-CIkDfY1v.js",
@@ -73,8 +73,8 @@
     "file": "_next/static/basic-auth-C-CPGGqT.js",
     "name": "basic-auth"
   },
-  "_cache-control-CEwGaKh5.js": {
-    "file": "_next/static/cache-control-CEwGaKh5.js",
+  "_cache-control-CXf8eOBx.js": {
+    "file": "_next/static/cache-control-CXf8eOBx.js",
     "name": "cache-control",
     "imports": [
       "_rolldown-runtime-DUnMT5BP.js",
@@ -136,26 +136,26 @@
       "_protocol-headers-8UDDrYNJ.js"
     ]
   },
-  "_implicit-tags-btGt3I1R.js": {
-    "file": "_next/static/implicit-tags-btGt3I1R.js",
+  "_implicit-tags-BqzoaA5g.js": {
+    "file": "_next/static/implicit-tags-BqzoaA5g.js",
     "name": "implicit-tags",
     "imports": [
-      "_cache-control-CEwGaKh5.js",
+      "_cache-control-CXf8eOBx.js",
       "_redirect-digest-C-06pD9r.js"
     ]
   },
-  "_instrumentation-D6fNNjN1.js": {
-    "file": "_next/static/instrumentation-D6fNNjN1.js",
+  "_instrumentation-DPxLaeuq.js": {
+    "file": "_next/static/instrumentation-DPxLaeuq.js",
     "name": "instrumentation",
     "imports": [
-      "_cache-control-CEwGaKh5.js"
+      "_cache-control-CXf8eOBx.js"
     ]
   },
-  "_isr-decision-Crb0lekM.js": {
-    "file": "_next/static/isr-decision-Crb0lekM.js",
+  "_isr-decision-BPIllwDm.js": {
+    "file": "_next/static/isr-decision-BPIllwDm.js",
     "name": "isr-decision",
     "imports": [
-      "_cache-control-CEwGaKh5.js"
+      "_cache-control-CXf8eOBx.js"
     ]
   },
   "_navigation-errors-JBYRhaiw.js": {
@@ -223,11 +223,11 @@
     "file": "_next/static/starter-products-BTnoZ0fu.js",
     "name": "starter-products"
   },
-  "_text-stream-C3OhGNsH.js": {
-    "file": "_next/static/text-stream-C3OhGNsH.js",
+  "_text-stream-UC6WOv1C.js": {
+    "file": "_next/static/text-stream-UC6WOv1C.js",
     "name": "text-stream",
     "imports": [
-      "_cache-control-CEwGaKh5.js",
+      "_cache-control-CXf8eOBx.js",
       "_headers-Dj_GgySR.js",
       "_headers-DATCeahr.js"
     ]
@@ -355,30 +355,30 @@
     ]
   },
   "node_modules/vinext/dist/server/app-page-cache-render.js": {
-    "file": "_next/static/app-page-cache-render-YIXi2Hm_.js",
+    "file": "_next/static/app-page-cache-render-ZcynqiA3.js",
     "name": "app-page-cache-render",
     "src": "node_modules/vinext/dist/server/app-page-cache-render.js",
     "isDynamicEntry": true,
     "imports": [
-      "_cache-control-CEwGaKh5.js",
-      "_app-page-stream-aV4fR0fb.js",
-      "_text-stream-C3OhGNsH.js",
-      "_implicit-tags-btGt3I1R.js",
+      "_cache-control-CXf8eOBx.js",
+      "_app-page-stream-DOiF86Jg.js",
+      "_text-stream-UC6WOv1C.js",
+      "_implicit-tags-BqzoaA5g.js",
       "_headers-DATCeahr.js"
     ]
   },
   "node_modules/vinext/dist/server/app-page-cache.js": {
-    "file": "_next/static/app-page-cache-CcrmJNlR.js",
+    "file": "_next/static/app-page-cache-UJfOIWyM.js",
     "name": "app-page-cache",
     "src": "node_modules/vinext/dist/server/app-page-cache.js",
     "isDynamicEntry": true,
     "imports": [
-      "_instrumentation-D6fNNjN1.js",
-      "_cache-control-CEwGaKh5.js",
-      "_app-page-cache-finalizer-Dwfw9Kvx.js",
-      "_text-stream-C3OhGNsH.js",
+      "_instrumentation-DPxLaeuq.js",
+      "_cache-control-CXf8eOBx.js",
+      "_app-page-cache-finalizer-BjgoDkIO.js",
+      "_text-stream-UC6WOv1C.js",
       "_headers-Dj_GgySR.js",
-      "_isr-decision-Crb0lekM.js"
+      "_isr-decision-BPIllwDm.js"
     ]
   },
   "node_modules/vinext/dist/server/app-prerender-endpoints.js": {
@@ -392,19 +392,19 @@
     ]
   },
   "node_modules/vinext/dist/server/app-route-handler-dispatch.js": {
-    "file": "_next/static/app-route-handler-dispatch-BOHnESR6.js",
+    "file": "_next/static/app-route-handler-dispatch-Ddxss5vz.js",
     "name": "app-route-handler-dispatch",
     "src": "node_modules/vinext/dist/server/app-route-handler-dispatch.js",
     "isDynamicEntry": true,
     "imports": [
-      "_instrumentation-D6fNNjN1.js",
-      "_app-segment-config-CqCe3hCB.js",
-      "_cache-control-CEwGaKh5.js",
+      "_instrumentation-DPxLaeuq.js",
+      "_app-segment-config-CF4BFLEB.js",
+      "_cache-control-CXf8eOBx.js",
       "node_modules/vinext/dist/server/app-static-generation.js",
       "_headers-Dj_GgySR.js",
       "_root-params-DyddOBHL.js",
-      "_implicit-tags-btGt3I1R.js",
-      "_isr-decision-Crb0lekM.js",
+      "_implicit-tags-BqzoaA5g.js",
+      "_isr-decision-BPIllwDm.js",
       "_headers-DATCeahr.js",
       "_navigation-errors-JBYRhaiw.js",
       "_parse-cookie-CIkDfY1v.js"
@@ -429,16 +429,16 @@
       "_framework~index-BsWz1USJ.js",
       "_framework~index~page~layout~app-page-cache-render~app-page-cache~app-route-handler-dispatch~bdkfhm7y-BuSoo0SF.js",
       "_framework~index~page~layout~app-page-cache-render~app-page-cache~app-route-handler-dispatch~hnpaniju-Bw-0z1Rm.js",
-      "_instrumentation-D6fNNjN1.js",
-      "_app-segment-config-CqCe3hCB.js",
-      "_cache-control-CEwGaKh5.js",
-      "_app-page-cache-finalizer-Dwfw9Kvx.js",
-      "_app-page-stream-aV4fR0fb.js",
-      "_text-stream-C3OhGNsH.js",
+      "_instrumentation-DPxLaeuq.js",
+      "_app-segment-config-CF4BFLEB.js",
+      "_cache-control-CXf8eOBx.js",
+      "_app-page-cache-finalizer-BjgoDkIO.js",
+      "_app-page-stream-DOiF86Jg.js",
+      "_text-stream-UC6WOv1C.js",
       "_app-prerender-static-params-BtsA3kHG.js",
       "_headers-Dj_GgySR.js",
       "_root-params-DyddOBHL.js",
-      "_implicit-tags-btGt3I1R.js",
+      "_implicit-tags-BqzoaA5g.js",
       "_navigation.react-server-DVSR9m6-.js",
       "_headers-DATCeahr.js",
       "_navigation-errors-JBYRhaiw.js",
@@ -465,7 +465,7 @@
       "app/products/[slug]/page.tsx"
     ],
     "css": [
-      "_next/static/css/index.Bc_NjLH-.css"
+      "_next/static/css/index.1wxtHhfr.css"
     ]
   }
 }
