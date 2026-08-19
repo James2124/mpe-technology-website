@@ -141,7 +141,7 @@ export function SiteHeader() {
         ))}
       </nav>
 
-      <a className="header-cta" href="/contact">
+      <a className="header-cta" href="/contact" data-magnetic>
         Request a quote <span>↗</span>
       </a>
 
