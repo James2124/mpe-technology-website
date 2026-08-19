@@ -1,1 +1,0 @@
-import{u as e}from"./headers-DATCeahr.js";async function t(t){if(/^https?:\/\//i.test(t))return t;let n=await e(),r=n.get(`x-forwarded-host`)??n.get(`host`),i=n.get(`x-forwarded-proto`)??(r?.includes(`localhost`)?`http`:`https`),a=r?`${i}://${r}`:`http://localhost:3000`;return new URL(t,a).toString()}export{t};

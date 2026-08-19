@@ -1,1 +1,0 @@
-import{i as e,l as t}from"./products-D43KdZzX.js";import{r as n,t as r}from"./admin-auth-BWCBfe56.js";async function i(i,{params:a}){if(!await r())return n();let{id:o}=await a,s=await e(Number(o));return s?.imagePath?.startsWith(`/api/product-images/`)&&await t(s.imagePath.slice(20)),Response.redirect(new URL(`/manage`,i.url),303)}export{i as POST};
