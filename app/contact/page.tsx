@@ -4,7 +4,13 @@ import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Contact | MP&E Technology",
-  description: "Send MP&E Technology your motor, gearbox, coupling, pulley or V-belt requirement.",
+
+  description:
+    "Send MP&E Technology your motor, gearbox, coupling, pulley or V-belt requirement.",
+
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default async function ContactPage({
