@@ -12,26 +12,42 @@ export function WhyVisual() {
       return;
     }
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const prefersReducedMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
 
-    if (prefersReducedMotion) {
+    const coarsePointer =
+      window.matchMedia(
+        "(pointer: coarse)",
+      ).matches;
+
+    /*
+     * Mobile / touch / reduced-motion
+     * 不执行 scroll parallax。
+     *
+     * Ring rotation 和 badge floating
+     * 仍然由 CSS 控制。
+     */
+    if (
+      prefersReducedMotion ||
+      coarsePointer ||
+      window.innerWidth <= 680
+    ) {
       return;
     }
 
     let frameId: number | null = null;
+    let isActive = false;
 
     const updateParallax = () => {
-      const bounds = visual.getBoundingClientRect();
+      const bounds =
+        visual.getBoundingClientRect();
 
       const viewportHeight =
-        window.innerHeight || document.documentElement.clientHeight;
+        window.innerHeight ||
+        document.documentElement.clientHeight;
 
-      /*
-       * 0 = section 正好在 viewport 中间。
-       * 范围限制在 -1 ~ 1。
-       */
       const sectionCenter =
         bounds.top + bounds.height / 2;
 
@@ -47,50 +63,110 @@ export function WhyVisual() {
         Math.min(1, distance),
       );
 
+      /*
+       * JS 直接计算 pixel value，
+       * CSS 不需要再做乘法。
+       */
       visual.style.setProperty(
-        "--why-scroll",
-        progress.toFixed(3),
+        "--why-ring-outer-y",
+        `${(progress * 24).toFixed(2)}px`,
+      );
+
+      visual.style.setProperty(
+        "--why-ring-inner-y",
+        `${(progress * -18).toFixed(2)}px`,
+      );
+
+      visual.style.setProperty(
+        "--why-type-y",
+        `${(progress * -34).toFixed(2)}px`,
+      );
+
+      visual.style.setProperty(
+        "--why-badge-y",
+        `${(progress * 42).toFixed(2)}px`,
       );
 
       frameId = null;
     };
 
-    const handleScroll = () => {
-      if (frameId !== null) {
+    const requestUpdate = () => {
+      /*
+       * Section 不在附近时，
+       * 完全不做 layout calculation。
+       */
+      if (
+        !isActive ||
+        frameId !== null
+      ) {
         return;
       }
 
-      frameId = window.requestAnimationFrame(
-        updateParallax,
-      );
+      frameId =
+        window.requestAnimationFrame(
+          updateParallax,
+        );
     };
 
-    updateParallax();
+    /*
+     * Why section 靠近 viewport
+     * 才开启 parallax computation。
+     */
+    const observer =
+      new IntersectionObserver(
+        ([entry]) => {
+          isActive =
+            entry.isIntersecting;
+
+          visual.classList.toggle(
+            "is-parallax-active",
+            isActive,
+          );
+
+          if (isActive) {
+            requestUpdate();
+          }
+        },
+        {
+          rootMargin: "200px 0px",
+          threshold: 0,
+        },
+      );
+
+    observer.observe(visual);
 
     window.addEventListener(
       "scroll",
-      handleScroll,
+      requestUpdate,
       { passive: true },
     );
 
     window.addEventListener(
       "resize",
-      handleScroll,
+      requestUpdate,
     );
 
     return () => {
+      observer.disconnect();
+
       window.removeEventListener(
         "scroll",
-        handleScroll,
+        requestUpdate,
       );
 
       window.removeEventListener(
         "resize",
-        handleScroll,
+        requestUpdate,
+      );
+
+      visual.classList.remove(
+        "is-parallax-active",
       );
 
       if (frameId !== null) {
-        window.cancelAnimationFrame(frameId);
+        window.cancelAnimationFrame(
+          frameId,
+        );
       }
     };
   }, []);
