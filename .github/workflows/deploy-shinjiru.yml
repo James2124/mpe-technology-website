@@ -15,7 +15,7 @@ jobs:
     name: Build and upload staging
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     env:
       MPE_STORAGE_DRIVER: file
 
