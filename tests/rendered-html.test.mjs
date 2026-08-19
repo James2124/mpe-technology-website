@@ -15,3 +15,22 @@ test("ships MP&E product pages without starter preview content", async () => {
   assert.match(catalog, /ProductExplorer/);
   assert.doesNotMatch(home + layout, /codex-preview|SkeletonPreview|Starter Project/);
 });
+
+test("uses native anchors for shared-hosting navigation", async () => {
+  const navigationFiles = [
+    "../app/components/SiteHeader.tsx",
+    "../app/components/SiteFooter.tsx",
+    "../app/components/ProductExplorer.tsx",
+    "../app/page.tsx",
+    "../app/contact/page.tsx",
+    "../app/manage/page.tsx",
+    "../app/products/[slug]/page.tsx",
+  ];
+  const source = (await Promise.all(
+    navigationFiles.map((path) => readFile(new URL(path, import.meta.url), "utf8")),
+  )).join("\n");
+
+  assert.doesNotMatch(source, /from ["']next\/link["']/);
+  assert.match(source, /<a className="primary-btn" href="\/products">/);
+  assert.match(source, /<a href={`\/products\/\${product\.slug}`}>/);
+});

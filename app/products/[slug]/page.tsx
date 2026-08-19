@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "../../components/SiteFooter";
 import { SiteHeader } from "../../components/SiteHeader";
@@ -41,7 +40,7 @@ export default async function ProductPage({
     <main>
       <SiteHeader />
       <div className="product-breadcrumb">
-        <Link href="/products">Products</Link><span>/</span><span>{product.category}</span><span>/</span><strong>{product.name}</strong>
+        <a href="/products">Products</a><span>/</span><span>{product.category}</span><span>/</span><strong>{product.name}</strong>
       </div>
       <section className="product-detail">
         <div className="detail-image">
@@ -58,7 +57,7 @@ export default async function ProductPage({
             {product.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}
           </ul>
           <div className="detail-actions">
-            <Link className="primary-btn" href={`/contact?product=${encodeURIComponent(product.name)}`}>Enquire about this product <span>→</span></Link>
+            <a className="primary-btn" href={`/contact?product=${encodeURIComponent(product.name)}`}>Enquire about this product <span>→</span></a>
             {product.externalUrl && <a className="text-link" href={product.externalUrl} target="_blank" rel="noreferrer">View Shopee store <span>↗</span></a>}
           </div>
         </div>
@@ -79,14 +78,14 @@ export default async function ProductPage({
         <section className="related-section">
           <div className="section-heading inline">
             <h2>Related <em>products.</em></h2>
-            <Link className="text-link" href="/products">All products ↗</Link>
+            <a className="text-link" href="/products">All products ↗</a>
           </div>
           <div className="related-grid">
             {related.map((item) => (
-              <Link href={`/products/${item.slug}`} key={item.id}>
+              <a href={`/products/${item.slug}`} key={item.id}>
                 {item.imagePath && <img src={item.imagePath} alt={item.name} />}
                 <span>{item.category}</span><strong>{item.name}</strong><small>View product ↗</small>
-              </Link>
+              </a>
             ))}
           </div>
         </section>

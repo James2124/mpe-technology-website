@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { listProducts } from "../db/products";
@@ -28,8 +27,8 @@ export default async function Home() {
             for your application and ready to work.
           </p>
           <div className="hero-actions">
-            <Link className="primary-btn" href="/products">Explore products <span>→</span></Link>
-            <Link className="text-link" href="/contact">Talk to our team <span>↗</span></Link>
+            <a className="primary-btn" href="/products">Explore products <span>→</span></a>
+            <a className="text-link" href="/contact">Talk to our team <span>↗</span></a>
           </div>
           <div className="category-row" aria-label="Product categories">
             <span>01 <b>Gear Reducers</b></span>
@@ -65,12 +64,12 @@ export default async function Home() {
         </div>
         <div className="category-grid">
           {categories.map((category) => (
-            <Link className="category-card" href={category.href} key={category.number}>
+            <a className="category-card" href={category.href} key={category.number}>
               <span>{category.number}</span>
               <h3>{category.title}</h3>
               <p>{category.copy}</p>
               <b>Explore category ↗</b>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
@@ -81,17 +80,17 @@ export default async function Home() {
             <p className="eyebrow light"><span /> SELECTED PRODUCTS</p>
             <h2>Built for the<br /><em>real world.</em></h2>
           </div>
-          <Link className="text-link light-link" href="/products">View all products <span>↗</span></Link>
+          <a className="text-link light-link" href="/products">View all products <span>↗</span></a>
         </div>
         <div className="home-products">
           {featured.map((product, index) => (
             <article key={product.id}>
-              <Link className="home-product-image" href={`/products/${product.slug}`}>
+              <a className="home-product-image" href={`/products/${product.slug}`}>
                 <span>/{String(index + 1).padStart(2, "0")}</span>
                 {product.imagePath && <img src={product.imagePath} alt={product.name} />}
-              </Link>
+              </a>
               <small>{product.category}</small>
-              <h3><Link href={`/products/${product.slug}`}>{product.name}</Link></h3>
+              <h3><a href={`/products/${product.slug}`}>{product.name}</a></h3>
               <p>{product.subtitle}</p>
             </article>
           ))}
@@ -121,7 +120,7 @@ export default async function Home() {
       <section className="section home-cta">
         <p className="eyebrow light"><span /> NEED A PRODUCT MATCH?</p>
         <h2>Let’s keep your<br />operation <em>moving.</em></h2>
-        <Link className="lime-btn" href="/contact">Send us your requirement <span>→</span></Link>
+        <a className="lime-btn" href="/contact">Send us your requirement <span>→</span></a>
       </section>
       <SiteFooter />
     </main>

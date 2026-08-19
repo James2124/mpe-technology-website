@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const shopee =
   "https://shopee.com.my/mimax_indsup?categoryId=102187&entryPoint=ShopByPDP&itemId=22587403565";
 
@@ -13,21 +11,21 @@ export function SiteFooter() {
       <div className="footer-links">
         <div>
           <strong>Explore</strong>
-          <Link href="/">Home</Link>
-          <Link href="/products">All products</Link>
-          <Link href="/contact">Contact</Link>
+          <a href="/">Home</a>
+          <a href="/products">All products</a>
+          <a href="/contact">Contact</a>
         </div>
         <div>
           <strong>Product range</strong>
-          <Link href="/products?category=Gear%20Reducers">Gear reducers</Link>
-          <Link href="/products?category=Motors">Motors</Link>
-          <Link href="/products?category=Couplings">Couplings</Link>
-          <Link href="/products?category=V-Belts">V-belts</Link>
+          <a href="/products?category=Gear%20Reducers">Gear reducers</a>
+          <a href="/products?category=Motors">Motors</a>
+          <a href="/products?category=Couplings">Couplings</a>
+          <a href="/products?category=V-Belts">V-belts</a>
         </div>
         <div>
           <strong>Connect</strong>
           <a href={shopee} target="_blank" rel="noreferrer">Shopee store ↗</a>
-          <Link href="/manage">Manage catalog</Link>
+          <a href="/manage">Manage catalog</a>
         </div>
       </div>
       <div className="footer-bottom">

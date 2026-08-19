@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { requireCatalogAdmin } from "../admin-auth";
 import { listEnquiries, listProducts } from "../../db/products";
 
@@ -12,7 +11,7 @@ export default async function ManagePage() {
         <img src="/mpe-logo.png" alt="MP&E Technology" />
         <h1>Catalog access is restricted.</h1>
         <p>Please reload this page and enter the catalog administrator password.</p>
-        <Link className="text-link" href="/">Return to website ↗</Link>
+        <a className="text-link" href="/">Return to website ↗</a>
       </main>
     );
   }
@@ -21,7 +20,7 @@ export default async function ManagePage() {
   return (
     <main className="manage-shell">
       <header className="manage-header">
-        <Link className="brand" href="/"><img src="/mpe-logo.png" alt="" /><span>MP&amp;E <small>CATALOG MANAGER</small></span></Link>
+        <a className="brand" href="/"><img src="/mpe-logo.png" alt="" /><span>MP&amp;E <small>CATALOG MANAGER</small></span></a>
         <div>
           <span>{admin.displayName}</span>
           {admin.signOutPath ? <a href={admin.signOutPath}>Sign out</a> : <small>Password protected</small>}
@@ -29,7 +28,7 @@ export default async function ManagePage() {
       </header>
       <section className="manage-intro">
         <div><p>CATALOG / ADMIN</p><h1>Manage products.</h1></div>
-        <Link className="text-link" href="/products" target="_blank" rel="noreferrer">View live catalog ↗</Link>
+        <a className="text-link" href="/products" target="_blank" rel="noreferrer">View live catalog ↗</a>
       </section>
 
       <section className="manage-grid">
@@ -65,7 +64,7 @@ export default async function ManagePage() {
               <div key={product.id}>
                 {product.imagePath ? <img src={product.imagePath} alt="" /> : <span className="mini-placeholder">MP&amp;E</span>}
                 <p><small>{product.category}</small><strong>{product.name}</strong></p>
-                <Link href={`/products/${product.slug}`} target="_blank" rel="noreferrer" aria-label={`View ${product.name}`}>↗</Link>
+                <a href={`/products/${product.slug}`} target="_blank" rel="noreferrer" aria-label={`View ${product.name}`}>↗</a>
                 <form action={`/api/products/${product.id}`} method="post">
                   <button type="submit" aria-label={`Delete ${product.name}`}>Delete</button>
                 </form>

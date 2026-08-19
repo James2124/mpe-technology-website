@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Product } from "../lib/types";
 
@@ -59,14 +58,14 @@ export function ProductExplorer({
         <div className="product-grid">
           {visible.map((product, index) => (
             <article className="product-card" key={product.id}>
-              <Link className="product-image" href={`/products/${product.slug}`}>
+              <a className="product-image" href={`/products/${product.slug}`}>
                 <span className="product-number">/{String(index + 1).padStart(2, "0")}</span>
                 {product.imagePath ? <img src={product.imagePath} alt={product.name} /> : <span className="image-placeholder">MP&amp;E</span>}
                 <span className="view-product">View product ↗</span>
-              </Link>
+              </a>
               <div className="product-card-copy">
                 <span>{product.category}</span>
-                <h2><Link href={`/products/${product.slug}`}>{product.name}</Link></h2>
+                <h2><a href={`/products/${product.slug}`}>{product.name}</a></h2>
                 <p>{product.subtitle}</p>
               </div>
             </article>

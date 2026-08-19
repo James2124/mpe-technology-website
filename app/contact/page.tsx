@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 
@@ -34,7 +33,7 @@ export default async function ContactPage({
               <span>✓</span>
               <h2>Enquiry received.</h2>
               <p>Thank you. Your requirement has been recorded for follow-up.</p>
-              <Link className="text-link" href="/products">Continue browsing products ↗</Link>
+              <a className="text-link" href="/products">Continue browsing products ↗</a>
             </div>
           ) : (
             <>
