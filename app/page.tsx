@@ -40,17 +40,7 @@ export default async function Home() {
             <span>04 <b>V-Belts</b></span>
           </div>
         </div>
-        <div className="hero-visual" aria-label="Featured worm gear reducer">
-          <div className="visual-grid" />
-          <p className="visual-index">/ 01</p>
-          <img src="/products/worm-reducer.png" alt="Worm gear speed reducer" />
-          <div className="product-note">
-            <span>FEATURED</span>
-            <strong>WP Series</strong>
-            <small>Worm Gear Reducer</small>
-          </div>
-          <div className="orbit-label">TORQUE • CONTROL • RELIABILITY •</div>
-        </div>
+        <HeroVisual />
       </section>
 
       <section className="trust-strip" data-reveal="fade">
