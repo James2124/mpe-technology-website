@@ -2347,8 +2347,7 @@ textarea:focus::placeholder {
   will-change: translate;
 }
 
-.home-product-image[data-cursor-effect]
-.is-cursor-active img {
+.home-product-image[data-cursor-effect].is-cursor-active img {
   will-change:
     translate,
     transform;
