@@ -19,7 +19,7 @@
     "name": "rolldown-runtime"
   },
   "app/components/CursorEffects.tsx": {
-    "file": "_next/static/chunks/CursorEffects-5lgi1DAv.js",
+    "file": "_next/static/chunks/CursorEffects-DoVurBrC.js",
     "name": "CursorEffects",
     "src": "app/components/CursorEffects.tsx",
     "isDynamicEntry": true,
@@ -40,7 +40,7 @@
     ]
   },
   "app/components/ProductExplorer.tsx": {
-    "file": "_next/static/chunks/ProductExplorer-Ex305miZ.js",
+    "file": "_next/static/chunks/ProductExplorer-DoxKquct.js",
     "name": "ProductExplorer",
     "src": "app/components/ProductExplorer.tsx",
     "isDynamicEntry": true,
@@ -50,7 +50,7 @@
     ]
   },
   "app/components/ScrollReveal.tsx": {
-    "file": "_next/static/chunks/ScrollReveal-CMlOoV61.js",
+    "file": "_next/static/chunks/ScrollReveal-BirxHHBW.js",
     "name": "ScrollReveal",
     "src": "app/components/ScrollReveal.tsx",
     "isDynamicEntry": true,
@@ -81,7 +81,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-LiIzMhtz.js",
+    "file": "_next/static/chunks/layout-segment-context-NiuG2fCD.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -93,7 +93,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-DbbEwSTb.js",
+    "file": "_next/static/chunks/index-Cl6TvoWw.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
