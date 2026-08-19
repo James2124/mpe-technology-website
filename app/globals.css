@@ -682,6 +682,85 @@ textarea { resize: vertical; }
   }
 }
 
+/* ---------- Stagger reveal ---------- */
+
+/*
+  Stagger container 本身保持正常位置。
+  动画只作用在里面的卡片，避免影响整个 grid。
+*/
+
+.reveal-ready [data-reveal="stagger"],
+.reveal-ready [data-reveal="stagger"].is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  will-change: auto;
+}
+
+/* 每一张卡片的初始状态 */
+
+.reveal-ready [data-reveal="stagger"] > * {
+  --stagger-delay: 0ms;
+
+  opacity: 0;
+  translate: 0 34px;
+
+  transition:
+    opacity .72s var(--motion-ease-soft),
+    translate .72s var(--motion-ease-soft);
+
+  transition-delay: calc(
+    var(--reveal-delay, 0ms) + var(--stagger-delay)
+  );
+
+  will-change: opacity, translate;
+}
+
+/* Container 进入画面后，卡片移动回正常位置 */
+
+.reveal-ready [data-reveal="stagger"].is-visible > * {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* 每张卡片的出现时间 */
+
+.reveal-ready [data-reveal="stagger"] > :nth-child(1) {
+  --stagger-delay: 0ms;
+}
+
+.reveal-ready [data-reveal="stagger"] > :nth-child(2) {
+  --stagger-delay: 110ms;
+}
+
+.reveal-ready [data-reveal="stagger"] > :nth-child(3) {
+  --stagger-delay: 220ms;
+}
+
+.reveal-ready [data-reveal="stagger"] > :nth-child(4) {
+  --stagger-delay: 330ms;
+}
+
+.reveal-ready [data-reveal="stagger"] > :nth-child(5) {
+  --stagger-delay: 440ms;
+}
+
+.reveal-ready [data-reveal="stagger"] > :nth-child(6) {
+  --stagger-delay: 550ms;
+}
+
+/* 手机版移动距离稍微缩短 */
+
+@media (max-width: 680px) {
+  .reveal-ready [data-reveal="stagger"] > * {
+    translate: 0 24px;
+  }
+
+  .reveal-ready [data-reveal="stagger"].is-visible > * {
+    translate: 0 0;
+  }
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
