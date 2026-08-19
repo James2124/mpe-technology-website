@@ -1,9 +1,7 @@
-import { CursorEffects } from "./components/CursorEffects";
 import { WhyVisual } from "./components/WhyVisual"; 
 import { HeroVisual } from "./components/HeroVisual";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { ScrollReveal } from "./components/ScrollReveal";
 import { listProducts } from "../db/products";
 
 export const dynamic = "force-dynamic";
