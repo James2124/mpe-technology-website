@@ -55,7 +55,7 @@ export function ProductExplorer({
       </div>
       <p className="result-count">{String(visible.length).padStart(2, "0")} products</p>
       {visible.length ? (
-        <div className="product-grid">
+        <div className="product-grid" data-reveal="stagger" data-reveal-delay="1">
           {visible.map((product, index) => (
             <article className="product-card" key={product.id}>
               <a className="product-image" href={`/products/${product.slug}`}>
