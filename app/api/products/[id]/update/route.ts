@@ -119,6 +119,67 @@ export async function POST(
       );
     }
 
+    let galleryImages = [
+      ...(current.galleryImages ?? []),
+    ];
+    
+    const newGalleryFiles =
+      form.getAll("galleryImages");
+    
+    for (const file of newGalleryFiles) {
+      if (
+        !(file instanceof File) ||
+        file.size === 0
+      ) {
+        continue;
+      }
+    
+      if (galleryImages.length >= 8) {
+        break;
+      }
+    
+      if (
+        ![
+          "image/png",
+          "image/jpeg",
+          "image/webp",
+        ].includes(file.type) ||
+        file.size > 8_000_000
+      ) {
+        return new Response(
+          "Gallery images must be PNG, JPEG or WebP and under 8 MB each.",
+          { status: 400 }
+        );
+      }
+    
+      const key =
+        await saveProductImage(file);
+    
+      galleryImages.push(
+        `/api/product-images/${key}`
+      );
+    }
+    
+    const videoUrls = lines(
+      field(form, "videoUrls")
+    )
+      .filter((url) => {
+        try {
+          const parsed = new URL(url);
+    
+          return [
+            "youtube.com",
+            "www.youtube.com",
+            "youtu.be",
+            "vimeo.com",
+            "www.vimeo.com",
+          ].includes(parsed.hostname);
+        } catch {
+          return false;
+        }
+      })
+      .slice(0, 3);
+
     const key = await saveProductImage(image);
 
     imagePath =
@@ -157,6 +218,9 @@ export async function POST(
 
       imagePath,
 
+      galleryImages,
+      videoUrls,
+      
       externalUrl:
         field(form, "externalUrl")
           .slice(0, 1000) || null,
