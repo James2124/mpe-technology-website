@@ -214,6 +214,20 @@ export default async function EditProductPage({
             </label>
           </div>
 
+          
+          <label>
+            <span>Display Order</span>
+          
+            <input
+              type="number"
+              name="sortOrder"
+              min="1"
+              step="1"
+              defaultValue={product.sortOrder ?? ""}
+              placeholder="1 = first, 2 = second"
+            />
+          </label>
+
           <label className="check-label">
             <input
               type="checkbox"
@@ -235,18 +249,6 @@ export default async function EditProductPage({
           </button>
         </form>
       </section>
-      <label>
-        <span>Display Order</span>
-      
-        <input
-          type="number"
-          name="sortOrder"
-          min="1"
-          step="1"
-          defaultValue={product.sortOrder ?? ""}
-          placeholder="1 = first, 2 = second"
-        />
-      </label>
     </main>
   );
 }
