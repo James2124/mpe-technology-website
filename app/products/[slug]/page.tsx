@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "../../components/SiteFooter";
 import { SiteHeader } from "../../components/SiteHeader";
+import { ProductMediaGallery } from "./ProductMediaGallery";
 import { absoluteUrl } from "../../lib/url";
 import { getProductBySlug, listProducts } from "../../../db/products";
 
@@ -47,9 +48,20 @@ export default async function ProductPage({
       </div>
       <section className="product-detail">
         <div className="detail-image" data-reveal="left">
-          <span className="detail-tag">{product.category}</span>
-          {product.imagePath ? <img src={product.imagePath} alt={product.name} fetchPriority="high" decoding="async" /> : <span className="image-placeholder">MP&amp;E</span>}
-          <span className="detail-mark">MP&amp;E / TRANSMISSION</span>
+          <span className="detail-tag">
+            {product.category}
+          </span>
+        
+          <ProductMediaGallery
+            productName={product.name}
+            mainImage={product.imagePath}
+            galleryImages={product.galleryImages}
+            videoUrls={product.videoUrls}
+          />
+        
+          <span className="detail-mark">
+            MP&amp;E / TRANSMISSION
+          </span>
         </div>
         <div className="detail-copy" data-reveal="right" data-reveal-delay="1">
           <p className="eyebrow"><span /> PRODUCT DETAIL</p>
