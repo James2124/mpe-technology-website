@@ -124,18 +124,6 @@ if (
 
   imagePath =
     `/api/product-images/${key}`;
-
-  if (
-    current.imagePath?.startsWith(
-      "/api/product-images/"
-    )
-  ) {
-    await removeProductImage(
-      current.imagePath.slice(
-        "/api/product-images/".length
-      )
-    );
-  }
 }
 
 /* Gallery images */
@@ -260,6 +248,22 @@ const videoUrls = lines(
     return new Response(
       "Unable to update product.",
       { status: 404 }
+    );
+  }
+
+  if (
+    image instanceof File &&
+    image.size > 0 &&
+    current.imagePath &&
+    current.imagePath !== imagePath &&
+    current.imagePath.startsWith(
+      "/api/product-images/"
+    )
+  ) {
+    await removeProductImage(
+      current.imagePath.slice(
+        "/api/product-images/".length
+      )
     );
   }
   
