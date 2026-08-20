@@ -1,3 +1,4 @@
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { CursorEffects } from "./components/CursorEffects";
 import { ScrollReveal } from "./components/ScrollReveal";
 import type { Metadata } from "next";
@@ -78,6 +79,7 @@ export default function RootLayout({
         <CursorEffects />
 
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
