@@ -91,6 +91,12 @@ export default async function ManagePage() {
                 {product.imagePath ? <img src={product.imagePath} alt="" /> : <span className="mini-placeholder">MP&amp;E</span>}
                 <p><small>{product.category}</small><strong>{product.name}</strong></p>
                 <a href={`/products/${product.slug}`} target="_blank" rel="noreferrer" aria-label={`View ${product.name}`}>↗</a>
+                <a
+                  href={`/manage/edit/${product.id}`}
+                  aria-label={`Edit ${product.name}`}
+                >
+                  Edit
+                </a>
                 <form action={`/api/products/${product.id}`} method="post">
                   <button type="submit" aria-label={`Delete ${product.name}`}>Delete</button>
                 </form>
