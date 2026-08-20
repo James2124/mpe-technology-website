@@ -2466,6 +2466,24 @@ textarea:focus::placeholder {
   font-weight: 600;
 }
 
+.product-order-form {
+  display: flex !important;
+  align-items: center;
+  gap: 5px;
+}
+
+.product-order-form input {
+  width: 58px;
+  padding: 7px 5px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.product-order-form button {
+  color: var(--green);
+  font-size: 9px;
+}
+
 /* ---------- Accessibility ---------- */
 
 @media (prefers-reduced-motion: reduce) {
