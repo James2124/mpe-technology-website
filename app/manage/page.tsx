@@ -29,6 +29,9 @@ export default async function ManagePage() {
   }
 
   const [products, enquiries] = await Promise.all([listProducts(), listEnquiries()]);
+  const categories = Array.from(
+    new Set(products.map((product) => product.category).filter(Boolean))
+  ).sort();
   return (
     <main className="manage-shell">
       <header className="manage-header">
@@ -49,11 +52,22 @@ export default async function ManagePage() {
           <form action="/api/products" method="post" encType="multipart/form-data">
             <div className="form-row">
               <label><span>Product name *</span><input name="name" required /></label>
-              <label><span>Category *</span>
-                <select name="category" required defaultValue="Gear Reducers">
-                  <option>Gear Reducers</option><option>Motors</option><option>Couplings</option>
-                  <option>Pulleys</option><option>V-Belts</option><option>Other</option>
-                </select>
+              <label>
+                <span>Category *</span>
+              
+                <input
+                  name="category"
+                  required
+                  list="product-categories"
+                  placeholder="Select or type a new category"
+                  autoComplete="off"
+                />
+              
+                <datalist id="product-categories">
+                  {categories.map((category) => (
+                    <option key={category} value={category} />
+                  ))}
+                </datalist>
               </label>
             </div>
             <label><span>Short subtitle *</span><input name="subtitle" required placeholder="One-line product summary" /></label>
