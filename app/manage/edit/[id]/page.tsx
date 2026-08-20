@@ -214,6 +214,63 @@ export default async function EditProductPage({
             </label>
           </div>
 
+          <label>
+            <span>Add additional product images</span>
+          
+            {product.galleryImages?.length ? (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                  marginBottom: "10px",
+                }}
+              >
+                {product.galleryImages.map((image, index) => (
+                  <img
+                    key={image}
+                    src={image}
+                    alt={`${product.name} gallery ${index + 1}`}
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      objectFit: "contain",
+                      background: "#eceae2",
+                    }}
+                  />
+                ))}
+              </div>
+            ) : null}
+          
+            <input
+              type="file"
+              name="galleryImages"
+              accept="image/png,image/jpeg,image/webp"
+              multiple
+            />
+          
+            <small>
+              New images will be added to the existing gallery. Maximum 8 images total.
+            </small>
+          </label>
+          
+          <label>
+            <span>Video URLs</span>
+          
+            <textarea
+              name="videoUrls"
+              rows={4}
+              defaultValue={(product.videoUrls ?? []).join("\n")}
+              placeholder={
+                "https://www.youtube.com/watch?v=...\nhttps://youtu.be/..."
+              }
+            />
+          
+            <small>
+              One YouTube or Vimeo link per line. Maximum 3 videos.
+            </small>
+          </label>
+
           
           <label>
             <span>Display Order</span>
