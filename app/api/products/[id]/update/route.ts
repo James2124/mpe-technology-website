@@ -153,20 +153,6 @@ const validRemoveImages =
     currentGallery.includes(image)
   );
 
-for (const image of validRemoveImages) {
-  if (
-    image.startsWith(
-      "/api/product-images/"
-    )
-  ) {
-    await removeProductImage(
-      image.slice(
-        "/api/product-images/".length
-      )
-    );
-  }
-}
-
 let galleryImages =
   currentGallery.filter(
     (image) =>
@@ -275,6 +261,20 @@ const videoUrls = lines(
       "Unable to update product.",
       { status: 404 }
     );
+  }
+  
+  for (const image of validRemoveImages) {
+    if (
+      image.startsWith(
+        "/api/product-images/"
+      )
+    ) {
+      await removeProductImage(
+        image.slice(
+          "/api/product-images/".length
+        )
+      );
+    }
   }
 
   return Response.redirect(
