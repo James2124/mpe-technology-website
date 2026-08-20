@@ -7,7 +7,12 @@ export type Product = {
   description: string;
   features: string[];
   specs: Record<string, string>;
+
   imagePath: string | null;
+
+  galleryImages?: string[];
+  videoUrls?: string[];
+
   externalUrl: string | null;
   featured: boolean;
   sortOrder?: number;
