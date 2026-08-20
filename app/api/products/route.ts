@@ -31,61 +31,102 @@ export async function POST(request: Request) {
 
   let imagePath: string | null = null;
   const galleryImages: string[] = [];
-
-const galleryFiles = form.getAll("galleryImages");
-
-for (const file of galleryFiles.slice(0, 8)) {
-  if (!(file instanceof File) || file.size === 0) {
-    continue;
-  }
-
-  if (
-    ![
-      "image/png",
-      "image/jpeg",
-      "image/webp",
-    ].includes(file.type) ||
-    file.size > 8_000_000
-  ) {
-    return new Response(
-      "Gallery images must be PNG, JPEG or WebP and under 8 MB each.",
-      { status: 400 }
-    );
-  }
-
-  const key = await saveProductImage(file);
-
-  galleryImages.push(
-    `/api/product-images/${key}`
-  );
-}
-
-const videoUrls = lines(
-  field(form, "videoUrls")
-)
-  .filter((url) => {
-    try {
-      const parsed = new URL(url);
-
-      return [
-        "youtube.com",
-        "www.youtube.com",
-        "youtu.be",
-        "vimeo.com",
-        "www.vimeo.com",
-      ].includes(parsed.hostname);
-    } catch {
-      return false;
-    }
-  })
-  .slice(0, 3);
+  
   const image = form.get("image");
-  if (image instanceof File && image.size > 0) {
-    if (!["image/png", "image/jpeg", "image/webp"].includes(image.type) || image.size > 8_000_000) {
-      return new Response("Image must be PNG, JPEG or WebP and under 8 MB.", { status: 400 });
+  
+  if (
+    image instanceof File &&
+    image.size > 0
+  ) {
+    if (
+      ![
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+      ].includes(image.type) ||
+      image.size > 8_000_000
+    ) {
+      return new Response(
+        "Image must be PNG, JPEG or WebP and under 8 MB.",
+        { status: 400 }
+      );
     }
-    const key = await saveProductImage(image);
-    imagePath = `/api/product-images/${key}`;
+  }
+  
+  const galleryFiles = form
+    .getAll("galleryImages")
+    .slice(0, 8);
+  
+  for (const file of galleryFiles) {
+    if (
+      !(file instanceof File) ||
+      file.size === 0
+    ) {
+      continue;
+    }
+  
+    if (
+      ![
+        "image/png",
+        "image/jpeg",
+        "image/webp",
+      ].includes(file.type) ||
+      file.size > 8_000_000
+    ) {
+      return new Response(
+        "Gallery images must be PNG, JPEG or WebP and under 8 MB each.",
+        { status: 400 }
+      );
+    }
+  }
+  
+  const videoUrls = lines(
+    field(form, "videoUrls")
+  )
+    .filter((url) => {
+      try {
+        const parsed = new URL(url);
+  
+        return [
+          "youtube.com",
+          "www.youtube.com",
+          "youtu.be",
+          "vimeo.com",
+          "www.vimeo.com",
+        ].includes(parsed.hostname);
+      } catch {
+        return false;
+      }
+    })
+    .slice(0, 3);
+  
+  /* Upload only after all validation passes */
+  
+  if (
+    image instanceof File &&
+    image.size > 0
+  ) {
+    const key =
+      await saveProductImage(image);
+  
+    imagePath =
+      `/api/product-images/${key}`;
+  }
+  
+  for (const file of galleryFiles) {
+    if (
+      !(file instanceof File) ||
+      file.size === 0
+    ) {
+      continue;
+    }
+  
+    const key =
+      await saveProductImage(file);
+  
+    galleryImages.push(
+      `/api/product-images/${key}`
+    );
   }
 
   const slug = await createProduct({
