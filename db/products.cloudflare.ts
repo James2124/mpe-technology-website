@@ -1,7 +1,7 @@
 import { env } from "cloudflare:workers";
 import type { ChatGPTUser } from "../app/chatgpt-auth";
 import type { Enquiry, Product } from "../app/lib/types";
-import type { CreateEnquiryInput, CreateProductInput, StoredProductImage } from "./product-store-types";
+import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
 import { starterProducts } from "./starter-products";
 
 type ProductRow = {
@@ -151,6 +151,56 @@ export async function createProduct(input: CreateProductInput): Promise<string> 
     )
     .run();
   return slug;
+}
+
+export async function updateProduct(
+  id: number,
+  input: UpdateProductInput
+): Promise<Product | null> {
+  await ensureProductSchema();
+
+  const existing = await getD1()
+    .prepare("SELECT * FROM products WHERE id = ? LIMIT 1")
+    .bind(id)
+    .first<ProductRow>();
+
+  if (!existing) return null;
+
+  await getD1()
+    .prepare(`
+      UPDATE products
+      SET
+        name = ?,
+        category = ?,
+        subtitle = ?,
+        description = ?,
+        features = ?,
+        specs = ?,
+        image_path = ?,
+        external_url = ?,
+        featured = ?
+      WHERE id = ?
+    `)
+    .bind(
+      input.name,
+      input.category,
+      input.subtitle,
+      input.description,
+      JSON.stringify(input.features),
+      JSON.stringify(input.specs),
+      input.imagePath,
+      input.externalUrl,
+      input.featured ? 1 : 0,
+      id,
+    )
+    .run();
+
+  const updated = await getD1()
+    .prepare("SELECT * FROM products WHERE id = ? LIMIT 1")
+    .bind(id)
+    .first<ProductRow>();
+
+  return updated ? mapProduct(updated) : null;
 }
 
 export async function deleteProduct(id: number): Promise<Product | null> {
