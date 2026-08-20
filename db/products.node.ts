@@ -1,7 +1,7 @@
 import { access, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { Enquiry, Product } from "../app/lib/types";
-import type { CreateEnquiryInput, CreateProductInput, StoredProductImage } from "./product-store-types";
+import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
 import { starterProducts } from "./starter-products";
 
 type CatalogData = {
@@ -106,6 +106,33 @@ export async function createProduct(input: CreateProductInput): Promise<string> 
     const id = data.products.reduce((highest, product) => Math.max(highest, product.id), 0) + 1;
     data.products.push({ ...input, id, slug, createdAt: new Date().toISOString() });
     return slug;
+  });
+}
+
+export async function updateProduct(
+  id: number,
+  input: UpdateProductInput
+): Promise<Product | null> {
+  return updateCatalog((data) => {
+    const index = data.products.findIndex(
+      (product) => product.id === id
+    );
+
+    if (index < 0) return null;
+
+    const current = data.products[index];
+
+    const updated: Product = {
+      ...current,
+      ...input,
+      id: current.id,
+      slug: current.slug,
+      createdAt: current.createdAt,
+    };
+
+    data.products[index] = updated;
+
+    return updated;
   });
 }
 
