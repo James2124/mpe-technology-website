@@ -48,7 +48,7 @@ export default async function ProductPage({
       <section className="product-detail">
         <div className="detail-image" data-reveal="left">
           <span className="detail-tag">{product.category}</span>
-          {product.imagePath ? <img src={product.imagePath} alt={product.name} /> : <span className="image-placeholder">MP&amp;E</span>}
+          {product.imagePath ? <img src={product.imagePath} alt={product.name} fetchPriority="high" decoding="async" /> : <span className="image-placeholder">MP&amp;E</span>}
           <span className="detail-mark">MP&amp;E / TRANSMISSION</span>
         </div>
         <div className="detail-copy" data-reveal="right" data-reveal-delay="1">
