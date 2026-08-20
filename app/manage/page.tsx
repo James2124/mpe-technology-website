@@ -100,7 +100,16 @@ export default async function ManagePage() {
             {products.map((product) => (
               <div key={product.id}>
                 {product.imagePath ? <img src={product.imagePath} alt="" /> : <span className="mini-placeholder">MP&amp;E</span>}
-                <p><small>{product.category}</small><strong>{product.name}</strong></p>
+                <p>
+                  <small>
+                    {product.category}
+                    {product.sortOrder
+                      ? ` · Order ${product.sortOrder}`
+                      : ""}
+                  </small>
+                
+                  <strong>{product.name}</strong>
+                </p>
                 <a href={`/products/${product.slug}`} target="_blank" rel="noreferrer" aria-label={`View ${product.name}`}>↗</a>
                 <a
                   href={`/manage/edit/${product.id}`}
