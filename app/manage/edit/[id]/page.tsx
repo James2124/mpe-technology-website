@@ -214,7 +214,7 @@ export default async function EditProductPage({
             </label>
           </div>
 
-          <label>
+          <div>
             <span>Add additional product images</span>
           
             {product.galleryImages?.length ? (
@@ -222,37 +222,66 @@ export default async function EditProductPage({
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
-                  gap: "10px",
-                  marginBottom: "10px",
+                  gap: "12px",
+                  margin: "10px 0 16px",
                 }}
               >
                 {product.galleryImages.map((image, index) => (
-                  <img
+                  <label
                     key={image}
-                    src={image}
-                    alt={`${product.name} gallery ${index + 1}`}
                     style={{
-                      width: "80px",
-                      height: "80px",
-                      objectFit: "contain",
-                      background: "#eceae2",
+                      width: "100px",
+                      display: "grid",
+                      gap: "6px",
                     }}
-                  />
+                  >
+                    <img
+                      src={image}
+                      alt={`${product.name} gallery ${index + 1}`}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        objectFit: "contain",
+                        background: "#eceae2",
+                      }}
+                    />
+          
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        fontSize: "10px",
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        name="removeGalleryImages"
+                        value={image}
+                      />
+          
+                      Delete
+                    </span>
+                  </label>
                 ))}
               </div>
             ) : null}
           
-            <input
-              type="file"
-              name="galleryImages"
-              accept="image/png,image/jpeg,image/webp"
-              multiple
-            />
+            <label>
+              <span>Upload more images</span>
+          
+              <input
+                type="file"
+                name="galleryImages"
+                accept="image/png,image/jpeg,image/webp"
+                multiple
+              />
+            </label>
           
             <small>
-              New images will be added to the existing gallery. Maximum 8 images total.
+              Maximum 8 gallery images total.
             </small>
-          </label>
+          </div>
           
           <label>
             <span>Video URLs</span>
