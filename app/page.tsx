@@ -199,6 +199,8 @@ export default async function Home() {
                   <img
                     src={product.imagePath}
                     alt={product.name}
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </a>
