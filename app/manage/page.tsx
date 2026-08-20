@@ -1,3 +1,4 @@
+import { DeleteProductButton } from "./DeleteProductButton";
 import type { Metadata } from "next";
 import { requireCatalogAdmin } from "../admin-auth";
 import { listEnquiries, listProducts } from "../../db/products";
@@ -97,9 +98,10 @@ export default async function ManagePage() {
                 >
                   Edit
                 </a>
-                <form action={`/api/products/${product.id}`} method="post">
-                  <button type="submit" aria-label={`Delete ${product.name}`}>Delete</button>
-                </form>
+                <DeleteProductButton
+                  productId={product.id}
+                  productName={product.name}
+                />
               </div>
             ))}
           </div>
