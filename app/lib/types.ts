@@ -10,6 +10,7 @@ export type Product = {
   imagePath: string | null;
   externalUrl: string | null;
   featured: boolean;
+  sortOrder?: number;
   createdAt: string;
 };
 
