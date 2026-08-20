@@ -84,8 +84,11 @@ function updateCatalog<T>(update: (data: CatalogData) => Promise<T> | T): Promis
 
 export async function listProducts(): Promise<Product[]> {
   const data = await readCatalog();
+
   return [...data.products].sort(
-    (left, right) => Number(right.featured) - Number(left.featured)
+    (left, right) =>
+      (left.sortOrder ?? 9999) - (right.sortOrder ?? 9999)
+      || Number(right.featured) - Number(left.featured)
       || right.createdAt.localeCompare(left.createdAt)
       || right.id - left.id,
   );
