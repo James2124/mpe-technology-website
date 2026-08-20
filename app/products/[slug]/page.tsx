@@ -86,7 +86,7 @@ export default async function ProductPage({
           <div className="related-grid" data-reveal="stagger" data-reveal-delay="1">
             {related.map((item) => (
               <a href={`/products/${item.slug}`} key={item.id}>
-                {item.imagePath && <img src={item.imagePath} alt={item.name} />}
+                {item.imagePath && <img src={item.imagePath} alt={item.name} loading="lazy" decoding="async" />}
                 <span>{item.category}</span><strong>{item.name}</strong><small>View product ↗</small>
               </a>
             ))}
