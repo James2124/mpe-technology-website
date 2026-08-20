@@ -77,9 +77,56 @@ export default async function ManagePage() {
             <label><span>Features</span><textarea name="features" rows={3} placeholder="One feature per line" /></label>
             <label><span>Specifications</span><textarea name="specs" rows={4} placeholder={"Series: WPX\nSize: 50\nMounting: Foot mounted"} /></label>
             <div className="form-row">
-              <label><span>Product image</span><input type="file" name="image" accept="image/png,image/jpeg,image/webp" /></label>
-              <label><span>External / Shopee URL</span><input type="url" name="externalUrl" /></label>
+              <label>
+                <span>Main product image</span>
+            
+                <input
+                  type="file"
+                  name="image"
+                  accept="image/png,image/jpeg,image/webp"
+                />
+              </label>
+            
+              <label>
+                <span>External / Shopee URL</span>
+            
+                <input
+                  type="url"
+                  name="externalUrl"
+                />
+              </label>
             </div>
+            
+            <label>
+              <span>Additional product images</span>
+            
+              <input
+                type="file"
+                name="galleryImages"
+                accept="image/png,image/jpeg,image/webp"
+                multiple
+              />
+            
+              <small>
+                You can upload up to 8 additional images.
+              </small>
+            </label>
+            
+            <label>
+              <span>Video URLs</span>
+            
+              <textarea
+                name="videoUrls"
+                rows={3}
+                placeholder={
+                  "https://www.youtube.com/watch?v=...\nhttps://youtu.be/..."
+                }
+              />
+            
+              <small>
+                One YouTube or Vimeo link per line. Maximum 3 videos.
+              </small>
+            </label>
             <label>
               <span>Display Order</span>
               <input
