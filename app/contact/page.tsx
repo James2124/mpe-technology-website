@@ -27,6 +27,26 @@ export default async function ContactPage({
           <p className="eyebrow light"><span /> CONTACT MP&amp;E</p>
           <h1>Tell us what<br />needs to <em>move.</em></h1>
           <p>Share a product name, photo reference or application detail. We’ll use it to narrow the right component.</p>
+          <div className="contact-direct">
+            <a
+              href="https://wa.me/60162012201"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+              <strong>016-201 2201</strong>
+            </a>
+          
+            <a href="tel:+60162012201">
+              Call
+              <strong>016-201 2201</strong>
+            </a>
+          
+            <a href="mailto:mptech.works@gmail.com">
+              Email
+              <strong>mptech.works@gmail.com</strong>
+            </a>
+          </div>
           <div className="contact-points" data-reveal="stagger" data-reveal-delay="1">
             <div><span>01</span><strong>Product matching</strong><p>Model, size and configuration guidance.</p></div>
             <div><span>02</span><strong>Malaysia enquiries</strong><p>Local product and availability support.</p></div>
