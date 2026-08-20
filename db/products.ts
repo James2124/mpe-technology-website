@@ -1,12 +1,16 @@
 import type { ChatGPTUser } from "../app/chatgpt-auth";
 import type { Enquiry, Product } from "../app/lib/types";
-import type { CreateEnquiryInput, CreateProductInput, StoredProductImage } from "./product-store-types";
+import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
 
 type ProductBackend = {
   ensureProductSchema(): Promise<void>;
   listProducts(): Promise<Product[]>;
   getProductBySlug(slug: string): Promise<Product | null>;
   createProduct(input: CreateProductInput): Promise<string>;
+  updateProduct(
+    id: number,
+    input: UpdateProductInput
+  ): Promise<Product | null>;
   deleteProduct(id: number): Promise<Product | null>;
   claimOrCheckAdmin(user: ChatGPTUser): Promise<boolean>;
   createEnquiry(input: CreateEnquiryInput): Promise<void>;
@@ -39,6 +43,13 @@ export async function getProductBySlug(slug: string) {
 
 export async function createProduct(input: CreateProductInput) {
   return (await backend()).createProduct(input);
+}
+
+export async function updateProduct(
+  id: number,
+  input: UpdateProductInput
+) {
+  return (await backend()).updateProduct(id, input);
 }
 
 export async function deleteProduct(id: number) {
