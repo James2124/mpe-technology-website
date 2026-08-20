@@ -1,4 +1,4 @@
-import { DeleteProductButton } from "./DeleteProductButton";
+import { DeleteProductButton } from "./DeleteProductButton"; 
 import { ProductOrderForm } from "./ProductOrderForm";
 import type { Metadata } from "next";
 import { requireCatalogAdmin } from "../admin-auth";
