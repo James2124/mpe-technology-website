@@ -79,6 +79,16 @@ export default async function ManagePage() {
               <label><span>Product image</span><input type="file" name="image" accept="image/png,image/jpeg,image/webp" /></label>
               <label><span>External / Shopee URL</span><input type="url" name="externalUrl" /></label>
             </div>
+            <label>
+              <span>Display Order</span>
+              <input
+                type="number"
+                name="sortOrder"
+                min="1"
+                step="1"
+                placeholder="1 = first, 2 = second"
+              />
+            </label>
             <label className="check-label"><input type="checkbox" name="featured" value="1" /><span>Feature this product on the homepage</span></label>
             <button className="primary-btn form-submit" type="submit">Add product <span>→</span></button>
           </form>
