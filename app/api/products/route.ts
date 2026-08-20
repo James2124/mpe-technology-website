@@ -49,6 +49,10 @@ export async function POST(request: Request) {
     imagePath,
     externalUrl: field(form, "externalUrl").slice(0, 1000) || null,
     featured: form.get("featured") === "1",
+    sortOrder:
+      Number(field(form, "sortOrder")) > 0
+        ? Number(field(form, "sortOrder"))
+        : undefined,
   });
   return Response.redirect(new URL(`/products/${slug}`, request.url), 303);
 }
