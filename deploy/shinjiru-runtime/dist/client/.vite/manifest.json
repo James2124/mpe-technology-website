@@ -19,7 +19,7 @@
     "name": "rolldown-runtime"
   },
   "app/components/CursorEffects.tsx": {
-    "file": "_next/static/chunks/CursorEffects-B0ttPXns.js",
+    "file": "_next/static/chunks/CursorEffects-DAv8uBpw.js",
     "name": "CursorEffects",
     "src": "app/components/CursorEffects.tsx",
     "isDynamicEntry": true,
@@ -50,7 +50,7 @@
     ]
   },
   "app/components/ScrollReveal.tsx": {
-    "file": "_next/static/chunks/ScrollReveal-D3WA8vTp.js",
+    "file": "_next/static/chunks/ScrollReveal-ByLOwJAZ.js",
     "name": "ScrollReveal",
     "src": "app/components/ScrollReveal.tsx",
     "isDynamicEntry": true,
@@ -80,8 +80,17 @@
       "_framework-BgSIrAUN.js"
     ]
   },
+  "app/manage/DeleteProductButton.tsx": {
+    "file": "_next/static/chunks/DeleteProductButton-C35Jgxbg.js",
+    "name": "DeleteProductButton",
+    "src": "app/manage/DeleteProductButton.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_framework-BgSIrAUN.js"
+    ]
+  },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-DwVDg6nT.js",
+    "file": "_next/static/chunks/layout-segment-context-DsmE7K5a.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -93,7 +102,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-v8KBuDX-.js",
+    "file": "_next/static/chunks/index-Bmyzu5ln.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -110,7 +119,8 @@
       "app/components/ProductExplorer.tsx",
       "app/components/CursorEffects.tsx",
       "app/components/HeroVisual.tsx",
-      "app/components/ScrollReveal.tsx"
+      "app/components/ScrollReveal.tsx",
+      "app/manage/DeleteProductButton.tsx"
     ]
   }
 }
