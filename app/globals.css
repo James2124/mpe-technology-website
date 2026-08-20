@@ -2178,6 +2178,26 @@ textarea:focus::placeholder {
   opacity: .65;
 }
 
+.detail-image::before,
+.detail-image::after {
+  pointer-events: none;
+}
+
+.product-media-gallery {
+  position: relative;
+  z-index: 1;
+}
+
+.product-media-main {
+  position: relative;
+  z-index: 1;
+}
+
+.product-media-main iframe {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+}
 /* ---------- Product features ---------- */
 
 .feature-list li {
