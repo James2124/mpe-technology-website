@@ -163,6 +163,11 @@ export async function POST(
 
       featured:
         form.get("featured") === "1",
+      
+      sortOrder:
+        Number(field(form, "sortOrder")) > 0
+          ? Number(field(form, "sortOrder"))
+          : undefined,
     }
   );
 
