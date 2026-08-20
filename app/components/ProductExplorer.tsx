@@ -60,7 +60,7 @@ export function ProductExplorer({
             <article className="product-card" key={product.id}>
               <a className="product-image" href={`/products/${product.slug}`}>
                 <span className="product-number">/{String(index + 1).padStart(2, "0")}</span>
-                {product.imagePath ? <img src={product.imagePath} alt={product.name} /> : <span className="image-placeholder">MP&amp;E</span>}
+                {product.imagePath ? <img src={product.imagePath} alt={product.name} loading="lazy" decoding="async" /> : <span className="image-placeholder">MP&amp;E</span>}
                 <span className="view-product">View product ↗</span>
               </a>
               <div className="product-card-copy">
