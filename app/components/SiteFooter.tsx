@@ -60,8 +60,8 @@ export function SiteFooter() {
             Tel: 016-201 2201
           </a>
 
-          <a href="mailto:mptech.works@gmail.com">
-            mptech.works@gmail.com
+          <a href="mailto:mpetech.works@gmail.com">
+            mpetech.works@gmail.com
           </a>
 
           <a
