@@ -42,9 +42,9 @@ export default async function ContactPage({
               <strong>016-201 2201</strong>
             </a>
           
-            <a href="mailto:mptech.works@gmail.com">
+            <a href="mailto:mpetech.works@gmail.com">
               Email
-              <strong>mptech.works@gmail.com</strong>
+              <strong>mpetech.works@gmail.com</strong>
             </a>
           </div>
           <div className="contact-points" data-reveal="stagger" data-reveal-delay="1">
