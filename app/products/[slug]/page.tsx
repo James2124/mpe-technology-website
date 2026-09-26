@@ -73,7 +73,7 @@ export default async function ProductPage({
           </ul>
           <div className="detail-actions">
             <a className="primary-btn" href={`/contact?product=${encodeURIComponent(product.name)}`} data-magnetic>Enquire about this product <span>→</span></a>
-            {product.externalUrl && <a className="text-link" href={product.externalUrl} target="_blank" rel="noreferrer">View Shopee store <span>↗</span></a>}
+            {product.externalUrl && <a className="text-link" href={product.externalUrl} target="_blank" rel="noreferrer">View product page <span>↗</span></a>}
           </div>
         </div>
       </section>
@@ -89,6 +89,28 @@ export default async function ProductPage({
           ))}
         </dl>
       </section>
+      {product.catalogs && product.catalogs.length > 0 && (
+        <section className="catalog-download-section">
+          <div className="section-heading" data-reveal="up">
+            <p className="eyebrow"><span /> PRODUCT CATALOGS</p>
+            <h2>Download<br /><em>full catalog.</em></h2>
+            <p>Click a cover to download the full catalog PDF.</p>
+          </div>
+          <div className="catalog-download-grid" data-reveal="stagger" data-reveal-delay="1">
+            {product.catalogs.map((catalog, index) => (
+              <a
+                key={catalog.pdfPath}
+                className="catalog-download-card"
+                href={catalog.pdfPath}
+                download
+              >
+                <img src={catalog.coverImagePath} alt={`${product.name} catalog ${index + 1}`} loading="lazy" decoding="async" />
+                <span>Download catalog {index + 1} ↓</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
       {related.length > 0 && (
         <section className="related-section">
           <div className="section-heading inline" data-reveal="up">

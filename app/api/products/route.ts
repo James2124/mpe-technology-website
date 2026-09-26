@@ -1,5 +1,6 @@
 import { getCatalogAdmin, unauthorizedAdminResponse } from "../../admin-auth";
 import { createProduct, saveProductImage } from "../../../db/products";
+import { saveCatalogRows, validateCatalogRows } from "../../lib/catalog-form";
 
 function field(form: FormData, key: string) {
   return String(form.get(key) ?? "").trim();
@@ -80,6 +81,9 @@ export async function POST(request: Request) {
     }
   }
   
+  const catalogError = validateCatalogRows(form);
+  if (catalogError) return new Response(catalogError, { status: 400 });
+
   const videoUrls = lines(
     field(form, "videoUrls")
   )
@@ -120,14 +124,16 @@ export async function POST(request: Request) {
     ) {
       continue;
     }
-  
+
     const key =
       await saveProductImage(file);
-  
+
     galleryImages.push(
       `/api/product-images/${key}`
     );
   }
+
+  const catalogs = await saveCatalogRows(form);
 
   const slug = await createProduct({
     name: name.slice(0, 180),
@@ -140,7 +146,8 @@ export async function POST(request: Request) {
     imagePath,
     galleryImages,
     videoUrls,
-  
+    catalogs,
+
     externalUrl:
       field(form, "externalUrl")
         .slice(0, 1000) || null,

@@ -25,6 +25,10 @@ function imageDirectory() {
   return path.join(storageDirectory(), "product-images");
 }
 
+function fileDirectory() {
+  return path.join(storageDirectory(), "product-files");
+}
+
 export function ensureProductSchema() {
   ready ??= initializeStorage();
   return ready;
@@ -32,6 +36,7 @@ export function ensureProductSchema() {
 
 async function initializeStorage() {
   await mkdir(imageDirectory(), { recursive: true });
+  await mkdir(fileDirectory(), { recursive: true });
   try {
     await access(catalogPath());
   } catch {
@@ -162,7 +167,8 @@ export async function listEnquiries(): Promise<Enquiry[]> {
   const data = await readCatalog();
   return [...data.enquiries]
     .sort((left, right) => right.createdAt.localeCompare(left.createdAt) || right.id - left.id)
-    .slice(0, 50);
+    .slice(0, 50)
+    .map((enquiry) => ({ enquiryType: "general", ...enquiry }));
 }
 
 export async function saveProductImage(image: File): Promise<string> {
@@ -193,6 +199,35 @@ export async function readProductImage(key: string): Promise<StoredProductImage 
 export async function removeProductImage(key: string): Promise<void> {
   if (!isSafeImageKey(key)) return;
   await rm(path.join(imageDirectory(), key), { force: true });
+}
+
+export async function saveProductFile(file: File): Promise<string> {
+  await ensureProductSchema();
+  const key = `${crypto.randomUUID()}.pdf`;
+  await writeFile(path.join(fileDirectory(), key), new Uint8Array(await file.arrayBuffer()));
+  return key;
+}
+
+export async function readProductFile(key: string): Promise<StoredProductImage | null> {
+  if (!isSafeImageKey(key)) return null;
+  await ensureProductSchema();
+  const target = path.join(fileDirectory(), key);
+  try {
+    const [body, metadata] = await Promise.all([readFile(target), stat(target)]);
+    return {
+      body: new Uint8Array(body),
+      contentType: "application/pdf",
+      etag: `"${metadata.size}-${Math.trunc(metadata.mtimeMs)}"`,
+    };
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
+    throw error;
+  }
+}
+
+export async function removeProductFile(key: string): Promise<void> {
+  if (!isSafeImageKey(key)) return;
+  await rm(path.join(fileDirectory(), key), { force: true });
 }
 
 function isSafeImageKey(key: string) {

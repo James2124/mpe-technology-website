@@ -1,3 +1,8 @@
+export type ProductCatalog = {
+  pdfPath: string;
+  coverImagePath: string;
+};
+
 export type Product = {
   id: number;
   slug: string;
@@ -12,6 +17,7 @@ export type Product = {
 
   galleryImages?: string[];
   videoUrls?: string[];
+  catalogs?: ProductCatalog[];
 
   externalUrl: string | null;
   featured: boolean;
@@ -19,8 +25,11 @@ export type Product = {
   createdAt: string;
 };
 
+export type EnquiryType = "product" | "repair" | "customization" | "general";
+
 export type Enquiry = {
   id: number;
+  enquiryType: EnquiryType;
   name: string;
   company: string;
   email: string;

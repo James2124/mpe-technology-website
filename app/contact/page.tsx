@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { ENQUIRY_TYPE_OPTIONS } from "../lib/enquiry-types";
 
 export const metadata: Metadata = {
   title: "Contact Us | MP&E Technology Malaysia",
@@ -16,9 +17,12 @@ export const metadata: Metadata = {
 export default async function ContactPage({
   searchParams,
 }: {
-  searchParams: Promise<{ product?: string; sent?: string }>;
+  searchParams: Promise<{ product?: string; sent?: string; type?: string }>;
 }) {
   const params = await searchParams;
+  const defaultType = ENQUIRY_TYPE_OPTIONS.some((option) => option.value === params.type)
+    ? params.type
+    : "product";
   return (
     <main>
       <SiteHeader />
@@ -50,7 +54,7 @@ export default async function ContactPage({
           <div className="contact-points" data-reveal="stagger" data-reveal-delay="1">
             <div><span>01</span><strong>Product matching</strong><p>Model, size and configuration guidance.</p></div>
             <div><span>02</span><strong>Malaysia enquiries</strong><p>Local product and availability support.</p></div>
-            <div><span>03</span><strong>Shopee available</strong><p>Continue to our store when you are ready.</p></div>
+            <div><span>03</span><strong>Fast response</strong><p>We reply to enquiries during business hours.</p></div>
           </div>
         </div>
         <div className="contact-form-wrap" data-reveal="right" data-reveal-delay="1">
@@ -66,6 +70,14 @@ export default async function ContactPage({
               <p className="form-kicker">SEND AN ENQUIRY</p>
               <h2>What can we help you find?</h2>
               <form action="/api/enquiries" method="post" data-reveal="stagger" data-reveal-delay="1">
+                <label>
+                  <span>What do you need help with? *</span>
+                  <select name="enquiryType" required defaultValue={defaultType}>
+                    {ENQUIRY_TYPE_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                </label>
                 <div className="form-row">
                   <label><span>Your name *</span><input name="name" required autoComplete="name" /></label>
                   <label><span>Company</span><input name="company" autoComplete="organization" /></label>

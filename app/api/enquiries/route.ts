@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 import { createEnquiry } from "../../../db/products";
+import { ENQUIRY_TYPE_LABELS, parseEnquiryType } from "../../lib/enquiry-types";
 
 function field(form: FormData, key: string) {
   return String(form.get(key) ?? "").trim();
@@ -17,6 +18,7 @@ function escapeHtml(value: string) {
 export async function POST(request: Request) {
   const form = await request.formData();
 
+  const type = parseEnquiryType(field(form, "enquiryType"));
   const name = field(form, "name");
   const company = field(form, "company");
   const email = field(form, "email");
@@ -32,6 +34,7 @@ export async function POST(request: Request) {
   }
 
   await createEnquiry({
+    enquiryType: type,
     name: name.slice(0, 120),
     company: company.slice(0, 160),
     email: email.slice(0, 200),
@@ -65,11 +68,14 @@ export async function POST(request: Request) {
       replyTo: email,
 
       subject: productInterest
-        ? `New enquiry: ${productInterest}`
-        : `New enquiry from ${name}`,
+        ? `New ${ENQUIRY_TYPE_LABELS[type]}: ${productInterest}`
+        : `New ${ENQUIRY_TYPE_LABELS[type]} from ${name}`,
 
       text: `
 New MP&E Technology website enquiry
+
+Type:
+${ENQUIRY_TYPE_LABELS[type]}
 
 Name:
 ${name}
@@ -92,6 +98,11 @@ ${message}
 
       html: `
         <h2>New MP&amp;E Technology Website Enquiry</h2>
+
+        <p>
+          <strong>Type:</strong><br>
+          ${ENQUIRY_TYPE_LABELS[type]}
+        </p>
 
         <p>
           <strong>Name:</strong><br>

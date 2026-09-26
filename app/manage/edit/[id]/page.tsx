@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { requireCatalogAdmin } from "../../../admin-auth";
+import { CatalogUploadFields } from "../../CatalogUploadFields";
 import { listProducts } from "../../../../db/products";
 
 export const dynamic = "force-dynamic";
@@ -202,7 +203,7 @@ export default async function EditProductPage({
             </label>
 
             <label>
-              <span>External / Shopee URL</span>
+              <span>External link (optional)</span>
 
               <input
                 type="url"
@@ -300,7 +301,11 @@ export default async function EditProductPage({
             </small>
           </label>
 
-          
+          <div>
+            <span>Product catalogs (PDF + cover image)</span>
+            <CatalogUploadFields existingCatalogs={product.catalogs ?? []} />
+          </div>
+
           <label>
             <span>Display Order</span>
           
