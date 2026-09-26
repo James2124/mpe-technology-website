@@ -6,10 +6,10 @@ import { listProducts } from "../../db/products";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
-  title: "Products | MP&E Technology",
+  title: "Industrial Products Catalog | MP&E Technology Malaysia",
 
   description:
-    "Browse MP&E Technology gear reducers, electric motors, couplings, pulleys and industrial V-belts.",
+    "Browse our catalog of gear reducers, electric motors, couplings, pulleys and industrial V-belts for machinery applications in Malaysia.",
 
   alternates: {
     canonical: "/products",

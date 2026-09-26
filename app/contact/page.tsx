@@ -3,10 +3,10 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Contact | MP&E Technology",
+  title: "Contact Us | MP&E Technology Malaysia",
 
   description:
-    "Send MP&E Technology your motor, gearbox, coupling, pulley or V-belt requirement.",
+    "Contact MP&E Technology in Malaysia for motor, gearbox, coupling, pulley or V-belt enquiries. WhatsApp, call or email our team for fast product support.",
 
   alternates: {
     canonical: "/contact",

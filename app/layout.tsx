@@ -21,10 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = await absoluteUrl("/og.png");
 
   const title =
-    "MP&E Technology | Industrial Power Transmission";
+    "MP&E Technology | Industrial Power Transmission Malaysia";
 
   const description =
-    "Motors, worm gear reducers, couplings, V-belts and industrial transmission components in Malaysia.";
+    "Motors, worm gear reducers, couplings and V-belts for industrial machinery in Malaysia. Get practical product guidance and fast enquiry support from MP&E Technology.";
 
   return {
     metadataBase: new URL(siteUrl),
