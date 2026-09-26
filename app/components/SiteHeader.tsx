@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
+  { href: "/services", label: "Services" },
+  { href: "/customize", label: "Customize" },
   { href: "/#why-us", label: "Why MP&E" },
   { href: "/contact", label: "Contact" },
 ];

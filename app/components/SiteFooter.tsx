@@ -1,6 +1,3 @@
-const shopee =
-  "https://shopee.com.my/mimax_indsup?categoryId=102187&entryPoint=ShopByPDP&itemId=22587403565";
-
 const whatsapp =
   "https://wa.me/60162012201?text=Hi%20MP%26E%20Technology%2C%20I%20would%20like%20to%20enquire%20about%20your%20products.";
 
@@ -22,6 +19,8 @@ export function SiteFooter() {
 
           <a href="/">Home</a>
           <a href="/products">All products</a>
+          <a href="/services">Services &amp; repair</a>
+          <a href="/customize">Custom machining</a>
           <a href="/contact">Contact</a>
         </div>
 
@@ -62,14 +61,6 @@ export function SiteFooter() {
 
           <a href="mailto:mpetech.works@gmail.com">
             mpetech.works@gmail.com
-          </a>
-
-          <a
-            href={shopee}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Shopee store ↗
           </a>
 
           <a href="/manage">

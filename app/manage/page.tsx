@@ -1,7 +1,9 @@
-import { DeleteProductButton } from "./DeleteProductButton"; 
+import { CatalogUploadFields } from "./CatalogUploadFields";
+import { DeleteProductButton } from "./DeleteProductButton";
 import { ProductOrderForm } from "./ProductOrderForm";
 import type { Metadata } from "next";
 import { requireCatalogAdmin } from "../admin-auth";
+import { ENQUIRY_TYPE_LABELS } from "../lib/enquiry-types";
 import { listEnquiries, listProducts } from "../../db/products";
 
 export const dynamic = "force-dynamic";
@@ -88,7 +90,7 @@ export default async function ManagePage() {
               </label>
             
               <label>
-                <span>External / Shopee URL</span>
+                <span>External link (optional)</span>
             
                 <input
                   type="url"
@@ -127,6 +129,12 @@ export default async function ManagePage() {
                 One YouTube or Vimeo link per line. Maximum 3 videos.
               </small>
             </label>
+
+            <div>
+              <span>Product catalogs (PDF + cover image)</span>
+              <CatalogUploadFields />
+            </div>
+
             <label>
               <span>Display Order</span>
               <input
@@ -179,7 +187,7 @@ export default async function ManagePage() {
           <div className="enquiry-table">
             {enquiries.map((enquiry) => (
               <article key={enquiry.id}>
-                <div><small>{new Date(enquiry.createdAt).toLocaleDateString("en-MY")}</small><strong>{enquiry.name}</strong><span>{enquiry.company || "—"}</span></div>
+                <div><small>{ENQUIRY_TYPE_LABELS[enquiry.enquiryType]} · {new Date(enquiry.createdAt).toLocaleDateString("en-MY")}</small><strong>{enquiry.name}</strong><span>{enquiry.company || "—"}</span></div>
                 <div><small>CONTACT</small><a href={`mailto:${enquiry.email}`}>{enquiry.email}</a><span>{enquiry.phone || "—"}</span></div>
                 <div><small>INTEREST</small><strong>{enquiry.productInterest || "General enquiry"}</strong><p>{enquiry.message}</p></div>
               </article>

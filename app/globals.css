@@ -232,6 +232,22 @@ textarea { resize: vertical; }
 .manage-card-title p { color: var(--muted); margin: 6px 0 0; font-size: 12px; }
 .check-label { display: flex; align-items: center; gap: 10px; }
 .check-label input { width: auto; }
+
+.catalog-upload-fields { display: grid; gap: 14px; margin-top: 10px; }
+.catalog-existing-list { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 6px; }
+.catalog-existing-item { width: 110px; display: grid; gap: 6px; }
+.catalog-existing-item img { width: 110px; height: 110px; object-fit: contain; background: #eceae2; }
+.catalog-existing-item span { display: flex; align-items: center; gap: 5px; font-size: 10px; }
+.catalog-existing-item input { width: auto; }
+.catalog-upload-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 14px; align-items: end; }
+.catalog-upload-row button { border: 1px solid var(--line); background: transparent; padding: 14px 13px; cursor: pointer; font-size: 11px; }
+.catalog-upload-fields > button { justify-self: start; border: 1px solid var(--green); color: var(--green); background: transparent; padding: 10px 16px; cursor: pointer; font-size: 11px; font-weight: 750; }
+
+.catalog-download-section { padding: 95px 7.5vw; background: var(--paper); }
+.catalog-download-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(170px,1fr)); gap: 22px; margin-top: 45px; }
+.catalog-download-card { display: grid; gap: 10px; }
+.catalog-download-card img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #eae8df; }
+.catalog-download-card span { font-size: 11px; font-weight: 750; color: var(--green); }
 .manage-product-list { display: grid; }
 .manage-product-list > div { display: grid; grid-template-columns: 62px 1fr auto auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .manage-product-list img,.mini-placeholder { width: 62px; height: 52px; object-fit: contain; background: #eceae2; font-size: 9px; }
@@ -315,6 +331,8 @@ textarea { resize: vertical; }
   .manage-grid { padding: 0 14px; }
   .manage-card { padding: 22px 18px; }
   .enquiry-card { margin: 14px 14px 0; }
+  .catalog-upload-row { grid-template-columns: 1fr; }
+  .catalog-download-section { padding: 60px 24px; }
   .enquiry-table article { grid-template-columns: 1fr; }
 }
 

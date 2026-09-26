@@ -18,6 +18,9 @@ type ProductBackend = {
   saveProductImage(image: File): Promise<string>;
   readProductImage(key: string): Promise<StoredProductImage | null>;
   removeProductImage(key: string): Promise<void>;
+  saveProductFile(file: File): Promise<string>;
+  readProductFile(key: string): Promise<StoredProductImage | null>;
+  removeProductFile(key: string): Promise<void>;
 };
 
 let backendPromise: Promise<ProductBackend> | null = null;
@@ -78,4 +81,16 @@ export async function readProductImage(key: string) {
 
 export async function removeProductImage(key: string) {
   return (await backend()).removeProductImage(key);
+}
+
+export async function saveProductFile(file: File) {
+  return (await backend()).saveProductFile(file);
+}
+
+export async function readProductFile(key: string) {
+  return (await backend()).readProductFile(key);
+}
+
+export async function removeProductFile(key: string) {
+  return (await backend()).removeProductFile(key);
 }

@@ -1,8 +1,5 @@
 import type { CreateProductInput } from "./product-store-types";
 
-const SHOPEE =
-  "https://shopee.com.my/mimax_indsup?categoryId=102187&entryPoint=ShopByPDP&itemId=22587403565";
-
 export const starterProducts: CreateProductInput[] = [
   {
     name: "WPX 50 Worm Gear Reducer",
@@ -12,7 +9,7 @@ export const starterProducts: CreateProductInput[] = [
     features: ["Compact right-angle drive", "Rigid cast-iron housing", "Multiple ratio options"],
     specs: { Series: "WPX", Size: "50", Type: "Worm gear reducer", Mounting: "Foot mounted" },
     imagePath: "/products/worm-reducer.png",
-    externalUrl: SHOPEE,
+    externalUrl: null,
     featured: true,
   },
   {
@@ -23,7 +20,7 @@ export const starterProducts: CreateProductInput[] = [
     features: ["B5 flange mounting", "Finned housing for cooling", "Industrial continuous-duty design"],
     specs: { Supply: "Three phase", Mounting: "B5 flange", Protection: "Industrial enclosed", Application: "General machinery" },
     imagePath: "/products/motor.webp",
-    externalUrl: SHOPEE,
+    externalUrl: null,
     featured: true,
   },
   {
@@ -34,7 +31,7 @@ export const starterProducts: CreateProductInput[] = [
     features: ["Replaceable rubber bushes", "Vibration damping", "Simple maintenance"],
     specs: { Series: "FCL", Material: "Cast iron", Element: "Rubber pin bush", Use: "Motor-to-driven shaft" },
     imagePath: "/products/coupling.png",
-    externalUrl: SHOPEE,
+    externalUrl: null,
     featured: true,
   },
   {
@@ -45,7 +42,7 @@ export const starterProducts: CreateProductInput[] = [
     features: ["Machining-free shaft fit", "Multiple groove profiles", "Easy installation and removal"],
     specs: { Bush: "1610", Profiles: "SPZ / SPA / SPB", Material: "Cast iron", Bore: "Multiple sizes" },
     imagePath: "/products/pulley.webp",
-    externalUrl: SHOPEE,
+    externalUrl: null,
     featured: false,
   },
   {
@@ -56,7 +53,7 @@ export const starterProducts: CreateProductInput[] = [
     features: ["Oil and heat resistant", "Low-stretch tension member", "Broad size availability"],
     specs: { Type: "Classical V-belt", Sections: "A / B series", Material: "Reinforced rubber", Use: "Industrial drives" },
     imagePath: "/products/v-belt.png",
-    externalUrl: SHOPEE,
+    externalUrl: null,
     featured: false,
   },
   {
@@ -67,7 +64,7 @@ export const starterProducts: CreateProductInput[] = [
     features: ["Lightweight aluminium housing", "Flexible mounting positions", "Quiet running"],
     specs: { Series: "NMRV", Housing: "Aluminium", Drive: "Right angle", Lubrication: "Long-life oil" },
     imagePath: "/products/nmrv.jpg",
-    externalUrl: SHOPEE,
+    externalUrl: null,
     featured: false,
   },
 ];

@@ -219,6 +219,34 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="section category-section" data-reveal="fade">
+        <div className="section-heading" data-reveal="up">
+          <p className="eyebrow"><span /> BEYOND THE CATALOG</p>
+          <h2>
+            Repair, service<br />
+            and <em>custom builds.</em>
+          </h2>
+          <p>
+            Need something fixed or made to spec? We support your machinery
+            beyond off-the-shelf components.
+          </p>
+        </div>
+        <div className="category-grid" data-reveal="stagger" data-reveal-delay="1">
+          <a className="category-card" href="/services">
+            <span>01</span>
+            <h3>Services &amp; Repair</h3>
+            <p>Motor, gearbox and transmission servicing and repair work.</p>
+            <b>Explore services ↗</b>
+          </a>
+          <a className="category-card" href="/customize">
+            <span>02</span>
+            <h3>Custom Machining</h3>
+            <p>Custom-made parts and machining work to your specification.</p>
+            <b>Explore customization ↗</b>
+          </a>
+        </div>
+      </section>
+
       <section
         className="section why-section"
         id="why-us"
@@ -278,8 +306,7 @@ export default async function Home() {
                 <strong>Enquire with confidence</strong>
 
                 <p>
-                  Review the product details, then contact us or continue
-                  through Shopee.
+                  Review the product details, then send us your requirement.
                 </p>
               </div>
             </li>

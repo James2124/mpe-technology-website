@@ -5,10 +5,12 @@ import {
 
 import {
   listProducts,
+  removeProductFile,
   removeProductImage,
   saveProductImage,
   updateProduct,
 } from "../../../../../db/products";
+import { saveCatalogRows, validateCatalogRows } from "../../../../lib/catalog-form";
 
 function field(form: FormData, key: string) {
   return String(form.get(key) ?? "").trim();
@@ -96,6 +98,9 @@ export async function POST(
       { status: 400 }
     );
   }
+
+  const catalogError = validateCatalogRows(form);
+  if (catalogError) return new Response(catalogError, { status: 400 });
 
   let imagePath = current.imagePath;
 
@@ -205,7 +210,26 @@ const videoUrls = lines(
     }
   })
   .slice(0, 3);
-  
+
+/* Catalogs */
+
+const removeCatalogPdfPaths =
+  form
+    .getAll("removeCatalogs")
+    .map((value) => String(value));
+
+const keptCatalogs =
+  (current.catalogs ?? []).filter(
+    (catalog) => !removeCatalogPdfPaths.includes(catalog.pdfPath)
+  );
+
+const removedCatalogs =
+  (current.catalogs ?? []).filter(
+    (catalog) => removeCatalogPdfPaths.includes(catalog.pdfPath)
+  );
+
+const newCatalogs = await saveCatalogRows(form);
+const catalogs = [...keptCatalogs, ...newCatalogs];
 
   const updated = await updateProduct(
     productId,
@@ -229,7 +253,8 @@ const videoUrls = lines(
 
       galleryImages,
       videoUrls,
-      
+      catalogs,
+
       externalUrl:
         field(form, "externalUrl")
           .slice(0, 1000) || null,
@@ -278,6 +303,15 @@ const videoUrls = lines(
           "/api/product-images/".length
         )
       );
+    }
+  }
+
+  for (const catalog of removedCatalogs) {
+    if (catalog.pdfPath.startsWith("/api/product-files/")) {
+      await removeProductFile(catalog.pdfPath.slice("/api/product-files/".length));
+    }
+    if (catalog.coverImagePath.startsWith("/api/product-images/")) {
+      await removeProductImage(catalog.coverImagePath.slice("/api/product-images/".length));
     }
   }
 

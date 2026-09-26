@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import type { ChatGPTUser } from "../app/chatgpt-auth";
-import type { Enquiry, Product } from "../app/lib/types";
+import type { Enquiry, Product, ProductCatalog } from "../app/lib/types";
 import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
 import { starterProducts } from "./starter-products";
 
@@ -14,6 +14,7 @@ type ProductRow = {
   features: string;
   specs: string;
   image_path: string | null;
+  catalogs: string | null;
   external_url: string | null;
   featured: number;
   created_at: string;
@@ -21,6 +22,7 @@ type ProductRow = {
 
 type EnquiryRow = {
   id: number;
+  enquiry_type: string | null;
   name: string;
   company: string;
   email: string;
@@ -62,6 +64,7 @@ async function initializeSchema() {
       features TEXT NOT NULL DEFAULT '[]',
       specs TEXT NOT NULL DEFAULT '{}',
       image_path TEXT,
+      catalogs TEXT NOT NULL DEFAULT '[]',
       external_url TEXT,
       featured INTEGER NOT NULL DEFAULT 0,
       created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -75,6 +78,7 @@ async function initializeSchema() {
     )`),
     db.prepare(`CREATE TABLE IF NOT EXISTS enquiries (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
+      enquiry_type TEXT NOT NULL DEFAULT 'general',
       name TEXT NOT NULL,
       company TEXT NOT NULL DEFAULT '',
       email TEXT NOT NULL,
@@ -135,8 +139,8 @@ export async function createProduct(input: CreateProductInput): Promise<string> 
   if (await getProductBySlug(slug)) slug = `${base}-${Date.now().toString(36)}`;
   await getD1()
     .prepare(`INSERT INTO products
-      (slug, name, category, subtitle, description, features, specs, image_path, external_url, featured)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
+      (slug, name, category, subtitle, description, features, specs, image_path, catalogs, external_url, featured)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
     .bind(
       slug,
       input.name,
@@ -146,6 +150,7 @@ export async function createProduct(input: CreateProductInput): Promise<string> 
       JSON.stringify(input.features),
       JSON.stringify(input.specs),
       input.imagePath,
+      JSON.stringify(input.catalogs ?? []),
       input.externalUrl,
       input.featured ? 1 : 0,
     )
@@ -177,6 +182,7 @@ export async function updateProduct(
         features = ?,
         specs = ?,
         image_path = ?,
+        catalogs = ?,
         external_url = ?,
         featured = ?
       WHERE id = ?
@@ -189,6 +195,7 @@ export async function updateProduct(
       JSON.stringify(input.features),
       JSON.stringify(input.specs),
       input.imagePath,
+      JSON.stringify(input.catalogs ?? []),
       input.externalUrl,
       input.featured ? 1 : 0,
       id,
@@ -229,9 +236,9 @@ export async function claimOrCheckAdmin(user: ChatGPTUser): Promise<boolean> {
 export async function createEnquiry(input: CreateEnquiryInput) {
   await ensureProductSchema();
   await getD1().prepare(`INSERT INTO enquiries
-    (name, company, email, phone, product_interest, message)
-    VALUES (?, ?, ?, ?, ?, ?)`)
-    .bind(input.name, input.company, input.email, input.phone, input.productInterest, input.message)
+    (enquiry_type, name, company, email, phone, product_interest, message)
+    VALUES (?, ?, ?, ?, ?, ?, ?)`)
+    .bind(input.enquiryType, input.name, input.company, input.email, input.phone, input.productInterest, input.message)
     .run();
 }
 
@@ -242,6 +249,7 @@ export async function listEnquiries(): Promise<Enquiry[]> {
     .all<EnquiryRow>();
   return (result.results ?? []).map((row) => ({
     id: row.id,
+    enquiryType: (row.enquiry_type as Enquiry["enquiryType"]) || "general",
     name: row.name,
     company: row.company,
     email: row.email,
@@ -273,6 +281,26 @@ export async function removeProductImage(key: string): Promise<void> {
   await getImageBucket().delete(key);
 }
 
+export async function saveProductFile(file: File): Promise<string> {
+  const key = `${crypto.randomUUID()}.pdf`;
+  await getImageBucket().put(key, file.stream(), { httpMetadata: { contentType: "application/pdf" } });
+  return key;
+}
+
+export async function readProductFile(key: string): Promise<StoredProductImage | null> {
+  const object = await getImageBucket().get(key);
+  if (!object) return null;
+  return {
+    body: object.body,
+    contentType: object.httpMetadata?.contentType || "application/pdf",
+    etag: object.httpEtag,
+  };
+}
+
+export async function removeProductFile(key: string): Promise<void> {
+  await getImageBucket().delete(key);
+}
+
 function mapProduct(row: ProductRow): Product {
   return {
     id: row.id,
@@ -284,6 +312,7 @@ function mapProduct(row: ProductRow): Product {
     features: parseJson<string[]>(row.features, []),
     specs: parseJson<Record<string, string>>(row.specs, {}),
     imagePath: row.image_path,
+    catalogs: parseJson<ProductCatalog[]>(row.catalogs, []),
     externalUrl: row.external_url,
     featured: Boolean(row.featured),
     createdAt: row.created_at,
