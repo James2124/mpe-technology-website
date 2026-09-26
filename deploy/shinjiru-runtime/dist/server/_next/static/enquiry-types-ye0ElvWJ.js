@@ -1,0 +1,1 @@
+var e={product:`Product enquiry`,repair:`Repair & servicing`,customization:`Custom machining`,general:`General enquiry`},t=[{value:`product`,label:e.product},{value:`repair`,label:e.repair},{value:`customization`,label:e.customization},{value:`general`,label:e.general}];function n(t){return t in e?t:`general`}export{t as n,n as r,e as t};

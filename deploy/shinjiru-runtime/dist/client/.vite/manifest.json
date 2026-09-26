@@ -19,7 +19,7 @@
     "name": "rolldown-runtime"
   },
   "app/components/CursorEffects.tsx": {
-    "file": "_next/static/chunks/CursorEffects-s85ZnhAX.js",
+    "file": "_next/static/chunks/CursorEffects-DyjoQunw.js",
     "name": "CursorEffects",
     "src": "app/components/CursorEffects.tsx",
     "isDynamicEntry": true,
@@ -50,7 +50,7 @@
     ]
   },
   "app/components/ScrollReveal.tsx": {
-    "file": "_next/static/chunks/ScrollReveal-CbNUwDwc.js",
+    "file": "_next/static/chunks/ScrollReveal-BAmFpMwv.js",
     "name": "ScrollReveal",
     "src": "app/components/ScrollReveal.tsx",
     "isDynamicEntry": true,
@@ -61,7 +61,7 @@
     ]
   },
   "app/components/SiteHeader.tsx": {
-    "file": "_next/static/chunks/SiteHeader-uuMis_9W.js",
+    "file": "_next/static/chunks/SiteHeader-Bw2cqD8w.js",
     "name": "SiteHeader",
     "src": "app/components/SiteHeader.tsx",
     "isDynamicEntry": true,
@@ -80,8 +80,18 @@
       "_framework-BgSIrAUN.js"
     ]
   },
+  "app/manage/CatalogUploadFields.tsx": {
+    "file": "_next/static/chunks/CatalogUploadFields-BzBpAbjt.js",
+    "name": "CatalogUploadFields",
+    "src": "app/manage/CatalogUploadFields.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-C60lm6uB.js",
+      "_framework-BgSIrAUN.js"
+    ]
+  },
   "app/manage/DeleteProductButton.tsx": {
-    "file": "_next/static/chunks/DeleteProductButton-C35Jgxbg.js",
+    "file": "_next/static/chunks/DeleteProductButton-tD7hBBU8.js",
     "name": "DeleteProductButton",
     "src": "app/manage/DeleteProductButton.tsx",
     "isDynamicEntry": true,
@@ -90,7 +100,7 @@
     ]
   },
   "app/manage/ProductOrderForm.tsx": {
-    "file": "_next/static/chunks/ProductOrderForm-Cb2pjLsa.js",
+    "file": "_next/static/chunks/ProductOrderForm-DpBgGM3B.js",
     "name": "ProductOrderForm",
     "src": "app/manage/ProductOrderForm.tsx",
     "isDynamicEntry": true,
@@ -100,7 +110,7 @@
     ]
   },
   "app/products/[slug]/ProductMediaGallery.tsx": {
-    "file": "_next/static/chunks/ProductMediaGallery-plCgipkN.js",
+    "file": "_next/static/chunks/ProductMediaGallery-777kbydc.js",
     "name": "ProductMediaGallery",
     "src": "app/products/[slug]/ProductMediaGallery.tsx",
     "isDynamicEntry": true,
@@ -110,7 +120,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-CpAs5gzn.js",
+    "file": "_next/static/chunks/layout-segment-context-BcA9E6kb.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -122,7 +132,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-1KEcPHGN.js",
+    "file": "_next/static/chunks/index-DKGZLrAS.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -135,6 +145,7 @@
       "virtual:vinext-app-browser-entry",
       "node_modules/vinext/dist/shims/layout-segment-context.js",
       "app/components/SiteHeader.tsx",
+      "app/manage/CatalogUploadFields.tsx",
       "app/products/[slug]/ProductMediaGallery.tsx",
       "app/components/WhyVisual.tsx",
       "app/components/ProductExplorer.tsx",
