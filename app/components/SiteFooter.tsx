@@ -8,8 +8,8 @@ export function SiteFooter() {
         <img src="/mpe-logo.png" alt="MP&E Technology" />
 
         <p>
-          Reliable industrial power-transmission components,
-          backed by practical product guidance.
+          MP&amp;E Technology Works. Metal processing engineering
+          and industry supply.
         </p>
       </div>
 
@@ -20,7 +20,7 @@ export function SiteFooter() {
           <a href="/">Home</a>
           <a href="/products">All products</a>
           <a href="/services">Services &amp; repair</a>
-          <a href="/customize">Custom machining</a>
+          <a href="/customize">Design &amp; fabricate</a>
           <a href="/contact">Contact</a>
         </div>
 
@@ -63,6 +63,15 @@ export function SiteFooter() {
             mpetech.works@gmail.com
           </a>
 
+          <a href="tel:+60389592201">
+            Tel/Fax: 03-8959 2201
+          </a>
+
+          <span>
+            27, Jalan Budiman 3/3, Taman Putra Budiman,
+            43300 Balakong, Selangor
+          </span>
+
           <a href="/manage">
             Manage catalog
           </a>
@@ -75,7 +84,7 @@ export function SiteFooter() {
         </span>
 
         <span>
-          Industrial components • Product enquiry only
+          Metal processing engineering &amp; industry supply
         </span>
       </div>
     </footer>

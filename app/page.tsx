@@ -10,25 +10,25 @@ const categories = [
   {
     number: "01",
     title: "Gear reducers",
-    copy: "Compact, high-torque speed reduction for demanding machine applications.",
+    copy: "Meg, Pei Gong, Motovario, Varvel, Nord, Sumitomo, Siemens.",
     href: "/products?category=Gear%20Reducers",
   },
   {
     number: "02",
     title: "Electric motors",
-    copy: "Dependable industrial drive power in versatile mounting configurations.",
+    copy: "Teco, Eledelta, CMG, Electrim, Elprom, ABB, Siemens.",
     href: "/products?category=Motors",
   },
   {
     number: "03",
     title: "Couplings",
-    copy: "Flexible shaft connections engineered to reduce shock and vibration.",
+    copy: "Power transmission products: coupling, sprocket & chain and more.",
     href: "/products?category=Couplings",
   },
   {
     number: "04",
     title: "Belts & pulleys",
-    copy: "Efficient mechanical power transfer with broad size availability.",
+    copy: "Power transmission products: pulley & belt.",
     href: "/products?category=V-Belts",
   },
 ];
@@ -47,7 +47,7 @@ export default async function Home() {
       <section className="hero">
         <div className="hero-copy">
           <p className="eyebrow">
-            <span /> INDUSTRIAL POWER TRANSMISSION
+            <span /> METAL PROCESSING ENGINEERING &amp; INDUSTRY SUPPLY
           </p>
 
           <h1>
@@ -57,8 +57,8 @@ export default async function Home() {
           </h1>
 
           <p className="hero-lede">
-            Reliable motors, gear reducers and transmission components—selected
-            for your application and ready to work.
+            Electric motors, gear reducers, pumps, bearings and power
+            transmission products. A one stop shop for all industry.
           </p>
 
           <div className="hero-actions">
@@ -101,15 +101,15 @@ export default async function Home() {
         data-reveal="fade"
       >
         <p>
-          <span>●</span> Practical product guidance
+          <span>●</span> High quality, reliable products
         </p>
 
         <p>
-          <span>●</span> Industrial-grade components
+          <span>●</span> Services &amp; technical backup
         </p>
 
         <p>
-          <span>●</span> Local enquiry support
+          <span>●</span> One stop shop for all industry
         </p>
       </section>
 
@@ -119,7 +119,7 @@ export default async function Home() {
           data-reveal="up"
         >
           <p className="eyebrow">
-            <span /> OUR PRODUCT RANGE
+            <span /> PRODUCT SPECIALIST
           </p>
 
           <h2>
@@ -129,8 +129,8 @@ export default async function Home() {
           </h2>
 
           <p>
-            Find the core components that connect, reduce and transfer power
-            across your machinery.
+            Electric motors, gear reducers, pumps, bearings and power
+            transmission products from the brands we supply.
           </p>
         </div>
 
@@ -221,27 +221,27 @@ export default async function Home() {
 
       <section className="section category-section" data-reveal="fade">
         <div className="section-heading" data-reveal="up">
-          <p className="eyebrow"><span /> BEYOND THE CATALOG</p>
+          <p className="eyebrow"><span /> AGENCY SUPPORT PRODUCT</p>
           <h2>
-            Repair, service<br />
-            and <em>custom builds.</em>
+            Design, fabricate,<br />
+            service &amp; <em>repair.</em>
           </h2>
           <p>
-            Need something fixed or made to spec? We support your machinery
-            beyond off-the-shelf components.
+            Hydraulic parts and systems, electrical automation control systems,
+            and metal processing &amp; engineering works.
           </p>
         </div>
         <div className="category-grid" data-reveal="stagger" data-reveal-delay="1">
           <a className="category-card" href="/services">
             <span>01</span>
             <h3>Services &amp; Repair</h3>
-            <p>Motor, gearbox and transmission servicing and repair work.</p>
+            <p>Hydraulic part &amp; system: design and fabricate, supply, service and repair.</p>
             <b>Explore services ↗</b>
           </a>
           <a className="category-card" href="/customize">
             <span>02</span>
-            <h3>Custom Machining</h3>
-            <p>Custom-made parts and machining work to your specification.</p>
+            <h3>Design &amp; Fabricate</h3>
+            <p>Electrical automation control systems and metal processing &amp; engineering works.</p>
             <b>Explore customization ↗</b>
           </a>
         </div>
@@ -263,15 +263,15 @@ export default async function Home() {
           </p>
 
           <h2>
-            The right part.
+            Reliable products.
             <br />
-            The right <em>fit.</em>
+            Technical <em>backup.</em>
           </h2>
 
           <p className="why-lede">
-            Choosing a transmission component is about more than a part number.
-            We help you narrow the options around your mounting, speed and
-            torque requirements.
+            We are a sales driven company. We depend on our valued customers to
+            drive our action, and on our suppliers to provide us with high
+            quality, reliable products, services and technical backup.
           </p>
 
           <ol>
@@ -279,10 +279,11 @@ export default async function Home() {
               <span>01</span>
 
               <div>
-                <strong>Share your requirement</strong>
+                <strong>Product specialist</strong>
 
                 <p>
-                  Tell us the application, dimensions or current part reference.
+                  Electric motors, gear reducers, pumps, bearings and power
+                  transmission products.
                 </p>
               </div>
             </li>
@@ -291,10 +292,11 @@ export default async function Home() {
               <span>02</span>
 
               <div>
-                <strong>Match the component</strong>
+                <strong>Agency support product</strong>
 
                 <p>
-                  We help identify a practical model, size and configuration.
+                  Hydraulic part &amp; system, electrical automation control
+                  system, metal processing &amp; engineering works.
                 </p>
               </div>
             </li>
@@ -303,10 +305,10 @@ export default async function Home() {
               <span>03</span>
 
               <div>
-                <strong>Enquire with confidence</strong>
+                <strong>Other product</strong>
 
                 <p>
-                  Review the product details, then send us your requirement.
+                  Tools, hardware, machinery and more.
                 </p>
               </div>
             </li>
@@ -320,7 +322,7 @@ export default async function Home() {
           data-reveal="up"
         >
           <p className="eyebrow light">
-            <span /> NEED A PRODUCT MATCH?
+            <span /> CONTACT MP&amp;E
           </p>
 
           <h2>
