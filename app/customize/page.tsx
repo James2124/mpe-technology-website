@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Design & Fabricate | MP&E Technology Malaysia",
 
   description:
-    "MP&E Technology Works designs and fabricates hydraulic parts and systems, electrical automation control systems, and metal processing & engineering works. Balakong, Selangor.",
+    "MP&E Technology Works designs and fabricates hydraulic parts and systems, electrical automation control systems, and metal processing & engineering works.",
 
   alternates: {
     canonical: "/customize",

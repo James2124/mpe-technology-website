@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Services & Repair | MP&E Technology Malaysia",
 
   description:
-    "MP&E Technology Works supplies electric motors, gear reducers, pumps, bearings and power transmission products, and provides hydraulic part and system design, fabrication, supply, service and repair. Balakong, Selangor.",
+    "MP&E Technology Works supplies electric motors, gear reducers, pumps, bearings and power transmission products, and provides hydraulic part and system design, fabrication, supply, service and repair.",
 
   alternates: {
     canonical: "/services",

@@ -3,7 +3,7 @@ import type { EnquiryType } from "./types";
 export const ENQUIRY_TYPE_LABELS: Record<EnquiryType, string> = {
   product: "Product enquiry",
   repair: "Repair & servicing",
-  customization: "Custom machining",
+  customization: "Design & fabricate",
   general: "General enquiry",
 };
 
