@@ -63,10 +63,6 @@ export function SiteFooter() {
             mpetech.works@gmail.com
           </a>
 
-          <a href="tel:+60389592201">
-            Tel/Fax: 03-8959 2201
-          </a>
-
           <a href="/manage">
             Manage catalog
           </a>

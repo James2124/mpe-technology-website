@@ -140,7 +140,6 @@ export default function ServicesPage() {
           <div className="contact-points">
             <div><span>01</span><strong>Roger Poon</strong><p>016-201 2201 (H/P &amp; WhatsApp)</p></div>
             <div><span>02</span><strong>Terry Poon</strong><p>012-361 2312 (H/P &amp; WhatsApp)</p></div>
-            <div><span>03</span><strong>Tel / Fax</strong><p>03-8959 2201</p></div>
           </div>
         </div>
         <div className="contact-form-wrap" data-reveal="right" data-reveal-delay="1">
