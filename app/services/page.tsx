@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Services & Repair | MP&E Technology Malaysia",
 
   description:
-    "Supply, service and repair of electric motors, gear reducers, pumps and hydraulic systems, plus electrical automation control systems, from MP&E Technology Works in Balakong, Selangor.",
+    "MP&E Technology Works supplies electric motors, gear reducers, pumps, bearings and power transmission products, and provides hydraulic part and system design, fabrication, supply, service and repair. Balakong, Selangor.",
 
   alternates: {
     canonical: "/services",
@@ -17,27 +17,27 @@ export const metadata: Metadata = {
 const services = [
   {
     number: "01",
-    title: "Hydraulic parts & systems",
-    copy: "Hydraulic parts and complete systems, supported from start to finish.",
+    title: "Hydraulic part & system",
+    copy: "Hydraulic parts and systems.",
     points: ["Design & fabricate", "Supply", "Service & repair"],
   },
   {
     number: "02",
-    title: "Electrical automation control",
-    copy: "Electrical automation control systems designed and fabricated for your machinery.",
-    points: ["Control system design", "Panel fabrication", "Installation support"],
+    title: "Electrical automation control system",
+    copy: "Electrical automation control systems.",
+    points: ["Design & fabricate"],
   },
   {
     number: "03",
-    title: "Motor, gearbox & pump service",
-    copy: "Servicing and repair for the drive equipment that keeps your line running.",
-    points: ["Electric motors", "Gear reducers", "Pumps"],
+    title: "Metal processing & engineering works",
+    copy: "Metal processing and engineering works.",
+    points: ["Design & fabricate"],
   },
   {
     number: "04",
-    title: "Metal processing & engineering",
-    copy: "In-house metal processing and engineering works to support repairs and replacements.",
-    points: ["Machining", "Fabrication", "Part reconditioning"],
+    title: "Product specialist",
+    copy: "Electric motors, gear reducers, pumps, bearings and power transmission products.",
+    points: ["Supply"],
   },
 ];
 
@@ -76,9 +76,9 @@ export default function ServicesPage() {
         <p className="eyebrow"><span /> SERVICES</p>
         <h1>Supply, service &amp; repair.</h1>
         <p>
-          MP&amp;E Technology Works is a one-stop industry supplier. Beyond
-          supplying motors, gear reducers, pumps and bearings, we design,
-          fabricate, service and repair the systems that run your plant.
+          We are a sales driven company. We depend on our valued customers to
+          drive our action, and on our suppliers to provide us with high
+          quality, reliable products, services and technical backup.
         </p>
       </section>
 
@@ -86,13 +86,12 @@ export default function ServicesPage() {
         <div className="section-heading" data-reveal="up">
           <p className="eyebrow"><span /> WHAT WE DO</p>
           <h2>
-            Support that goes<br />
-            beyond the <em>part.</em>
+            One stop shop<br />
+            for all <em>industry.</em>
           </h2>
           <p>
-            Backed by our suppliers&apos; technical support, our team handles
-            hydraulics, automation and drive equipment for industries across
-            Malaysia.
+            Due to our large product range, we aim to be a one stop shop for
+            all industry.
           </p>
         </div>
         <div className="category-grid" data-reveal="stagger" data-reveal-delay="1">
@@ -118,10 +117,6 @@ export default function ServicesPage() {
             Brands we<br />
             <em>supply.</em>
           </h2>
-          <p>
-            We carry a large product range from trusted manufacturers. Ask us
-            about a specific model or replacement part.
-          </p>
         </div>
         <dl className="brand-table" data-reveal="stagger" data-reveal-delay="1">
           {brands.map((brand) => (

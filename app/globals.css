@@ -2698,8 +2698,6 @@ textarea:focus::placeholder {
 .tag-after { background: var(--lime); color: var(--ink); }
 .project-arrow { color: var(--green); font-size: 22px; font-weight: 800; }
 
-.custom-steps { grid-template-columns: 1fr; }
-.custom-steps h2 { margin-bottom: 50px; }
 
 @media (max-width: 1020px) {
   .category-grid.three { grid-template-columns: repeat(2,1fr); }
