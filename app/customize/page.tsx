@@ -103,7 +103,7 @@ export default function CustomizePage() {
       <section className="contact-layout">
         <div className="contact-intro" data-reveal="left">
           <p className="eyebrow light"><span /> CUSTOM WORK</p>
-          <h2>Tell us what<br />you need made.</h2>
+          <h2>Tell us what<br />you need <em>made.</em></h2>
           <p>Share your drawing, part reference, material or quantity. We&apos;ll get back to you with next steps.</p>
         </div>
         <div className="contact-form-wrap" data-reveal="right" data-reveal-delay="1">
