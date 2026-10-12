@@ -48,10 +48,30 @@ const steps = [
 ];
 
 const projects = [
-  { src: "/projects/machining-01.jpg", alt: "Cut steel plates before and after machining into flanged mounting plates" },
-  { src: "/projects/machining-02.jpg", alt: "Rough steel discs before and after face machining and drilling" },
-  { src: "/projects/machining-03.jpg", alt: "Rusted steel rings before and after machining into drilled flanges" },
-  { src: "/projects/machining-04.jpg", alt: "Raw ring blank before and after machining into a slotted threaded lock nut" },
+  {
+    title: "Flanged mounting plates",
+    copy: "Rough flame-cut plates machined flat, bored and drilled into finished mounting flanges.",
+    before: "Rusty flame-cut steel plates with rough holes",
+    after: "Finished machined mounting plates with drilled bolt holes",
+  },
+  {
+    title: "Machined discs",
+    copy: "Raw cut discs faced, turned and drilled to size.",
+    before: "Stack of raw cut steel discs on a pallet",
+    after: "Faced and drilled steel discs",
+  },
+  {
+    title: "Drilled flange rings",
+    copy: "Rusted ring blanks cleaned up, turned and drilled into bolt-on flanges.",
+    before: "Two rusted steel ring blanks",
+    after: "Two machined flange rings with bolt holes",
+  },
+  {
+    title: "Threaded lock nut",
+    copy: "A solid ring blank turned, internally threaded and slotted into a lock nut.",
+    before: "Marked raw steel ring blank",
+    after: "Finished slotted lock nut with internal thread",
+  },
 ];
 
 export default function CustomizePage() {
@@ -103,11 +123,29 @@ export default function CustomizePage() {
           </p>
         </div>
         <div className="project-grid" data-reveal="stagger" data-reveal-delay="1">
-          {projects.map((project) => (
-            <figure key={project.src}>
-              <img src={project.src} alt={project.alt} loading="lazy" decoding="async" />
-            </figure>
-          ))}
+          {projects.map((project, index) => {
+            const job = index + 1;
+            return (
+              <article className="project-card" key={project.title}>
+                <div className="project-compare">
+                  <figure>
+                    <img src={`/projects/job-${job}-before.jpg`} alt={`Before: ${project.before}`} loading="lazy" decoding="async" />
+                    <figcaption className="tag-before">Before</figcaption>
+                  </figure>
+                  <span className="project-arrow" aria-hidden="true">→</span>
+                  <figure>
+                    <img src={`/projects/job-${job}-after.jpg`} alt={`After: ${project.after}`} loading="lazy" decoding="async" />
+                    <figcaption className="tag-after">After</figcaption>
+                  </figure>
+                </div>
+                <div className="project-info">
+                  <span>JOB {String(job).padStart(2, "0")}</span>
+                  <h3>{project.title}</h3>
+                  <p>{project.copy}</p>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
