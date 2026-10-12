@@ -2697,10 +2697,6 @@ textarea:focus::placeholder {
 .tag-before { background: var(--ink); color: #fff; }
 .tag-after { background: var(--lime); color: var(--ink); }
 .project-arrow { color: var(--green); font-size: 22px; font-weight: 800; }
-.project-info { padding: 20px 6px 8px; }
-.project-info > span { font-family: var(--font-geist-mono),monospace; font-size: 10px; color: var(--green); }
-.project-info h3 { font-size: 22px; letter-spacing: -.035em; margin: 8px 0 6px; }
-.project-info p { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; }
 
 .custom-steps { grid-template-columns: 1fr; }
 .custom-steps h2 { margin-bottom: 50px; }
