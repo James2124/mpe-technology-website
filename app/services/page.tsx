@@ -135,7 +135,7 @@ export default function ServicesPage() {
       <section className="contact-layout">
         <div className="contact-intro" data-reveal="left">
           <p className="eyebrow light"><span /> REPAIR &amp; SERVICING</p>
-          <h2>Tell us what<br />needs fixing.</h2>
+          <h2>Tell us what<br />needs <em>fixing.</em></h2>
           <p>Share the equipment type, brand, model or fault description. We&apos;ll get back to you with next steps.</p>
           <div className="contact-points">
             <div><span>01</span><strong>Roger Poon</strong><p>016-201 2201 (H/P &amp; WhatsApp)</p></div>
