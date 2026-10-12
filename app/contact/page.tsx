@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Contact Us | MP&E Technology Malaysia",
 
   description:
-    "Contact MP&E Technology Works in Balakong, Selangor. WhatsApp, call or email Roger Poon or Terry Poon, or visit 27, Jalan Budiman 3/3, Taman Putra Budiman.",
+    "Contact MP&E Technology Works. WhatsApp, call or email Roger Poon or Terry Poon.",
 
   alternates: {
     canonical: "/contact",
@@ -55,7 +55,6 @@ export default async function ContactPage({
             <div><span>01</span><strong>Roger Poon</strong><p>016-201 2201 (H/P &amp; WhatsApp)</p></div>
             <div><span>02</span><strong>Terry Poon</strong><p>012-361 2312 (H/P &amp; WhatsApp)</p></div>
             <div><span>03</span><strong>Tel / Fax</strong><p>03-8959 2201</p></div>
-            <div><span>04</span><strong>Address</strong><p>27, Jalan Budiman 3/3, Taman Putra Budiman, 43300 Balakong, Selangor</p></div>
           </div>
         </div>
         <div className="contact-form-wrap" data-reveal="right" data-reveal-delay="1">

@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     "MP&E Technology Works | Metal Processing Engineering & Industry Supply";
 
   const description =
-    "MP&E Technology Works supplies electric motors, gear reducers, pumps, bearings and power transmission products, and designs and fabricates hydraulic, electrical automation and metal processing works. Balakong, Selangor.";
+    "MP&E Technology Works supplies electric motors, gear reducers, pumps, bearings and power transmission products, and designs and fabricates hydraulic, electrical automation and metal processing works.";
 
   return {
     metadataBase: new URL(siteUrl),

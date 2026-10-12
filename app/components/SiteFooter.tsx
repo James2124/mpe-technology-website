@@ -67,11 +67,6 @@ export function SiteFooter() {
             Tel/Fax: 03-8959 2201
           </a>
 
-          <span>
-            27, Jalan Budiman 3/3, Taman Putra Budiman,
-            43300 Balakong, Selangor
-          </span>
-
           <a href="/manage">
             Manage catalog
           </a>
