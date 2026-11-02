@@ -15,17 +15,6 @@ import { blowerFanProducts } from "./info/blower-fan";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
-  {
-    name: "WPX 50 Worm Gear Reducer",
-    category: "Gear Reducers",
-    subtitle: "Right-angle speed reduction",
-    description: "A compact cast-iron worm gear reducer for dependable torque multiplication in conveyors, mixers and general industrial machinery.",
-    features: ["Compact right-angle drive", "Rigid cast-iron housing", "Multiple ratio options"],
-    specs: { Series: "WPX", Size: "50", Type: "Worm gear reducer", Mounting: "Foot mounted" },
-    imagePath: "/products/worm-reducer.png",
-    externalUrl: null,
-    featured: true,
-  },
   ...acMotorProducts,
   ...agitatorProducts,
   ...bearingProducts,
@@ -40,28 +29,6 @@ export const starterProducts: CreateProductInput[] = [
   ...rollerChainProducts,
   ...waterPumpProducts,
   ...blowerFanProducts,
-  {
-    name: "FCL Flexible Pin-Bush Coupling",
-    category: "Couplings",
-    subtitle: "Smooth torque transmission",
-    description: "A practical flexible coupling that cushions shock loads, reduces vibration and accommodates minor shaft misalignment.",
-    features: ["Replaceable rubber bushes", "Vibration damping", "Simple maintenance"],
-    specs: { Series: "FCL", Material: "Cast iron", Element: "Rubber pin bush", Use: "Motor-to-driven shaft" },
-    imagePath: "/products/coupling.png",
-    externalUrl: null,
-    featured: true,
-  },
-  {
-    name: "1610 Taper Lock V-Belt Pulley",
-    category: "Pulleys",
-    subtitle: "Fast, secure shaft mounting",
-    description: "A taper-lock pulley system designed for convenient installation, reliable concentricity and easy removal from the shaft.",
-    features: ["Machining-free shaft fit", "Multiple groove profiles", "Easy installation and removal"],
-    specs: { Bush: "1610", Profiles: "SPZ / SPA / SPB", Material: "Cast iron", Bore: "Multiple sizes" },
-    imagePath: "/products/pulley.webp",
-    externalUrl: null,
-    featured: false,
-  },
   {
     name: "Classical Industrial V-Belt",
     category: "V-Belts",

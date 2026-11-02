@@ -15,11 +15,14 @@ import { blowerFanProducts } from "./info/blower-fan";
 import type { CreateProductInput } from "./product-store-types";
 
 /**
- * Product batches added to catalogs that already exist on the server.
- * Each batch is applied once; afterwards administrators can edit or delete
- * the products in /manage without them coming back.
+ * Changes applied once to catalogs that already exist on the server.
+ * A batch adds `products` (skipping slugs that already exist) and deletes
+ * `removeSlugs`. Each batch id is recorded after it runs, so administrators
+ * can edit or delete products in /manage without the batch undoing it.
  */
-export const catalogSeedBatches: { id: string; products: CreateProductInput[] }[] = [
+export type CatalogSeedBatch = { id: string; products?: CreateProductInput[]; removeSlugs?: string[] };
+
+export const catalogSeedBatches: CatalogSeedBatch[] = [
   { id: "2026-11-ac-induction-motors", products: acMotorProducts },
   { id: "2026-11-agitator", products: agitatorProducts },
   { id: "2026-11-bearings", products: bearingProducts },
@@ -34,4 +37,13 @@ export const catalogSeedBatches: { id: string; products: CreateProductInput[] }[
   { id: "2026-11-roller-chain", products: rollerChainProducts },
   { id: "2026-11-water-pump", products: waterPumpProducts },
   { id: "2026-11-blower-fan", products: blowerFanProducts },
+  {
+    id: "2026-11-remove-old-duplicates",
+    removeSlugs: [
+      "b5-three-phase-ac-motor",
+      "fcl-flexible-pin-bush-coupling",
+      "wpx-50-worm-gear-reducer",
+      "1610-taper-lock-v-belt-pulley",
+    ],
+  },
 ];
