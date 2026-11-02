@@ -2,7 +2,7 @@ import { access, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/pr
 import path from "node:path";
 import type { Enquiry, Product } from "../app/lib/types";
 import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
-import { catalogSeedBatches } from "./ac-motor-products";
+import { catalogSeedBatches } from "./catalog-seeds";
 import { starterProducts } from "./starter-products";
 
 type CatalogData = {

@@ -1,4 +1,7 @@
 import { acMotorProducts } from "./ac-motor-products";
+import { agitatorProducts } from "./info/agitator";
+import { bearingProducts } from "./info/bearing";
+import { beltingProducts } from "./info/belting";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
@@ -14,6 +17,9 @@ export const starterProducts: CreateProductInput[] = [
     featured: true,
   },
   ...acMotorProducts,
+  ...agitatorProducts,
+  ...bearingProducts,
+  ...beltingProducts,
   {
     name: "FCL Flexible Pin-Bush Coupling",
     category: "Couplings",

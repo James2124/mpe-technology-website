@@ -172,6 +172,22 @@ export default async function Home() {
             </a>
           </div>
         </div>
+
+        <div className="info-links" data-reveal="stagger" data-reveal-delay="1">
+          {[
+            { href: "/agitator", title: "Agitator", image: "/products/agitator/agitator.webp" },
+            { href: "/bearing", title: "Bearing", image: "/products/bearing/skf-6000-series.webp" },
+            { href: "/belting", title: "Belting", image: "/products/belting/belt-image.webp" },
+          ].map((item) => (
+            <a href={item.href} key={item.href}>
+              <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
+              <span>
+                <strong>{item.title}</strong>
+                <small>View more ↗</small>
+              </span>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="section featured-section">

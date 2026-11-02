@@ -39,6 +39,18 @@ export function SiteFooter() {
             AC induction motor
           </a>
 
+          <a href="/agitator">
+            Agitator
+          </a>
+
+          <a href="/bearing">
+            Bearing
+          </a>
+
+          <a href="/belting">
+            Belting
+          </a>
+
           <a href="/products?category=Couplings">
             Couplings
           </a>

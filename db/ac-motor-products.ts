@@ -96,12 +96,3 @@ export const acMotorProducts: CreateProductInput[] = [
 export function productSlug(name: string) {
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
-
-/**
- * Product batches added to catalogs that already exist on the server.
- * Each batch is applied once; afterwards administrators can edit or delete
- * the products in /manage without them coming back.
- */
-export const catalogSeedBatches: { id: string; products: CreateProductInput[] }[] = [
-  { id: "2026-11-ac-induction-motors", products: acMotorProducts },
-];
