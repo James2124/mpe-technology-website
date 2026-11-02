@@ -1,20 +1,29 @@
 import type { CreateProductInput } from "./product-store-types";
 
+/* Text below is taken from "AC INDUCTION MOTOR Description.docx". */
+
+export const acMotorTitle = "AC INDUCTION MOTOR";
+
 export const acMotorDescription =
-  "An AC induction motor is an electric motor that converts electrical energy into mechanical energy to make machines and equipment rotate. It operates using alternating current (AC) electricity and is one of the most commonly used motors in industrial and commercial applications.";
+  "An AC Induction Motor is an electric motor that converts electrical energy into mechanical energy to make machines and equipment rotate. It operates using alternating current (AC) electricity and is one of the most commonly used motors in industrial and commercial applications.";
+
+export const acMotorUsesIntro = "The main purpose of an AC induction motor is to:";
 
 export const acMotorUses = [
-  "Drive and rotate machinery",
-  "Power pumps, fans, blowers and compressors",
-  "Operate conveyors and material-handling equipment",
-  "Drive mixers and agitators",
-  "Reliable continuous operation for industrial equipment",
-  "Convert electrical power into mechanical movement efficiently",
+  "Drive and rotate machinery.",
+  "Power pumps, fans, blowers, and compressors.",
+  "Operate conveyors and material-handling equipment.",
+  "Drive mixers and agitators.",
+  "Provide reliable continuous operation for industrial equipment.",
+  "Convert electrical power into mechanical movement efficiently.",
 ];
+
+export const acMotorApplicationsIntro =
+  "Electric motors are used in many applications to convert electrical energy into mechanical energy. They are essential in homes, industries, transportation, and commercial equipment.";
 
 export const acMotorApplications = [
   {
-    title: "Industrial",
+    title: "Industrial applications",
     items: ["Conveyor belts", "Pumps and compressors", "Industrial machines", "Cranes and hoists"],
   },
   {
@@ -34,125 +43,59 @@ export const acMotorApplications = [
     items: ["Dental drills", "Hospital beds", "Medical pumps", "Laboratory equipment"],
   },
   {
-    title: "Commercial & construction",
+    title: "Commercial and construction applications",
     items: ["Electric drills", "Cutting machines", "Air-conditioning systems", "Building ventilation systems"],
   },
 ];
 
-const applicationSpec = "Pumps, fans, blowers, compressors, conveyors, mixers";
-
-export const acMotorProducts: CreateProductInput[] = [
-  {
-    slug: "three-phase-ac-induction-motor-b3-foot-mounted",
-    name: "Three-Phase AC Induction Motor – B3 Foot Mounted",
-    category: "Motors",
-    subtitle: "Foot-mounted three-phase induction motor",
-    description: `${acMotorDescription} This three-phase version uses B3 foot mounting for bolting directly to a base plate or machine frame.`,
-    features: [
-      "B3 foot mounting for base-plate installation",
-      "Three-phase AC supply",
-      "Drives pumps, fans, blowers and compressors",
-      "Simple, durable and reliable design",
-      "Relatively low maintenance",
-    ],
-    specs: {
-      Type: "AC induction motor",
-      Supply: "Three phase",
-      Mounting: "B3 foot mounted",
-      Cooling: "Finned frame with rear cooling fan",
-      Application: applicationSpec,
-    },
-    imagePath: "/products/ac-motor/three-phase-b3-foot-mounted.webp",
-    galleryImages: [
-      "/ac-motor/three-phase-motor-blue-1.jpg",
-      "/ac-motor/three-phase-motor-grey-3.jpg",
-      "/ac-motor/three-phase-motor-crate.jpg",
-      "/ac-motor/motor-exploded-view.jpg",
-    ],
-    externalUrl: null,
-    featured: false,
-  },
-  {
-    slug: "three-phase-ac-induction-motor-b5-flange-mounted",
-    name: "Three-Phase AC Induction Motor – B5 Flange Mounted",
-    category: "Motors",
-    subtitle: "Flange-mounted three-phase induction motor",
-    description: `${acMotorDescription} This three-phase version uses a B5 flange for direct coupling to gear reducers, pumps and other driven equipment.`,
-    features: [
-      "B5 flange mounting for direct coupling",
-      "Three-phase AC supply",
-      "Suits gear reducers, pumps and conveyors",
-      "Simple, durable and reliable design",
-      "Relatively low maintenance",
-    ],
-    specs: {
-      Type: "AC induction motor",
-      Supply: "Three phase",
-      Mounting: "B5 flange mounted",
-      Cooling: "Finned frame with rear cooling fan",
-      Application: applicationSpec,
-    },
-    imagePath: "/products/ac-motor/three-phase-b5-flange-mounted.webp",
-    galleryImages: [
-      "/ac-motor/three-phase-motor-blue-2.jpg",
-      "/ac-motor/geared-motor-1.jpg",
-      "/ac-motor/geared-motor-2.jpg",
-      "/ac-motor/motor-exploded-view.jpg",
-    ],
-    externalUrl: null,
-    featured: false,
-  },
-  {
-    slug: "single-phase-ac-induction-motor-b3-foot-mounted",
-    name: "Single-Phase AC Induction Motor – B3 Foot Mounted",
-    category: "Motors",
-    subtitle: "Foot-mounted single-phase induction motor",
-    description: `${acMotorDescription} This single-phase version runs from a standard single-phase supply and uses B3 foot mounting for base-plate installation.`,
-    features: [
-      "B3 foot mounting for base-plate installation",
-      "Single-phase AC supply",
-      "Suits fans, pumps and light machinery",
-      "Simple, durable and reliable design",
-      "Relatively low maintenance",
-    ],
-    specs: {
-      Type: "AC induction motor",
-      Supply: "Single phase",
-      Mounting: "B3 foot mounted",
-      Cooling: "Finned frame with rear cooling fan",
-      Application: applicationSpec,
-    },
-    imagePath: "/products/ac-motor/single-phase-b3-foot-mounted.webp",
-    galleryImages: ["/ac-motor/motor-exploded-view.jpg"],
-    externalUrl: null,
-    featured: false,
-  },
-  {
-    slug: "single-phase-ac-induction-motor-b5-flange-mounted",
-    name: "Single-Phase AC Induction Motor – B5 Flange Mounted",
-    category: "Motors",
-    subtitle: "Flange-mounted single-phase induction motor",
-    description: `${acMotorDescription} This single-phase version runs from a standard single-phase supply and uses a B5 flange for direct coupling to driven equipment.`,
-    features: [
-      "B5 flange mounting for direct coupling",
-      "Single-phase AC supply",
-      "Suits pumps, fans and small gear units",
-      "Simple, durable and reliable design",
-      "Relatively low maintenance",
-    ],
-    specs: {
-      Type: "AC induction motor",
-      Supply: "Single phase",
-      Mounting: "B5 flange mounted",
-      Cooling: "Finned frame with rear cooling fan",
-      Application: applicationSpec,
-    },
-    imagePath: "/products/ac-motor/single-phase-b5-flange-mounted.webp",
-    galleryImages: ["/ac-motor/motor-exploded-view.jpg"],
-    externalUrl: null,
-    featured: false,
-  },
+export const acMotorClosing = [
+  "AC induction motors are widely used because they are simple, durable, reliable, and require relatively low maintenance.",
+  "For example, an AC induction motor can drive a water pump, rotate an agitator inside a mixing tank, operate a conveyor belt, or power a ventilation fan.",
 ];
+
+export const acMotorSimplyPut =
+  "An AC induction motor uses electricity to produce rotation, allowing machines and equipment to operate.";
+
+function motor(name: string, supply: string, mounting: string, imagePath: string, galleryImages: string[]): CreateProductInput {
+  return {
+    name,
+    category: "Motors",
+    subtitle: "AC Induction Motor",
+    description: acMotorDescription,
+    features: acMotorUses,
+    specs: { Type: "AC Induction Motor", Supply: supply, Mounting: mounting },
+    imagePath,
+    galleryImages,
+    externalUrl: null,
+    featured: false,
+  };
+}
+
+/* Product names are the original picture file names. */
+export const acMotorProducts: CreateProductInput[] = [
+  motor("Single phase B3 Foot Mounted", "Single phase", "B3 Foot Mounted", "/products/ac-motor/single-phase-b3-foot-mounted.webp", [
+    "/ac-motor/motor-exploded-view.jpg",
+  ]),
+  motor("Single phase B5 flanges mounted", "Single phase", "B5 flanges mounted", "/products/ac-motor/single-phase-b5-flange-mounted.webp", [
+    "/ac-motor/motor-exploded-view.jpg",
+  ]),
+  motor("Three phase B3 Flange Mounted", "Three phase", "B3 Flange Mounted", "/products/ac-motor/three-phase-b3-foot-mounted.webp", [
+    "/ac-motor/three-phase-motor-blue-1.jpg",
+    "/ac-motor/three-phase-motor-grey-3.jpg",
+    "/ac-motor/three-phase-motor-crate.jpg",
+    "/ac-motor/motor-exploded-view.jpg",
+  ]),
+  motor("Three phase B5 Flange Mounted", "Three phase", "B5 Flange Mounted", "/products/ac-motor/three-phase-b5-flange-mounted.webp", [
+    "/ac-motor/three-phase-motor-blue-2.jpg",
+    "/ac-motor/geared-motor-1.jpg",
+    "/ac-motor/geared-motor-2.jpg",
+    "/ac-motor/motor-exploded-view.jpg",
+  ]),
+];
+
+export function productSlug(name: string) {
+  return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
 
 /**
  * Product batches added to catalogs that already exist on the server.

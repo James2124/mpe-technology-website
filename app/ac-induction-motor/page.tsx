@@ -4,35 +4,40 @@ import { SiteHeader } from "../components/SiteHeader";
 import { listProducts } from "../../db/products";
 import {
   acMotorApplications,
+  acMotorApplicationsIntro,
+  acMotorClosing,
   acMotorDescription,
   acMotorProducts,
+  acMotorSimplyPut,
+  acMotorTitle,
   acMotorUses,
+  acMotorUsesIntro,
+  productSlug,
 } from "../../db/ac-motor-products";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "AC Induction Motors | MP&E Technology Malaysia",
-  description:
-    "Single-phase and three-phase AC induction motors in B3 foot-mounted and B5 flange-mounted versions for pumps, fans, blowers, compressors, conveyors and mixers.",
+  title: "AC Induction Motor | MP&E Technology Malaysia",
+  description: acMotorDescription,
   alternates: {
     canonical: "/ac-induction-motor",
   },
 };
 
-const stockPhotos = [
-  { src: "/ac-motor/container-loading-1.jpg", caption: "Crated motors loaded in a container" },
-  { src: "/ac-motor/crated-motors-1.jpg", caption: "Motors packed in timber crates" },
-  { src: "/ac-motor/motor-delivery-2.jpg", caption: "Three-phase motors on delivery" },
-  { src: "/ac-motor/warehouse-stock-2.jpg", caption: "Warehouse racking" },
-  { src: "/ac-motor/three-phase-motor-blue-1.jpg", caption: "Three-phase motors unpacked" },
-  { src: "/ac-motor/container-loading-3.jpg", caption: "Crated motors ready for dispatch" },
-  { src: "/ac-motor/crated-stock-2.jpg", caption: "Crated stock and boxed parts" },
-  { src: "/ac-motor/geared-motor-1.jpg", caption: "Flange motor fitted to a gear unit" },
-  { src: "/ac-motor/three-phase-motor-grey-2.jpg", caption: "Foot-mounted three-phase motor" },
-  { src: "/ac-motor/motor-delivery-1.jpg", caption: "Motors on a delivery truck" },
-  { src: "/ac-motor/warehouse-shelving.jpg", caption: "Boxed parts on shelving" },
-  { src: "/ac-motor/parts-stock-1.jpg", caption: "Parts stock on pallets" },
+const supportPhotos = [
+  "/ac-motor/container-loading-1.jpg",
+  "/ac-motor/crated-motors-1.jpg",
+  "/ac-motor/motor-delivery-2.jpg",
+  "/ac-motor/warehouse-stock-2.jpg",
+  "/ac-motor/three-phase-motor-blue-1.jpg",
+  "/ac-motor/container-loading-3.jpg",
+  "/ac-motor/crated-stock-2.jpg",
+  "/ac-motor/geared-motor-1.jpg",
+  "/ac-motor/three-phase-motor-grey-2.jpg",
+  "/ac-motor/motor-delivery-1.jpg",
+  "/ac-motor/warehouse-shelving.jpg",
+  "/ac-motor/parts-stock-1.jpg",
 ];
 
 export default async function AcInductionMotorPage() {
@@ -43,30 +48,20 @@ export default async function AcInductionMotorPage() {
     <main>
       <SiteHeader />
 
-      <section className="page-hero catalog-hero" data-reveal="up">
-        <p className="eyebrow"><span /> AC INDUCTION MOTOR</p>
-        <h1>Electricity into motion.</h1>
+      <section className="page-hero catalog-hero acm-hero" data-reveal="up">
+        <p className="eyebrow"><span /> DESCRIPTION</p>
+        <h1>{acMotorTitle}</h1>
         <p>{acMotorDescription}</p>
       </section>
 
       <section className="section acm-range">
         <div className="section-heading" data-reveal="up">
-          <p className="eyebrow"><span /> THE RANGE</p>
-          <h2>
-            Single &amp; three phase.
-            <br />
-            Foot or <em>flange.</em>
-          </h2>
-          <p>
-            Choose B3 foot mounting to bolt the motor to a base plate, or a B5
-            flange to couple it directly to a gear reducer, pump or other
-            driven equipment.
-          </p>
+          <p className="eyebrow"><span /> PRODUCT</p>
         </div>
 
         <div className="acm-range-grid" data-reveal="stagger" data-reveal-delay="1">
           {acMotorProducts.map((product) => {
-            const slug = product.slug ?? "";
+            const slug = productSlug(product.name);
             const href = liveSlugs.has(slug)
               ? `/products/${slug}`
               : `/contact?product=${encodeURIComponent(product.name)}`;
@@ -75,9 +70,7 @@ export default async function AcInductionMotorPage() {
                 {product.imagePath && (
                   <img src={product.imagePath} alt={product.name} loading="lazy" decoding="async" />
                 )}
-                <span>{product.specs.Supply} · {product.specs.Mounting}</span>
-                <strong>{product.name.replace(/ – .*/, "")}</strong>
-                <small>{product.subtitle}</small>
+                <strong>{product.name}</strong>
                 <b>{liveSlugs.has(slug) ? "View product ↗" : "Enquire ↗"}</b>
               </a>
             );
@@ -87,12 +80,8 @@ export default async function AcInductionMotorPage() {
 
       <section className="spec-section acm-uses">
         <div data-reveal="left">
-          <p className="eyebrow"><span /> WHAT IT DOES</p>
-          <h2>The use of<br /><em>the motor.</em></h2>
-          <p>
-            Simply put: an AC induction motor uses electricity to produce
-            rotation, allowing machines and equipment to operate.
-          </p>
+          <p className="eyebrow"><span /> THE USED OF MOTOR</p>
+          <p className="acm-intro">{acMotorUsesIntro}</p>
         </div>
         <ul className="feature-list" data-reveal="stagger" data-reveal-delay="1">
           {acMotorUses.map((use) => (
@@ -102,23 +91,10 @@ export default async function AcInductionMotorPage() {
       </section>
 
       <section className="section acm-anatomy">
-        <div className="section-heading" data-reveal="up">
-          <p className="eyebrow"><span /> INSIDE THE MOTOR</p>
-          <h2>
-            Simple parts.
-            <br />
-            Durable <em>design.</em>
-          </h2>
-          <p>
-            Stator, rotor, bearings, cooling fan and terminal box in a finned
-            frame. The same motor takes B3 feet, a B5 flange or a B14 face
-            flange to suit the installation.
-          </p>
-        </div>
-        <figure className="acm-anatomy-figure" data-reveal="up" data-reveal-delay="1">
+        <figure className="acm-anatomy-figure" data-reveal="up">
           <img
             src="/ac-motor/motor-exploded-view.jpg"
-            alt="Exploded view of an AC induction motor showing the frame, stator, rotor, bearings, end shields, fan, fan cover, terminal box, feet and B5 and B14 flanges"
+            alt="AC induction motor cut away"
             loading="lazy"
             decoding="async"
           />
@@ -127,18 +103,8 @@ export default async function AcInductionMotorPage() {
 
       <section className="section acm-applications">
         <div className="section-heading" data-reveal="up">
-          <p className="eyebrow"><span /> APPLICATIONS</p>
-          <h2>
-            Wherever things
-            <br />
-            need to <em>turn.</em>
-          </h2>
-          <p>
-            Electric motors are essential in homes, industries, transportation
-            and commercial equipment. An AC induction motor can drive a water
-            pump, rotate an agitator inside a mixing tank, operate a conveyor
-            belt or power a ventilation fan.
-          </p>
+          <p className="eyebrow"><span /> APPLICATIONS OF ELECTRIC MOTORS</p>
+          <p>{acMotorApplicationsIntro}</p>
         </div>
         <div className="category-grid acm-application-grid" data-reveal="stagger" data-reveal-delay="1">
           {acMotorApplications.map((group, index) => (
@@ -151,39 +117,25 @@ export default async function AcInductionMotorPage() {
             </div>
           ))}
         </div>
-        <p className="acm-why" data-reveal="up">
-          AC induction motors are widely used because they are{" "}
-          <strong>simple, durable, reliable</strong> and require{" "}
-          <strong>relatively low maintenance.</strong>
-        </p>
+        <div className="acm-closing" data-reveal="up">
+          {acMotorClosing.map((text) => <p key={text}>{text}</p>)}
+          <p className="acm-why"><strong>Simply put:</strong> {acMotorSimplyPut}</p>
+        </div>
       </section>
 
       <section className="section acm-stock">
-        <div className="section-heading" data-reveal="up">
-          <p className="eyebrow"><span /> STOCK &amp; DELIVERY</p>
-          <h2>
-            From our warehouse
-            <br />
-            to your <em>site.</em>
-          </h2>
-          <p>
-            Motors are crated in timber for protection in transit, held in our
-            warehouse and delivered to customers.
-          </p>
-        </div>
-        <div className="acm-stock-grid" data-reveal="stagger" data-reveal-delay="1">
-          {stockPhotos.map((photo) => (
-            <figure key={photo.src}>
-              <img src={photo.src} alt={photo.caption} loading="lazy" decoding="async" />
-              <figcaption>{photo.caption}</figcaption>
+        <div className="acm-stock-grid" data-reveal="stagger">
+          {supportPhotos.map((src) => (
+            <figure key={src}>
+              <img src={src} alt="MP&E Technology AC induction motor" loading="lazy" decoding="async" />
             </figure>
           ))}
         </div>
       </section>
 
       <section className="catalog-cta" data-reveal="up">
-        <div><span>Need a specific power rating or frame size?</span><strong>Send us your motor nameplate or requirement.</strong></div>
-        <a className="lime-btn dark-text" href="/contact?product=AC%20Induction%20Motor" data-magnetic>Enquire about AC motors <span>→</span></a>
+        <div><span>{acMotorTitle}</span><strong>Enquire about this product</strong></div>
+        <a className="lime-btn dark-text" href="/contact?product=AC%20Induction%20Motor" data-magnetic>Enquire <span>→</span></a>
       </section>
 
       <SiteFooter />

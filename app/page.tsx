@@ -156,26 +156,19 @@ export default async function Home() {
         <div className="motor-feature" data-reveal="up">
           <img
             src="/products/ac-motor/three-phase-b5-flange-mounted.webp"
-            alt="Three-phase AC induction motor with B5 flange"
+            alt="Three phase B5 Flange Mounted"
             loading="lazy"
             decoding="async"
           />
           <div>
-            <p className="eyebrow">
-              <span /> AC INDUCTION MOTOR
-            </p>
-            <h2>
-              Single &amp; three phase,
-              <br />
-              foot or <em>flange.</em>
-            </h2>
+            <h2>AC INDUCTION MOTOR</h2>
             <p>
-              AC induction motors convert electrical energy into rotation to
-              drive pumps, fans, blowers, compressors, conveyors and mixers.
-              Simple, durable, reliable and low maintenance.
+              An AC Induction Motor is an electric motor that converts
+              electrical energy into mechanical energy to make machines and
+              equipment rotate.
             </p>
             <a className="primary-btn" href="/ac-induction-motor" data-magnetic>
-              Explore AC motors <span>→</span>
+              View more <span>→</span>
             </a>
           </div>
         </div>
