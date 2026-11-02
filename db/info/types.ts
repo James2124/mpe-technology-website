@@ -22,6 +22,8 @@ export type ProductInfo = {
   logo?: { src: string; alt: string };
   productGroups: InfoProductGroup[];
   sections: InfoSection[];
+  /** Overrides the product groups' photos when photos are organised differently. */
+  photoGroups?: { title?: string; photos: string[] }[];
   simplyPut?: { label: string; text: string };
 };
 

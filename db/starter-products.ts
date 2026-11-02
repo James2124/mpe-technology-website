@@ -2,6 +2,10 @@ import { acMotorProducts } from "./ac-motor-products";
 import { agitatorProducts } from "./info/agitator";
 import { bearingProducts } from "./info/bearing";
 import { beltingProducts } from "./info/belting";
+import { chainSprocketProducts } from "./info/chain-sprocket";
+import { conveyorRollerProducts } from "./info/conveyor-roller";
+import { conveyorSprocketProducts } from "./info/conveyor-sprocket";
+import { couplingProducts } from "./info/coupling";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
@@ -20,6 +24,10 @@ export const starterProducts: CreateProductInput[] = [
   ...agitatorProducts,
   ...bearingProducts,
   ...beltingProducts,
+  ...chainSprocketProducts,
+  ...conveyorRollerProducts,
+  ...conveyorSprocketProducts,
+  ...couplingProducts,
   {
     name: "FCL Flexible Pin-Bush Coupling",
     category: "Couplings",

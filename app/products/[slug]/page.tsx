@@ -68,9 +68,11 @@ export default async function ProductPage({
           <h1>{product.name}</h1>
           <p className="detail-subtitle">{product.subtitle}</p>
           <p className="detail-description">{product.description}</p>
-          <ul className="feature-list" data-reveal="stagger" data-reveal-delay="1">
-            {product.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}
-          </ul>
+          {product.features.length > 0 && (
+            <ul className="feature-list" data-reveal="stagger" data-reveal-delay="1">
+              {product.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}
+            </ul>
+          )}
           <div className="detail-actions">
             <a className="primary-btn" href={`/contact?product=${encodeURIComponent(product.name)}`} data-magnetic>Enquire about this product <span>→</span></a>
             {product.externalUrl && <a className="text-link" href={product.externalUrl} target="_blank" rel="noreferrer">View product page <span>↗</span></a>}

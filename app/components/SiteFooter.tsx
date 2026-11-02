@@ -51,6 +51,22 @@ export function SiteFooter() {
             Belting
           </a>
 
+          <a href="/chain-sprocket">
+            Chain sprocket
+          </a>
+
+          <a href="/conveyor-roller">
+            Conveyor roller
+          </a>
+
+          <a href="/conveyor-sprocket">
+            Conveyor sprocket
+          </a>
+
+          <a href="/coupling">
+            Coupling
+          </a>
+
           <a href="/products?category=Couplings">
             Couplings
           </a>

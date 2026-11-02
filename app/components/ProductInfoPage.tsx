@@ -83,7 +83,7 @@ function Section({ section }: { section: InfoSection }) {
 export async function ProductInfoPage({ info }: { info: ProductInfo }) {
   const products = await listProducts();
   const liveSlugs = new Set(products.map((product) => product.slug));
-  const photoGroups = info.productGroups.filter((group) => group.photos.length > 0);
+  const photoGroups = (info.photoGroups ?? info.productGroups).filter((group) => group.photos.length > 0);
 
   return (
     <main>

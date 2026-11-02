@@ -178,6 +178,10 @@ export default async function Home() {
             { href: "/agitator", title: "Agitator", image: "/products/agitator/agitator.webp" },
             { href: "/bearing", title: "Bearing", image: "/products/bearing/skf-6000-series.webp" },
             { href: "/belting", title: "Belting", image: "/products/belting/belt-image.webp" },
+            { href: "/chain-sprocket", title: "Chain Sprocket", image: "/products/chain-sprocket/chain-sprocket.webp" },
+            { href: "/conveyor-roller", title: "Conveyor Roller", image: "/products/conveyor-roller/20240801_111732.jpg" },
+            { href: "/conveyor-sprocket", title: "Conveyor Sprocket", image: "/products/conveyor-sprocket/95e99121-6e03-4897-96da-8bedaecbe568.jpg" },
+            { href: "/coupling", title: "Coupling", image: "/products/coupling/fcl-coupling.webp" },
           ].map((item) => (
             <a href={item.href} key={item.href}>
               <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
