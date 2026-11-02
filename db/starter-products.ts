@@ -6,6 +6,11 @@ import { chainSprocketProducts } from "./info/chain-sprocket";
 import { conveyorRollerProducts } from "./info/conveyor-roller";
 import { conveyorSprocketProducts } from "./info/conveyor-sprocket";
 import { couplingProducts } from "./info/coupling";
+import { gearboxProducts } from "./info/gearbox";
+import { oilLubricationProducts } from "./info/oil-lubrication";
+import { pulleyProducts } from "./info/pulley";
+import { rollerChainProducts } from "./info/roller-chain";
+import { waterPumpProducts } from "./info/water-pump";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
@@ -28,6 +33,11 @@ export const starterProducts: CreateProductInput[] = [
   ...conveyorRollerProducts,
   ...conveyorSprocketProducts,
   ...couplingProducts,
+  ...gearboxProducts,
+  ...oilLubricationProducts,
+  ...pulleyProducts,
+  ...rollerChainProducts,
+  ...waterPumpProducts,
   {
     name: "FCL Flexible Pin-Bush Coupling",
     category: "Couplings",

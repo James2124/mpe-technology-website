@@ -67,6 +67,26 @@ export function SiteFooter() {
             Coupling
           </a>
 
+          <a href="/gearbox">
+            Worm gear reducer
+          </a>
+
+          <a href="/oil-lubrication">
+            Oil lubrication
+          </a>
+
+          <a href="/pulley">
+            Pulley
+          </a>
+
+          <a href="/roller-chain">
+            Roller chain
+          </a>
+
+          <a href="/water-pump">
+            Water pump
+          </a>
+
           <a href="/products?category=Couplings">
             Couplings
           </a>

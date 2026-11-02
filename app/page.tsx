@@ -182,6 +182,11 @@ export default async function Home() {
             { href: "/conveyor-roller", title: "Conveyor Roller", image: "/products/conveyor-roller/20240801_111732.jpg" },
             { href: "/conveyor-sprocket", title: "Conveyor Sprocket", image: "/products/conveyor-sprocket/95e99121-6e03-4897-96da-8bedaecbe568.jpg" },
             { href: "/coupling", title: "Coupling", image: "/products/coupling/fcl-coupling.webp" },
+            { href: "/gearbox", title: "Worm Gear Reducer", image: "/products/gearbox/wpa.webp" },
+            { href: "/oil-lubrication", title: "Oil Lubrication", image: "/products/oil-lubrication/20220509_131258.jpg" },
+            { href: "/pulley", title: "Pulley", image: "/products/pulley/taper-lock-pulley.webp" },
+            { href: "/roller-chain", title: "Roller Chain", image: "/products/roller-chain/roller-chain.jpg" },
+            { href: "/water-pump", title: "Water Pump", image: "/products/water-pump/automatic-self-priming-pumps.webp" },
           ].map((item) => (
             <a href={item.href} key={item.href}>
               <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
