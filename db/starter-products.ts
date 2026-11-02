@@ -1,3 +1,4 @@
+import { acMotorProducts } from "./ac-motor-products";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
@@ -12,17 +13,7 @@ export const starterProducts: CreateProductInput[] = [
     externalUrl: null,
     featured: true,
   },
-  {
-    name: "B5 Three-Phase AC Motor",
-    category: "Motors",
-    subtitle: "Flange-mounted induction motor",
-    description: "A robust three-phase induction motor with B5 flange mounting for pumps, reducers, fans and production equipment.",
-    features: ["B5 flange mounting", "Finned housing for cooling", "Industrial continuous-duty design"],
-    specs: { Supply: "Three phase", Mounting: "B5 flange", Protection: "Industrial enclosed", Application: "General machinery" },
-    imagePath: "/products/motor.webp",
-    externalUrl: null,
-    featured: true,
-  },
+  ...acMotorProducts,
   {
     name: "FCL Flexible Pin-Bush Coupling",
     category: "Couplings",

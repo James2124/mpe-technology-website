@@ -152,6 +152,33 @@ export default async function Home() {
             </a>
           ))}
         </div>
+
+        <div className="motor-feature" data-reveal="up">
+          <img
+            src="/products/ac-motor/three-phase-b5-flange-mounted.webp"
+            alt="Three-phase AC induction motor with B5 flange"
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <p className="eyebrow">
+              <span /> AC INDUCTION MOTOR
+            </p>
+            <h2>
+              Single &amp; three phase,
+              <br />
+              foot or <em>flange.</em>
+            </h2>
+            <p>
+              AC induction motors convert electrical energy into rotation to
+              drive pumps, fans, blowers, compressors, conveyors and mixers.
+              Simple, durable, reliable and low maintenance.
+            </p>
+            <a className="primary-btn" href="/ac-induction-motor" data-magnetic>
+              Explore AC motors <span>→</span>
+            </a>
+          </div>
+        </div>
       </section>
 
       <section className="section featured-section">

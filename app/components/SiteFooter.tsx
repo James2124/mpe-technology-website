@@ -35,6 +35,10 @@ export function SiteFooter() {
             Motors
           </a>
 
+          <a href="/ac-induction-motor">
+            AC induction motors
+          </a>
+
           <a href="/products?category=Couplings">
             Couplings
           </a>

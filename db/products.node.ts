@@ -2,12 +2,14 @@ import { access, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/pr
 import path from "node:path";
 import type { Enquiry, Product } from "../app/lib/types";
 import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
+import { catalogSeedBatches } from "./ac-motor-products";
 import { starterProducts } from "./starter-products";
 
 type CatalogData = {
   version: 1;
   products: Product[];
   enquiries: Enquiry[];
+  appliedSeeds?: string[];
 };
 
 let ready: Promise<void> | null = null;
@@ -46,12 +48,36 @@ async function initializeStorage() {
       products: starterProducts.map((product, index) => ({
         ...product,
         id: index + 1,
-        slug: slugify(product.name),
+        slug: product.slug || slugify(product.name),
         createdAt,
       })),
       enquiries: [],
     });
   }
+  await applyCatalogSeeds();
+}
+
+async function applyCatalogSeeds() {
+  const value = JSON.parse(await readFile(catalogPath(), "utf8")) as Partial<CatalogData>;
+  const data: CatalogData = {
+    version: 1,
+    products: Array.isArray(value.products) ? value.products : [],
+    enquiries: Array.isArray(value.enquiries) ? value.enquiries : [],
+    appliedSeeds: Array.isArray(value.appliedSeeds) ? value.appliedSeeds : [],
+  };
+  const pending = catalogSeedBatches.filter((batch) => !data.appliedSeeds?.includes(batch.id));
+  if (pending.length === 0) return;
+  const createdAt = new Date().toISOString();
+  for (const batch of pending) {
+    for (const product of batch.products) {
+      const slug = product.slug || slugify(product.name);
+      if (data.products.some((item) => item.slug === slug)) continue;
+      const id = data.products.reduce((highest, item) => Math.max(highest, item.id), 0) + 1;
+      data.products.push({ ...product, id, slug, createdAt });
+    }
+    data.appliedSeeds?.push(batch.id);
+  }
+  await writeCatalog(data);
 }
 
 async function readCatalog(): Promise<CatalogData> {
@@ -61,6 +87,7 @@ async function readCatalog(): Promise<CatalogData> {
     version: 1,
     products: Array.isArray(value.products) ? value.products : [],
     enquiries: Array.isArray(value.enquiries) ? value.enquiries : [],
+    appliedSeeds: Array.isArray(value.appliedSeeds) ? value.appliedSeeds : [],
   };
 }
 

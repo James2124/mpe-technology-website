@@ -2713,3 +2713,57 @@ textarea:focus::placeholder {
   .project-arrow { font-size: 16px; }
   .brand-table > div { grid-template-columns: 1fr; gap: 12px; }
 }
+
+/* ---------- AC induction motor page ---------- */
+
+.acm-range-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.acm-range-card { display: flex; flex-direction: column; background: #eae8df; padding: 22px; min-height: 380px; transition: transform .45s var(--motion-ease), box-shadow .45s var(--motion-ease), background-color .3s ease; }
+.acm-range-card:hover { transform: translateY(-8px); background: #f1efe6; box-shadow: 0 24px 50px rgba(20,34,24,.14); }
+.acm-range-card img { width: 100%; aspect-ratio: 4/3; object-fit: contain; margin-bottom: 22px; }
+.acm-range-card span { color: var(--green); font-family: var(--font-geist-mono),monospace; font-size: 9px; text-transform: uppercase; letter-spacing: .04em; }
+.acm-range-card strong { font-size: 21px; letter-spacing: -.03em; line-height: 1.15; margin: 10px 0 8px; }
+.acm-range-card small { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.acm-range-card b { margin-top: auto; padding-top: 20px; font-size: 11px; }
+
+.acm-uses { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.acm-uses .feature-list { margin: 0; align-self: center; }
+.acm-uses .feature-list li { font-size: 15px; }
+
+.acm-anatomy-figure { margin: 60px 0 0; background: #fff; border: 1px solid var(--line); padding: clamp(12px,3vw,40px); }
+.acm-anatomy-figure img { display: block; width: 100%; height: auto; }
+
+.acm-applications { background: var(--cream); }
+.acm-application-grid { grid-template-columns: repeat(3,1fr); }
+.acm-application-grid .category-card { min-height: 300px; }
+.acm-application-grid .category-card h3 { margin-top: 48px; }
+.acm-application-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; color: var(--muted); font-size: 14px; }
+.acm-application-grid li::before { content: "— "; color: var(--green); }
+.acm-application-grid .category-card:hover ul { color: rgba(255,255,255,.8); }
+.acm-application-grid .category-card:hover li::before { color: var(--lime); }
+.acm-why { margin: 54px 0 0; max-width: 820px; font-size: clamp(22px,2.4vw,32px); line-height: 1.3; letter-spacing: -.03em; }
+.acm-why strong { color: var(--green); }
+
+.acm-stock-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.acm-stock-grid figure { margin: 0; overflow: hidden; background: #eae8df; }
+.acm-stock-grid img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; transition: transform .6s var(--motion-ease); }
+.acm-stock-grid figure:hover img { transform: scale(1.04); }
+.acm-stock-grid figcaption { padding: 12px 14px; font-size: 12px; color: var(--muted); }
+
+.motor-feature { margin: 22px 0 0; display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 5vw; background: #eae8df; padding: clamp(28px,4vw,60px); }
+.motor-feature img { width: 100%; aspect-ratio: 4/3; object-fit: contain; }
+.motor-feature h2 { font-size: clamp(40px,4.4vw,64px); line-height: .95; letter-spacing: -.06em; margin: 0; }
+.motor-feature p:not(.eyebrow) { color: var(--muted); line-height: 1.65; font-size: 16px; max-width: 520px; margin: 24px 0 0; }
+.motor-feature .primary-btn { margin-top: 32px; }
+
+@media (max-width: 1020px) {
+  .acm-range-grid, .acm-stock-grid { grid-template-columns: repeat(2,1fr); }
+  .acm-application-grid { grid-template-columns: repeat(2,1fr); }
+  .motor-feature { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .acm-range-grid, .acm-application-grid { grid-template-columns: 1fr; }
+  .acm-stock-grid { gap: 10px; }
+  .acm-range-card { min-height: 0; }
+  .motor-feature { padding: 24px; }
+}
