@@ -37,6 +37,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: makeUrl("/ac-induction-motor"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...["/agitator", "/bearing", "/belting", "/chain-sprocket", "/conveyor-roller", "/conveyor-sprocket", "/coupling", "/gearbox", "/oil-lubrication", "/pulley", "/roller-chain", "/water-pump", "/blower-fan"].map((path) => ({
+      url: makeUrl(path),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    {
       url: makeUrl("/contact"),
       changeFrequency: "yearly",
       priority: 0.5,

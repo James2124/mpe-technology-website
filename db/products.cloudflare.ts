@@ -98,7 +98,7 @@ async function initializeSchema() {
           (slug, name, category, subtitle, description, features, specs, image_path, external_url, featured)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`)
           .bind(
-            slugify(product.name),
+            product.slug || slugify(product.name),
             product.name,
             product.category,
             product.subtitle,

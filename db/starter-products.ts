@@ -1,3 +1,17 @@
+import { acMotorProducts } from "./ac-motor-products";
+import { agitatorProducts } from "./info/agitator";
+import { bearingProducts } from "./info/bearing";
+import { beltingProducts } from "./info/belting";
+import { chainSprocketProducts } from "./info/chain-sprocket";
+import { conveyorRollerProducts } from "./info/conveyor-roller";
+import { conveyorSprocketProducts } from "./info/conveyor-sprocket";
+import { couplingProducts } from "./info/coupling";
+import { gearboxProducts } from "./info/gearbox";
+import { oilLubricationProducts } from "./info/oil-lubrication";
+import { pulleyProducts } from "./info/pulley";
+import { rollerChainProducts } from "./info/roller-chain";
+import { waterPumpProducts } from "./info/water-pump";
+import { blowerFanProducts } from "./info/blower-fan";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
@@ -12,17 +26,20 @@ export const starterProducts: CreateProductInput[] = [
     externalUrl: null,
     featured: true,
   },
-  {
-    name: "B5 Three-Phase AC Motor",
-    category: "Motors",
-    subtitle: "Flange-mounted induction motor",
-    description: "A robust three-phase induction motor with B5 flange mounting for pumps, reducers, fans and production equipment.",
-    features: ["B5 flange mounting", "Finned housing for cooling", "Industrial continuous-duty design"],
-    specs: { Supply: "Three phase", Mounting: "B5 flange", Protection: "Industrial enclosed", Application: "General machinery" },
-    imagePath: "/products/motor.webp",
-    externalUrl: null,
-    featured: true,
-  },
+  ...acMotorProducts,
+  ...agitatorProducts,
+  ...bearingProducts,
+  ...beltingProducts,
+  ...chainSprocketProducts,
+  ...conveyorRollerProducts,
+  ...conveyorSprocketProducts,
+  ...couplingProducts,
+  ...gearboxProducts,
+  ...oilLubricationProducts,
+  ...pulleyProducts,
+  ...rollerChainProducts,
+  ...waterPumpProducts,
+  ...blowerFanProducts,
   {
     name: "FCL Flexible Pin-Bush Coupling",
     category: "Couplings",

@@ -152,6 +152,52 @@ export default async function Home() {
             </a>
           ))}
         </div>
+
+        <div className="motor-feature" data-reveal="up">
+          <img
+            src="/products/ac-motor/three-phase-b5-flange-mounted.webp"
+            alt="Three phase B5 Flange Mounted"
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <h2>AC INDUCTION MOTOR</h2>
+            <p>
+              An AC Induction Motor is an electric motor that converts
+              electrical energy into mechanical energy to make machines and
+              equipment rotate.
+            </p>
+            <a className="primary-btn" href="/ac-induction-motor" data-magnetic>
+              View more <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="info-links" data-reveal="stagger" data-reveal-delay="1">
+          {[
+            { href: "/agitator", title: "Agitator", image: "/products/agitator/agitator.webp" },
+            { href: "/bearing", title: "Bearing", image: "/products/bearing/skf-6000-series.webp" },
+            { href: "/belting", title: "Belting", image: "/products/belting/belt-image.webp" },
+            { href: "/chain-sprocket", title: "Chain Sprocket", image: "/products/chain-sprocket/chain-sprocket.webp" },
+            { href: "/conveyor-roller", title: "Conveyor Roller", image: "/products/conveyor-roller/20240801_111732.jpg" },
+            { href: "/conveyor-sprocket", title: "Conveyor Sprocket", image: "/products/conveyor-sprocket/95e99121-6e03-4897-96da-8bedaecbe568.jpg" },
+            { href: "/coupling", title: "Coupling", image: "/products/coupling/fcl-coupling.webp" },
+            { href: "/gearbox", title: "Worm Gear Reducer", image: "/products/gearbox/wpa.webp" },
+            { href: "/oil-lubrication", title: "Oil Lubrication", image: "/products/oil-lubrication/20220509_131258.jpg" },
+            { href: "/pulley", title: "Pulley", image: "/products/pulley/taper-lock-pulley.webp" },
+            { href: "/roller-chain", title: "Roller Chain", image: "/products/roller-chain/roller-chain.jpg" },
+            { href: "/water-pump", title: "Water Pump", image: "/products/water-pump/automatic-self-priming-pumps.webp" },
+            { href: "/blower-fan", title: "Blower Fan", image: "/products/blower-fan/blower-fan.webp" },
+          ].map((item) => (
+            <a href={item.href} key={item.href}>
+              <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
+              <span>
+                <strong>{item.title}</strong>
+                <small>View more ↗</small>
+              </span>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="section featured-section">

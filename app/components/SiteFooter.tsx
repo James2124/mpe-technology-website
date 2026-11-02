@@ -35,6 +35,62 @@ export function SiteFooter() {
             Motors
           </a>
 
+          <a href="/ac-induction-motor">
+            AC induction motor
+          </a>
+
+          <a href="/agitator">
+            Agitator
+          </a>
+
+          <a href="/bearing">
+            Bearing
+          </a>
+
+          <a href="/belting">
+            Belting
+          </a>
+
+          <a href="/chain-sprocket">
+            Chain sprocket
+          </a>
+
+          <a href="/conveyor-roller">
+            Conveyor roller
+          </a>
+
+          <a href="/conveyor-sprocket">
+            Conveyor sprocket
+          </a>
+
+          <a href="/coupling">
+            Coupling
+          </a>
+
+          <a href="/gearbox">
+            Worm gear reducer
+          </a>
+
+          <a href="/oil-lubrication">
+            Oil lubrication
+          </a>
+
+          <a href="/pulley">
+            Pulley
+          </a>
+
+          <a href="/roller-chain">
+            Roller chain
+          </a>
+
+          <a href="/water-pump">
+            Water pump
+          </a>
+
+          <a href="/blower-fan">
+            Blower fan
+          </a>
+
           <a href="/products?category=Couplings">
             Couplings
           </a>
