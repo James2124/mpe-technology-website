@@ -68,8 +68,18 @@ async function applyCatalogSeeds() {
   const pending = catalogSeedBatches.filter((batch) => !data.appliedSeeds?.includes(batch.id));
   if (pending.length === 0) return;
   const createdAt = new Date().toISOString();
+  const removedImages: string[] = [];
   for (const batch of pending) {
-    for (const product of batch.products) {
+    if (batch.removeSlugs?.length) {
+      const remove = new Set(batch.removeSlugs);
+      for (const product of data.products) {
+        if (remove.has(product.slug) && product.imagePath?.startsWith("/api/product-images/")) {
+          removedImages.push(product.imagePath.slice("/api/product-images/".length));
+        }
+      }
+      data.products = data.products.filter((product) => !remove.has(product.slug));
+    }
+    for (const product of batch.products ?? []) {
       const slug = product.slug || slugify(product.name);
       if (data.products.some((item) => item.slug === slug)) continue;
       const id = data.products.reduce((highest, item) => Math.max(highest, item.id), 0) + 1;
@@ -78,6 +88,7 @@ async function applyCatalogSeeds() {
     data.appliedSeeds?.push(batch.id);
   }
   await writeCatalog(data);
+  await Promise.all(removedImages.map((key) => removeProductImage(key)));
 }
 
 async function readCatalog(): Promise<CatalogData> {
