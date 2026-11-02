@@ -87,6 +87,10 @@ export function SiteFooter() {
             Water pump
           </a>
 
+          <a href="/blower-fan">
+            Blower fan
+          </a>
+
           <a href="/products?category=Couplings">
             Couplings
           </a>

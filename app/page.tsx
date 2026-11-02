@@ -187,6 +187,7 @@ export default async function Home() {
             { href: "/pulley", title: "Pulley", image: "/products/pulley/taper-lock-pulley.webp" },
             { href: "/roller-chain", title: "Roller Chain", image: "/products/roller-chain/roller-chain.jpg" },
             { href: "/water-pump", title: "Water Pump", image: "/products/water-pump/automatic-self-priming-pumps.webp" },
+            { href: "/blower-fan", title: "Blower Fan", image: "/products/blower-fan/blower-fan.webp" },
           ].map((item) => (
             <a href={item.href} key={item.href}>
               <img src={item.image} alt={item.title} loading="lazy" decoding="async" />

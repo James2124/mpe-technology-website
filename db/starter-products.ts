@@ -11,6 +11,7 @@ import { oilLubricationProducts } from "./info/oil-lubrication";
 import { pulleyProducts } from "./info/pulley";
 import { rollerChainProducts } from "./info/roller-chain";
 import { waterPumpProducts } from "./info/water-pump";
+import { blowerFanProducts } from "./info/blower-fan";
 import type { CreateProductInput } from "./product-store-types";
 
 export const starterProducts: CreateProductInput[] = [
@@ -38,6 +39,7 @@ export const starterProducts: CreateProductInput[] = [
   ...pulleyProducts,
   ...rollerChainProducts,
   ...waterPumpProducts,
+  ...blowerFanProducts,
   {
     name: "FCL Flexible Pin-Bush Coupling",
     category: "Couplings",

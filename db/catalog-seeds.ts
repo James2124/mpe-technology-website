@@ -11,6 +11,7 @@ import { oilLubricationProducts } from "./info/oil-lubrication";
 import { pulleyProducts } from "./info/pulley";
 import { rollerChainProducts } from "./info/roller-chain";
 import { waterPumpProducts } from "./info/water-pump";
+import { blowerFanProducts } from "./info/blower-fan";
 import type { CreateProductInput } from "./product-store-types";
 
 /**
@@ -32,4 +33,5 @@ export const catalogSeedBatches: { id: string; products: CreateProductInput[] }[
   { id: "2026-11-pulley", products: pulleyProducts },
   { id: "2026-11-roller-chain", products: rollerChainProducts },
   { id: "2026-11-water-pump", products: waterPumpProducts },
+  { id: "2026-11-blower-fan", products: blowerFanProducts },
 ];
