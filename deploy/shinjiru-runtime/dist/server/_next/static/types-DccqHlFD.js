@@ -1,0 +1,1 @@
+function e(e){return e.toLowerCase().trim().replace(/[^a-z0-9]+/g,`-`).replace(/^-|-$/g,``)}function t(e){return{...e,externalUrl:null,featured:!1}}export{e as n,t};
