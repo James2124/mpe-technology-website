@@ -67,39 +67,11 @@ export const chainSprocketInfo: ProductInfo = {
         "These effects assume the same chain speed and ideal transmission, before losses.",
       ],
     },
-    {
-      kind: "list",
-      eyebrow: "Applications of chain sprockets",
-      items: [
-        "Conveyor systems: Move products, boxes, and bulk materials.",
-        "Industrial machinery: Transfer power between rotating shafts.",
-        "Packaging machines: Drive moving parts and production lines.",
-        "Agricultural equipment: Drive chains in harvesters and other farm machinery.",
-        "Motorcycles and bicycles: Transfer driving power to the wheels.",
-        "Agitators and mixers: Drive a shaft through a chain transmission when the machine design uses this arrangement.",
-      ],
-    },
+
     {
       kind: "list",
       eyebrow: "Advantages of chain sprockets",
       items: advantages,
-    },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Chain Sprockets",
-      intro: [
-        "A chain sprocket is a toothed wheel that works with a chain to transmit power and rotational movement from one shaft to another. It is commonly used in industrial machinery, conveyor systems, vehicles, and agricultural equipment.",
-      ],
-      subheading: "Common industrial applications",
-      groups: [
-        { title: "Conveyor systems", items: ["Move products and materials along production lines.", "Drive conveyor chains and rollers.", "Transport boxes, pallets, and heavy materials."] },
-        { title: "Industrial machinery", items: ["Transfer power from a motor or gearbox to another shaft.", "Drive rotating machine components.", "Maintain a fixed speed relationship between connected sprockets."] },
-        { title: "Packaging machines", items: ["Drive bottle and carton conveyors.", "Synchronize machine movements.", "Move products between packaging stations."] },
-        { title: "Agricultural equipment", items: ["Drive harvesting mechanisms.", "Transfer power to feeding and conveying systems.", "Operate chain-driven farm machinery."] },
-        { title: "Motorcycles and bicycles", items: ["Transfer power from the engine or pedals to the rear wheel.", "Change the speed and torque relationship using different sprocket sizes."] },
-        { title: "Water and wastewater treatment", items: ["Drive chain-operated sludge scrapers.", "Move mechanical skimmers inside treatment tanks.", "Operate chain-driven material-handling equipment."] },
-        { title: "Agitators and mixers", items: ["Transfer rotation from a motor to a mixing shaft.", "Adjust the mixing speed using different sprocket sizes.", "Drive mixing equipment when a chain transmission is suitable for the design."] },
-      ],
     },
   ],
 };

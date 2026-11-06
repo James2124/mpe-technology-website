@@ -73,30 +73,7 @@ export const agitatorInfo: ProductInfo = {
     },
   ],
   sections: [
-    {
-      kind: "list",
-      eyebrow: "The used of agitator",
-      intro: "The main purpose of an agitator is to:",
-      items: uses,
-      paragraphs: [
-        "An agitator is a mechanical device used to mix, blend, or stir liquids, powders, or liquid-solid mixtures inside a tank. An electric motor is commonly used to drive the agitator and provide the rotational force needed for mixing.",
-      ],
-    },
-    {
-      kind: "groups",
-      eyebrow: "Applications of agitators",
-      groups: [
-        { title: "Chemical industry", items: ["Mixing chemical solutions", "Blending acids, alkalis, and solvents", "Maintaining uniform chemical concentration"] },
-        { title: "Food and beverage industry", items: ["Mixing sauces, syrups, and beverages", "Dissolving ingredients", "Blending food products uniformly"] },
-        { title: "Pharmaceutical industry", items: ["Mixing liquid medicines", "Preparing suspensions", "Blending ingredients in production tanks"] },
-        { title: "Water and wastewater treatment", items: ["Mixing treatment chemicals", "Keeping solids suspended", "Supporting coagulation and flocculation processes"] },
-        { title: "Paint and coating industry", items: ["Mixing pigments and resins", "Dispersing solid particles", "Producing uniform paint and coatings"] },
-        { title: "Agriculture and fertilizer industry", items: ["Blending liquid fertilizers", "Mixing agricultural chemicals", "Maintaining uniform nutrient concentration"] },
-      ],
-      paragraphs: [
-        "For example, an agitator can be used in a chemical tank to mix chemicals evenly, in a food-processing tank to blend ingredients, or in a wastewater tank to keep solids suspended.",
-      ],
-    },
+    { kind: "text", paragraphs: ["An agitator is a mechanical device used to mix, blend, or stir liquids, powders, or liquid-solid mixtures inside a tank. An electric motor is commonly used to drive the agitator and provide the rotational force needed for mixing."] },
   ],
   simplyPut: { label: "Simply put:", text: "An agitator keeps the contents of a tank moving and properly mixed for a consistent and efficient process." },
 };

@@ -45,14 +45,7 @@ export const beltingInfo: ProductInfo = {
     },
   ],
   sections: [
-    {
-      kind: "list",
-      eyebrow: "The used of belting",
-      items: uses,
-      paragraphs: [
-        "In simple terms: Belting acts as a flexible connection between rotating components, helping machines transfer power or move materials efficiently.",
-      ],
-    },
+    { kind: "text", paragraphs: ["In simple terms: Belting acts as a flexible connection between rotating components, helping machines transfer power or move materials efficiently."] },
     {
       kind: "images",
       eyebrow: "Belt description",
@@ -63,23 +56,6 @@ export const beltingInfo: ProductInfo = {
         { src: "/belting/description/a-belt.png", alt: "A belt" },
         { src: "/belting/description/b-belt.png", alt: "B belt" },
         { src: "/belting/description/c-belt.png", alt: "C belt" },
-      ],
-    },
-    {
-      kind: "groups",
-      eyebrow: "Industrial Belting Applications",
-      intro: [
-        "An industrial belt is a flexible component used to transmit power between rotating shafts or transport materials from one place to another.",
-        "In simple words, industrial belts help machines transfer movement or carry products and materials.",
-      ],
-      subheading: "Common applications of industrial belts",
-      groups: [
-        { title: "Conveyor systems", items: ["Transport products and materials.", "Move packages along production lines.", "Carry bulk materials such as sand, coal, and grains."] },
-        { title: "Electric motors and machinery", items: ["Transfer power from a motor to another shaft.", "Drive pumps, fans, and other machines.", "Transmit rotational movement using pulleys."] },
-        { title: "Automotive industry", items: ["Drive engine accessories using serpentine belts.", "Operate alternators and certain engine accessories.", "Synchronize engine components using timing belts in applicable engines."] },
-        { title: "Agriculture", items: ["Transport harvested crops.", "Drive agricultural machinery.", "Move grain and feed through processing systems."] },
-        { title: "Food and beverage industry", items: ["Transport bottles, cans, and packaged foods.", "Move products between processing stations.", "Support automated production lines."] },
-        { title: "HVAC and ventilation systems", items: ["Drive air-conditioning fans.", "Operate ventilation blowers.", "Transfer motor power to fan shafts."] },
       ],
     },
   ],

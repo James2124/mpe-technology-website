@@ -78,34 +78,6 @@ export const waterPumpInfo: ProductInfo = {
         "Note: Different pump designs work differently. A centrifugal pump generally needs to be properly primed unless it is designed to be self-priming or submerged.",
       ],
     },
-    { kind: "list", eyebrow: "Applications of water pumps", items: applications },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Water Pumps",
-      intro: [
-        "A water pump is a mechanical device used to transfer water from one location to another by providing the pressure and flow needed for a particular application. Water pumps are widely used in homes, factories, agriculture and commercial buildings.",
-      ],
-      subheading: "Common applications of water pumps",
-      groups: [
-        { title: "Domestic water supply", items: ["Pumps water from storage tanks to taps and showers.", "Supplies water to multi-storey buildings.", "Maintains suitable water pressure for household use."] },
-        { title: "Industrial factories", items: ["Transfers water between storage tanks and production equipment.", "Supplies process water to manufacturing systems.", "Supports industrial cleaning and cooling operations."] },
-        { title: "Agriculture and irrigation", items: ["Supplies water to crops and plantations.", "Transfers water from rivers, reservoirs or wells.", "Supports sprinkler and drip-irrigation systems."] },
-        { title: "Cooling and air-conditioning systems", items: ["Circulates chilled water through air-conditioning systems.", "Moves water through heat exchangers and cooling towers.", "Helps remove unwanted heat from machinery and buildings."] },
-        { title: "Drainage and flood control", items: ["Removes accumulated water from flooded areas.", "Drains basements, construction sites and underground spaces.", "Helps control unwanted water accumulation."] },
-        { title: "Water treatment plants", items: ["Transfers water through filtration and treatment processes.", "Moves treated water into storage tanks and distribution networks.", "Supports wastewater treatment operations with suitable pump designs."] },
-        { title: "Fire protection systems", items: ["Supplies water to firefighting sprinkler and hydrant systems.", "Provides the required flow and pressure during a fire.", "Uses specially designed fire pumps that meet applicable standards."] },
-      ],
-    },
-    {
-      kind: "list",
-      eyebrow: "Other applications",
-      items: [
-        "Swimming pools: Circulates water through filters and treatment equipment.",
-        "Fountains and water features: Creates water movement and decorative sprays.",
-        "Boiler systems: Supplies feedwater using pumps designed for the required pressure and temperature.",
-        "Aquaculture: Circulates water in fish farms and aquatic systems.",
-        "Mining: Dewaters mines and transfers process water using suitable heavy-duty pumps.",
-      ],
-    },
+
   ],
 };

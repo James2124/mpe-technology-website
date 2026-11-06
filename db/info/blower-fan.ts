@@ -84,33 +84,6 @@ export const blowerFanInfo: ProductInfo = {
         { title: "Shaft and bearings", items: ["The shaft transmits rotation to the impeller, while the bearings support the rotating shaft and help it turn smoothly."] },
       ],
     },
-    {
-      kind: "groups",
-      eyebrow: "Applications of blower fans",
-      groups: [
-        { title: "Industrial ventilation", items: ["Removes hot air, smoke, dust, and unwanted fumes when used with suitable extraction systems."] },
-        { title: "Combustion systems", items: ["Supplies air to boilers, furnaces, and burners to support combustion."] },
-        { title: "Wastewater treatment", items: ["Supplies air to aeration tanks to support microorganisms that break down organic waste."] },
-        { title: "Drying processes", items: ["Moves warm or ambient air over products to help remove moisture."] },
-        { title: "Dust collection", items: ["Creates airflow to carry dust toward filters or dust collectors."] },
-      ],
-    },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Blower Fans",
-      intro: [
-        "A blower fan is a machine that moves air or gas to provide ventilation, cooling, drying, combustion air, or industrial process airflow. It is usually powered by an electric motor.",
-      ],
-      subheading: "Common industrial applications",
-      groups: [
-        { title: "Industrial ventilation", items: ["Removes hot air from factories.", "Supplies fresh air to work areas.", "Extracts fumes and unwanted gases using suitable ventilation systems."] },
-        { title: "Wastewater treatment", items: ["Supplies air to aeration tanks.", "Provides oxygen for microorganisms.", "Supports biological wastewater treatment."] },
-        { title: "Dust collection systems", items: ["Moves dusty air toward filters.", "Supports extraction from grinding and cutting machines.", "Helps maintain cleaner working areas."] },
-        { title: "Boilers and furnaces", items: ["Supplies combustion air to burners.", "Helps maintain the required airflow for combustion.", "Supports industrial heating processes."] },
-        { title: "Drying systems", items: ["Circulates air in drying ovens.", "Helps remove moisture from products.", "Used in food, textile, paper, and manufacturing processes."] },
-        { title: "Cooling systems", items: ["Moves air through heat exchangers.", "Helps remove heat from machinery.", "Supports cooling in industrial equipment and HVAC systems."] },
-        { title: "Pneumatic conveying", items: ["Moves powders and granules through pipelines.", "Transfers materials such as flour, plastic pellets, and cement powder.", "Used in factories and material-handling systems."] },
-      ],
-    },
+
   ],
 };

@@ -2879,3 +2879,5 @@ textarea:focus::placeholder {
   .photos-manage { padding: 0 16px; }
   .photos-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+.acm-closing-only { margin-top: 0; }

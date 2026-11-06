@@ -78,27 +78,6 @@ export const conveyorRollerInfo: ProductInfo = {
         "Conveyor rollers are commonly used in factories, warehouses, distribution centers, and production lines.",
       ],
     },
-    {
-      kind: "list",
-      eyebrow: "Applications of conveyor rollers",
-      items: applications,
-    },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Conveyor Rollers",
-      intro: [
-        "A conveyor roller is a cylindrical component used to support and move products or materials along a conveyor system. It helps transport items smoothly from one location to another with less friction and manual handling.",
-      ],
-      subheading: "Common applications of conveyor rollers",
-      groups: [
-        { title: "Warehousing and logistics", items: ["Move cartons, parcels, and packages.", "Support loading and unloading operations.", "Transfer goods between packing and sorting areas."] },
-        { title: "Manufacturing factories", items: ["Transport products between production stations.", "Move components along assembly lines.", "Reduce manual lifting and handling."] },
-        { title: "Heavy-duty material handling", items: ["Move pallets and heavy containers.", "Transfer steel products and industrial components.", "Support heavy loads when suitable rollers are selected."] },
-        { title: "Food and beverage industry", items: ["Transport packaged food and beverage products.", "Move containers through filling and packaging lines.", "Support hygienic production systems when designed with suitable materials and cleanable components."] },
-        { title: "Airport baggage handling", items: ["Move luggage between handling stations.", "Transfer bags toward sorting and loading areas.", "Support baggage handling operations."] },
-        { title: "Packaging industry", items: ["Move boxes through sealing and labeling machines.", "Transfer products between packaging stages.", "Support automated production lines."] },
-        { title: "Paper and printing industry", items: ["Transport paper sheets and printed products.", "Support paper handling and converting equipment.", "Move materials between processing machines."] },
-      ],
-    },
+
   ],
 };
