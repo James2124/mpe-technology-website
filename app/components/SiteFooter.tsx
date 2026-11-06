@@ -94,10 +94,6 @@ export function SiteFooter() {
           <a href="/products?category=Couplings">
             Couplings
           </a>
-
-          <a href="/products?category=V-Belts">
-            V-belts
-          </a>
         </div>
 
         <div>

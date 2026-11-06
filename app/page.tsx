@@ -29,7 +29,7 @@ const categories = [
     number: "04",
     title: "Belts & pulleys",
     copy: "Power transmission products: pulley & belt.",
-    href: "/products?category=V-Belts",
+    href: "/products?category=Belting",
   },
 ];
 
@@ -88,7 +88,7 @@ export default async function Home() {
             </span>
 
             <span>
-              04 <b>V-Belts</b>
+              04 <b>Belting</b>
             </span>
           </div>
         </div>
