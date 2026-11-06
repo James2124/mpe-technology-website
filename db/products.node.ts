@@ -79,6 +79,12 @@ async function applyCatalogSeeds() {
       }
       data.products = data.products.filter((product) => !remove.has(product.slug));
     }
+    if (batch.setGalleries) {
+      for (const product of data.products) {
+        const galleryImages = batch.setGalleries[product.slug];
+        if (galleryImages) product.galleryImages = galleryImages;
+      }
+    }
     for (const product of batch.products ?? []) {
       const slug = product.slug || slugify(product.name);
       if (data.products.some((item) => item.slug === slug)) continue;

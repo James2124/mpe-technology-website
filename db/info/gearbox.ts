@@ -22,6 +22,16 @@ const support = [
   "/gearbox/support/473281980_597355483002277_498770356072703946_n.jpg",
 ];
 
+/* Photos that clearly show this model; models without one show only their product picture. */
+export const gearboxGalleries: Record<string, string[]> = {
+  WPA: ["/gearbox/support/473018886_597355326335626_1086014694302454111_n.jpg"],
+  WPX: [
+    "/gearbox/support/20210301_153953.jpg",
+    "/gearbox/support/20210301_155056.jpg",
+    "/gearbox/support/20210301_155101.jpg",
+  ],
+};
+
 function gearbox(name: string, imagePath: string) {
   return infoProduct({
     name,
@@ -31,7 +41,7 @@ function gearbox(name: string, imagePath: string) {
     features: parts,
     specs: { Type: "Worm Gear Reducer", Series: name },
     imagePath,
-    galleryImages: support.slice(2, 6),
+    galleryImages: gearboxGalleries[name] ?? [],
   });
 }
 

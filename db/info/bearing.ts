@@ -17,21 +17,24 @@ const uses = [
   "Help extend the service life of equipment.",
 ];
 
-const galleries: Record<string, string[]> = {
-  FAG: [
+/* Photos that clearly show this model; models without one show only their product picture. */
+export const bearingGalleries: Record<string, string[]> = {
+  "FAG 6000 SERIES": [
     "/bearing/fag/WhatsApp-Image-2022-06-11-at-10-07-31-AM.jpg",
-    "/bearing/fag/20200703_114754.jpg",
-    "/bearing/fag/WhatsApp-Image-2022-06-13-at-1-59-57-PM-1.jpg",
+    "/bearing/fag/WhatsApp-Image-2022-06-13-at-1-59-53-PM-2.jpg",
+    "/bearing/fag/WhatsApp-Image-2022-06-13-at-1-59-54-PM.jpg",
   ],
-  NTN: [
-    "/bearing/ntn/20221005_153344.jpg",
-    "/bearing/ntn/20200520_111955.jpg",
-    "/bearing/ntn/20221014_144808.jpg",
+  "FAG UCF": ["/bearing/fag/WhatsApp-Image-2022-06-11-at-10-07-30-AM-1.jpg"],
+  "NTN 6000 SERIES": [
+    "/bearing/ntn/WhatsApp-Image-2022-12-05-at-11-34-31-1.jpg",
+    "/bearing/ntn/WhatsApp-Image-2022-12-05-at-11-34-31.jpg",
   ],
-  SKF: [
-    "/bearing/skf/20221221_185957.jpg",
-    "/bearing/skf/20231107_112229.jpg",
-    "/bearing/skf/20220618_111418.jpg",
+  "NTN UCF": ["/bearing/ntn/20191010_082113.jpg"],
+  "SKF 6000 SERIES": [
+    "/bearing/skf/20220618_111237.jpg",
+    "/bearing/skf/476251962_617212877683204_6657178825022925241_n.jpg",
+    "/bearing/skf/476789639_617212867683205_4003496069289587150_n.jpg",
+    "/bearing/skf/476871608_617213137683178_1592727698233665954_n.jpg",
   ],
 };
 
@@ -44,7 +47,7 @@ function bearing(name: string, brand: string, series: string, imagePath: string)
     features: uses,
     specs: { Brand: brand, Series: series },
     imagePath,
-    galleryImages: galleries[brand],
+    galleryImages: bearingGalleries[name] ?? [],
   });
 }
 

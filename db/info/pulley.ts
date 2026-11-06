@@ -37,7 +37,7 @@ function pulley(name: string, imagePath: string) {
     features: functions,
     specs: { Type: name },
     imagePath,
-    galleryImages: support.slice(0, 4),
+    galleryImages: [],
   });
 }
 
