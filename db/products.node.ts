@@ -1,8 +1,9 @@
 import { access, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { Enquiry, Product } from "../app/lib/types";
+import type { Enquiry, HomeShowcase, Product } from "../app/lib/types";
 import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
 import { catalogSeedBatches } from "./catalog-seeds";
+import { defaultHomeShowcase } from "./home-showcase-defaults";
 import { starterProducts } from "./starter-products";
 
 type CatalogData = {
@@ -10,6 +11,7 @@ type CatalogData = {
   products: Product[];
   enquiries: Enquiry[];
   appliedSeeds?: string[];
+  homeShowcase?: HomeShowcase;
 };
 
 let ready: Promise<void> | null = null;
@@ -64,6 +66,7 @@ async function applyCatalogSeeds() {
     products: Array.isArray(value.products) ? value.products : [],
     enquiries: Array.isArray(value.enquiries) ? value.enquiries : [],
     appliedSeeds: Array.isArray(value.appliedSeeds) ? value.appliedSeeds : [],
+    homeShowcase: value.homeShowcase,
   };
   const pending = catalogSeedBatches.filter((batch) => !data.appliedSeeds?.includes(batch.id));
   if (pending.length === 0) return;
@@ -105,6 +108,7 @@ async function readCatalog(): Promise<CatalogData> {
     products: Array.isArray(value.products) ? value.products : [],
     enquiries: Array.isArray(value.enquiries) ? value.enquiries : [],
     appliedSeeds: Array.isArray(value.appliedSeeds) ? value.appliedSeeds : [],
+    homeShowcase: value.homeShowcase,
   };
 }
 
@@ -193,6 +197,18 @@ export async function deleteProduct(id: number): Promise<Product | null> {
     const index = data.products.findIndex((product) => product.id === id);
     if (index < 0) return null;
     return data.products.splice(index, 1)[0] ?? null;
+  });
+}
+
+export async function getHomeShowcase(): Promise<HomeShowcase> {
+  const data = await readCatalog();
+  return data.homeShowcase ?? defaultHomeShowcase;
+}
+
+export async function updateHomeShowcase(update: (current: HomeShowcase) => HomeShowcase): Promise<HomeShowcase> {
+  return updateCatalog((data) => {
+    data.homeShowcase = update(structuredClone(data.homeShowcase ?? defaultHomeShowcase));
+    return data.homeShowcase;
   });
 }
 

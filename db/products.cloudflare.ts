@@ -1,7 +1,8 @@
 import { env } from "cloudflare:workers";
 import type { ChatGPTUser } from "../app/chatgpt-auth";
-import type { Enquiry, Product, ProductCatalog } from "../app/lib/types";
+import type { Enquiry, HomeShowcase, Product, ProductCatalog } from "../app/lib/types";
 import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
+import { defaultHomeShowcase } from "./home-showcase-defaults";
 import { starterProducts } from "./starter-products";
 
 type ProductRow = {
@@ -88,6 +89,10 @@ async function initializeSchema() {
       created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     )`),
     db.prepare("CREATE INDEX IF NOT EXISTS idx_enquiries_created ON enquiries(created_at)"),
+    db.prepare(`CREATE TABLE IF NOT EXISTS site_settings (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    )`),
   ]);
 
   const count = await db.prepare("SELECT COUNT(*) AS total FROM products").first<{ total: number }>();
@@ -216,6 +221,21 @@ export async function deleteProduct(id: number): Promise<Product | null> {
   if (!row) return null;
   await getD1().prepare("DELETE FROM products WHERE id = ?").bind(id).run();
   return mapProduct(row);
+}
+
+export async function getHomeShowcase(): Promise<HomeShowcase> {
+  await ensureProductSchema();
+  const row = await getD1().prepare("SELECT value FROM site_settings WHERE key = 'home_showcase'").first<{ value: string }>();
+  return row ? parseJson<HomeShowcase>(row.value, defaultHomeShowcase) : defaultHomeShowcase;
+}
+
+export async function updateHomeShowcase(update: (current: HomeShowcase) => HomeShowcase): Promise<HomeShowcase> {
+  const next = update(structuredClone(await getHomeShowcase()));
+  await getD1()
+    .prepare("INSERT INTO site_settings (key, value) VALUES ('home_showcase', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value")
+    .bind(JSON.stringify(next))
+    .run();
+  return next;
 }
 
 export async function claimOrCheckAdmin(user: ChatGPTUser): Promise<boolean> {
