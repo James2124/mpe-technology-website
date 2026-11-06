@@ -12,6 +12,7 @@ type CatalogData = {
   enquiries: Enquiry[];
   appliedSeeds?: string[];
   homeShowcase?: HomeShowcase;
+  settings?: Record<string, unknown>;
 };
 
 let ready: Promise<void> | null = null;
@@ -67,6 +68,7 @@ async function applyCatalogSeeds() {
     enquiries: Array.isArray(value.enquiries) ? value.enquiries : [],
     appliedSeeds: Array.isArray(value.appliedSeeds) ? value.appliedSeeds : [],
     homeShowcase: value.homeShowcase,
+    settings: value.settings && typeof value.settings === "object" ? value.settings : {},
   };
   const pending = catalogSeedBatches.filter((batch) => !data.appliedSeeds?.includes(batch.id));
   if (pending.length === 0) return;
@@ -109,6 +111,7 @@ async function readCatalog(): Promise<CatalogData> {
     enquiries: Array.isArray(value.enquiries) ? value.enquiries : [],
     appliedSeeds: Array.isArray(value.appliedSeeds) ? value.appliedSeeds : [],
     homeShowcase: value.homeShowcase,
+    settings: value.settings && typeof value.settings === "object" ? value.settings : {},
   };
 }
 
@@ -209,6 +212,19 @@ export async function updateHomeShowcase(update: (current: HomeShowcase) => Home
   return updateCatalog((data) => {
     data.homeShowcase = update(structuredClone(data.homeShowcase ?? defaultHomeShowcase));
     return data.homeShowcase;
+  });
+}
+
+export async function getSiteSetting(key: string): Promise<unknown> {
+  const data = await readCatalog();
+  return data.settings?.[key];
+}
+
+export async function updateSiteSetting<T>(key: string, update: (current: unknown) => T): Promise<T> {
+  return updateCatalog((data) => {
+    const next = update(structuredClone(data.settings?.[key]));
+    data.settings = { ...data.settings, [key]: next };
+    return next;
   });
 }
 
