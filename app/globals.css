@@ -86,7 +86,7 @@ h1 em, h2 em { font-family: Georgia, serif; color: var(--green); font-weight: 40
 .featured-section .section-heading h2 em { color: var(--lime); }
 .light-link { color: #fff; }
 .home-products { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 70px; }
-.home-product-image { height: 410px; background: var(--paper); display: grid; place-items: center; position: relative; overflow: hidden; }
+.home-product-image { height: 410px; background: var(--paper); display: grid; grid-template: 100% / 100%; place-items: center; position: relative; overflow: hidden; }
 .home-product-image::after { content: ""; position: absolute; width: 65%; aspect-ratio: 1; border: 1px solid rgba(20,34,24,.13); border-radius: 50%; }
 .home-product-image > span { position: absolute; top: 18px; right: 20px; color: var(--ink); font-family: Georgia,serif; font-style: italic; z-index: 2; }
 .home-product-image img { width: 82%; height: 78%; object-fit: contain; position: relative; z-index: 1; transition: transform .3s; }
@@ -129,7 +129,7 @@ h1 em, h2 em { font-family: Georgia, serif; color: var(--green); font-weight: 40
 .catalog-search input { width: 100%; border: 0; border-bottom: 1px solid var(--ink); background: transparent; padding: 11px 8px 11px 36px; font-size: 13px; outline: 0; }
 .result-count { font-family: var(--font-geist-mono),monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; margin: 34px 0 20px; }
 .product-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 50px 22px; }
-.product-image { height: 390px; display: grid; place-items: center; background: #efede5; position: relative; overflow: hidden; }
+.product-image { height: 390px; display: grid; grid-template: 100% / 100%; place-items: center; background: #efede5; position: relative; overflow: hidden; }
 .product-image::before { content: ""; width: 70%; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; position: absolute; }
 .product-image img { width: 80%; height: 75%; object-fit: contain; position: relative; transition: transform .3s; }
 .product-image:hover img { transform: scale(1.07) rotate(-2deg); }
