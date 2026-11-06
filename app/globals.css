@@ -2808,3 +2808,43 @@ textarea:focus::placeholder {
   .info-range-heading { align-items: flex-start; flex-direction: column; }
   .info-links { grid-template-columns: 1fr; }
 }
+
+/* ---------- Admin: homepage highlights ---------- */
+
+.manage-intro-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+.showcase-saved { margin: 0 6vw 20px; padding: 14px 18px; background: #e3f0d6; border-left: 4px solid var(--green); font-size: 13px; font-weight: 700; }
+.showcase-manage { padding: 0 6vw; display: grid; gap: 20px; }
+.showcase-feature-form { grid-template-columns: 300px 1fr; gap: 32px; align-items: start; }
+.showcase-feature-preview { display: grid; gap: 16px; }
+.showcase-feature-preview img { width: 100%; aspect-ratio: 4/3; object-fit: contain; background: #eceae2; padding: 16px; }
+.showcase-feature-preview small, .showcase-add-form small { color: var(--muted); font-size: 11px; }
+.showcase-feature-fields { display: grid; gap: 20px; }
+.showcase-card-list { display: grid; }
+.showcase-card-row { display: grid; grid-template-columns: 28px 84px 1fr; gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.showcase-card-number { color: var(--green); font-family: var(--font-geist-mono),monospace; font-size: 10px; }
+.showcase-card-row img { width: 84px; height: 70px; object-fit: contain; background: #eceae2; padding: 6px; }
+.showcase-card-form { grid-template-columns: 1fr 1.2fr 1fr auto; gap: 12px; align-items: end; }
+.showcase-card-form input { padding: 10px 11px; }
+.showcase-card-form input[type="file"] { padding: 7px; font-size: 11px; }
+.showcase-card-actions { display: flex; gap: 6px; }
+.showcase-card-actions button { border: 1px solid var(--line); background: transparent; padding: 10px 12px; font-size: 11px; font-weight: 750; cursor: pointer; }
+.showcase-card-actions button:disabled { opacity: .3; cursor: default; }
+.showcase-card-actions .showcase-save { background: var(--green); border-color: var(--green); color: #fff; }
+.showcase-card-actions .showcase-delete { color: #b42318; }
+.showcase-add-form { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.showcase-add-form h3 { margin: 0; font-size: 18px; letter-spacing: -.03em; }
+
+@media (max-width: 1020px) {
+  .showcase-feature-form { grid-template-columns: 1fr; }
+  .showcase-card-form { grid-template-columns: 1fr 1fr; }
+  .showcase-card-actions { grid-column: 1 / -1; }
+}
+
+@media (max-width: 680px) {
+  .showcase-card-row { grid-template-columns: 64px 1fr; }
+  .showcase-card-number { display: none; }
+  .showcase-card-row img { width: 64px; height: 56px; }
+  .showcase-card-form { grid-template-columns: 1fr; }
+  .showcase-manage { padding: 0 16px; }
+  .showcase-saved { margin: 0 16px 16px; }
+}

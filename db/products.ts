@@ -1,5 +1,5 @@
 import type { ChatGPTUser } from "../app/chatgpt-auth";
-import type { Enquiry, Product } from "../app/lib/types";
+import type { Enquiry, HomeShowcase, Product } from "../app/lib/types";
 import type { CreateEnquiryInput, CreateProductInput, UpdateProductInput, StoredProductImage } from "./product-store-types";
 
 type ProductBackend = {
@@ -13,6 +13,8 @@ type ProductBackend = {
   ): Promise<Product | null>;
   deleteProduct(id: number): Promise<Product | null>;
   claimOrCheckAdmin(user: ChatGPTUser): Promise<boolean>;
+  getHomeShowcase(): Promise<HomeShowcase>;
+  updateHomeShowcase(update: (current: HomeShowcase) => HomeShowcase): Promise<HomeShowcase>;
   createEnquiry(input: CreateEnquiryInput): Promise<void>;
   listEnquiries(): Promise<Enquiry[]>;
   saveProductImage(image: File): Promise<string>;
@@ -57,6 +59,14 @@ export async function updateProduct(
 
 export async function deleteProduct(id: number) {
   return (await backend()).deleteProduct(id);
+}
+
+export async function getHomeShowcase() {
+  return (await backend()).getHomeShowcase();
+}
+
+export async function updateHomeShowcase(update: (current: HomeShowcase) => HomeShowcase) {
+  return (await backend()).updateHomeShowcase(update);
 }
 
 export async function claimOrCheckAdmin(user: ChatGPTUser) {
