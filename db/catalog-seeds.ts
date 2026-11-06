@@ -12,15 +12,26 @@ import { pulleyProducts } from "./info/pulley";
 import { rollerChainProducts } from "./info/roller-chain";
 import { waterPumpProducts } from "./info/water-pump";
 import { blowerFanProducts } from "./info/blower-fan";
+import { productSlug } from "./info/types";
 import type { CreateProductInput } from "./product-store-types";
 
 /**
  * Changes applied once to catalogs that already exist on the server.
- * A batch adds `products` (skipping slugs that already exist) and deletes
- * `removeSlugs`. Each batch id is recorded after it runs, so administrators
+ * A batch adds `products` (skipping slugs that already exist), deletes
+ * `removeSlugs`, and replaces the gallery photos of the products named in
+ * `setGalleries` (slug → photos). Each batch id is recorded after it runs, so administrators
  * can edit or delete products in /manage without the batch undoing it.
  */
-export type CatalogSeedBatch = { id: string; products?: CreateProductInput[]; removeSlugs?: string[] };
+export type CatalogSeedBatch = {
+  id: string;
+  products?: CreateProductInput[];
+  removeSlugs?: string[];
+  setGalleries?: Record<string, string[]>;
+};
+
+function galleriesBySlug(products: CreateProductInput[]) {
+  return Object.fromEntries(products.map((product) => [productSlug(product.name), product.galleryImages ?? []]));
+}
 
 export const catalogSeedBatches: CatalogSeedBatch[] = [
   { id: "2026-11-ac-induction-motors", products: acMotorProducts },
@@ -49,5 +60,11 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
   {
     id: "2026-11-remove-old-v-belt",
     removeSlugs: ["classical-industrial-v-belt"],
+  },
+  {
+    // Gallery photos now show only the model named; previously every model
+    // in a group shared the same photos.
+    id: "2026-11-per-model-galleries",
+    setGalleries: galleriesBySlug([...bearingProducts, ...gearboxProducts, ...pulleyProducts]),
   },
 ];
