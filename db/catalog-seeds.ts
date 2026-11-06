@@ -46,4 +46,8 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
       "1610-taper-lock-v-belt-pulley",
     ],
   },
+  {
+    id: "2026-11-remove-old-v-belt",
+    removeSlugs: ["classical-industrial-v-belt"],
+  },
 ];

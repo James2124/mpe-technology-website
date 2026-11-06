@@ -30,17 +30,6 @@ export const starterProducts: CreateProductInput[] = [
   ...waterPumpProducts,
   ...blowerFanProducts,
   {
-    name: "Classical Industrial V-Belt",
-    category: "V-Belts",
-    subtitle: "Reliable flexible power transfer",
-    description: "A durable classical-section V-belt for smooth, quiet power transmission across a wide range of industrial equipment.",
-    features: ["Oil and heat resistant", "Low-stretch tension member", "Broad size availability"],
-    specs: { Type: "Classical V-belt", Sections: "A / B series", Material: "Reinforced rubber", Use: "Industrial drives" },
-    imagePath: "/products/v-belt.png",
-    externalUrl: null,
-    featured: false,
-  },
-  {
     name: "NMRV Aluminium Worm Reducer",
     category: "Gear Reducers",
     subtitle: "Lightweight modular gearbox",
