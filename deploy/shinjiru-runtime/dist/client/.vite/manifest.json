@@ -19,7 +19,7 @@
     "name": "rolldown-runtime"
   },
   "app/components/CursorEffects.tsx": {
-    "file": "_next/static/chunks/CursorEffects-cJ_lTbsk.js",
+    "file": "_next/static/chunks/CursorEffects-COb2pi4Z.js",
     "name": "CursorEffects",
     "src": "app/components/CursorEffects.tsx",
     "isDynamicEntry": true,
@@ -50,7 +50,7 @@
     ]
   },
   "app/components/ScrollReveal.tsx": {
-    "file": "_next/static/chunks/ScrollReveal-CHfmI62y.js",
+    "file": "_next/static/chunks/ScrollReveal-DE5Ry6BH.js",
     "name": "ScrollReveal",
     "src": "app/components/ScrollReveal.tsx",
     "isDynamicEntry": true,
@@ -109,8 +109,17 @@
       "_framework-BgSIrAUN.js"
     ]
   },
+  "app/manage/homepage/ConfirmButton.tsx": {
+    "file": "_next/static/chunks/ConfirmButton-CGaGBmTO.js",
+    "name": "ConfirmButton",
+    "src": "app/manage/homepage/ConfirmButton.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_framework-BgSIrAUN.js"
+    ]
+  },
   "app/products/[slug]/ProductMediaGallery.tsx": {
-    "file": "_next/static/chunks/ProductMediaGallery-777kbydc.js",
+    "file": "_next/static/chunks/ProductMediaGallery-DLFFsJ0T.js",
     "name": "ProductMediaGallery",
     "src": "app/products/[slug]/ProductMediaGallery.tsx",
     "isDynamicEntry": true,
@@ -120,7 +129,7 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-D9lfu8Y3.js",
+    "file": "_next/static/chunks/layout-segment-context-CUEccxcw.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -132,7 +141,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-DBReiS1Q.js",
+    "file": "_next/static/chunks/index-DYMfwgRm.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
@@ -149,6 +158,7 @@
       "app/products/[slug]/ProductMediaGallery.tsx",
       "app/components/WhyVisual.tsx",
       "app/components/ProductExplorer.tsx",
+      "app/manage/homepage/ConfirmButton.tsx",
       "app/components/CursorEffects.tsx",
       "app/components/HeroVisual.tsx",
       "app/manage/ProductOrderForm.tsx",

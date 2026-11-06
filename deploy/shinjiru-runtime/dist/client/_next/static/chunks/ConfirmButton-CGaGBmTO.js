@@ -1,0 +1,1 @@
+import{i as e}from"./framework-BgSIrAUN.js";var t=e();function n({message:e,className:n,children:r,name:i,value:a}){return(0,t.jsx)(`button`,{type:`submit`,className:n,name:i,value:a,onClick:t=>{window.confirm(e)||t.preventDefault()},children:r})}export{n as ConfirmButton};
