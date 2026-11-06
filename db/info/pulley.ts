@@ -74,22 +74,5 @@ export const pulleyInfo: ProductInfo = {
         "For example, a small motor pulley connected to a larger driven pulley reduces the driven shaft's speed while increasing its available torque, subject to power losses.",
       ],
     },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Pulley",
-      intro: [
-        "A pulley is a mechanical device used to transmit power, change rotational speed, guide belts or ropes, and help lift or move loads. Pulleys are widely used in industrial machinery, vehicles and lifting equipment.",
-      ],
-      subheading: "Common applications of pulleys",
-      groups: [
-        { title: "Conveyor systems", items: ["Transfers power from a motor to a conveyor belt.", "Moves materials and products along a production line.", "Used in factories, warehouses and packaging industries."] },
-        { title: "Fans and blowers", items: ["Transfers rotation from a motor to a fan shaft.", "Adjusts fan speed by changing pulley diameters.", "Used in ventilation and air-conditioning systems."] },
-        { title: "Water pumps", items: ["Transfers motor power to the pump.", "Allows speed adjustment using different pulley sizes.", "Used in water supply and industrial pumping systems."] },
-        { title: "Cranes and lifting equipment", items: ["Guides steel cables or ropes.", "Multiple pulleys can reduce the input force required to lift a load.", "Used in hoists, cranes and workshops."] },
-        { title: "Air compressors", items: ["Transfers power from the motor to the compressor.", "Helps achieve the required compressor operating speed.", "Common in workshops and manufacturing plants."] },
-        { title: "Automotive engines", items: ["Drives accessories such as alternators and air-conditioning compressors.", "Guides and tensions engine belts.", "Helps transfer rotational power between components."] },
-        { title: "Machine tools", items: ["Transmits motor power to rotating machine components.", "Changes spindle speed using different pulley ratios.", "Used in drilling machines, lathes and milling equipment."] },
-      ],
-    },
   ],
 };

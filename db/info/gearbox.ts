@@ -76,22 +76,5 @@ export const gearboxInfo: ProductInfo = {
         "The output shaft delivers lower-speed rotation with higher torque.",
       ],
     },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Worm Gear Speed Reducers",
-      intro: [
-        "A worm gear speed reducer is used in industrial machines to reduce motor speed, increase output torque, and transfer power between shafts, usually at a 90° angle.",
-      ],
-      subheading: "Common industrial applications",
-      groups: [
-        { title: "Conveyor systems", items: ["Controls the speed of conveyor belts.", "Provides sufficient torque to move products.", "Used in factories, warehouses and production lines."] },
-        { title: "Lifting and hoisting equipment", items: ["Reduces motor speed for controlled lifting.", "Provides high output torque.", "Used in winches and some hoisting mechanisms.", "Safety note: A suitable brake or load-holding system may be necessary."] },
-        { title: "Packaging machines", items: ["Controls the movement of packaging materials.", "Drives filling, sealing and wrapping mechanisms.", "Helps maintain consistent operating speed."] },
-        { title: "Mixing machines", items: ["Reduces the speed of mixer blades.", "Provides torque for mixing liquids, powders and other materials.", "Used in food processing and chemical production, with appropriate equipment materials and sealing."] },
-        { title: "Valves and gate actuators", items: ["Provides controlled rotary movement.", "Helps open and close valves or gates.", "Used in water treatment plants and industrial piping systems."] },
-        { title: "Rotary tables and positioning equipment", items: ["Reduces rotational speed.", "Provides controlled movement for positioning workpieces.", "Used in machine tools, assembly equipment and indexing tables."] },
-        { title: "Automatic gates and doors", items: ["Reduces motor speed for smoother movement.", "Provides the torque needed to move heavy gates.", "Used in industrial doors and gate operating systems."] },
-      ],
-    },
   ],
 };

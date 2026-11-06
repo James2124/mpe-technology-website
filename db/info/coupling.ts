@@ -68,28 +68,6 @@ export const couplingInfo: ProductInfo = {
   ],
   sections: [
     { kind: "text", paragraphs: [mechanical] },
-    {
-      kind: "list",
-      eyebrow: "The used of coupling",
-      items: uses,
-      paragraphs: [
-        "In simple terms: A coupling acts as a connector between two components, allowing them to work together as one system.",
-      ],
-    },
-    {
-      kind: "list",
-      eyebrow: "Applications of coupling",
-      intro: "The applications of coupling depend on the field you are studying. In physics and engineering, coupling generally means transferring energy, force, or signals between two systems.",
-      items: [
-        "Mechanical engineering – Connects two shafts to transmit power from one shaft to another, such as in motors and gearboxes.",
-        "Electrical engineering – Transfers electrical signals or energy between circuits, such as transformer coupling.",
-        "Communication systems – Transfers signals between electronic components, antennas, and transmission lines.",
-        "Optical communication – Transfers light from one optical fiber or device to another.",
-        "Automobiles – Connects the engine to the transmission system to transfer rotational power.",
-        "Chemical engineering – Coupling reactions join two molecules to form a larger molecule.",
-        "Medical equipment – Ultrasound coupling gel helps transmit sound waves between the transducer and the skin.",
-        "Robotics – Connects mechanical components and transfers motion or force between parts.",
-      ],
-    },
+    { kind: "text", paragraphs: ["In simple terms: A coupling acts as a connector between two components, allowing them to work together as one system."] },
   ],
 };

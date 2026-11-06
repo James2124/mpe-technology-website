@@ -145,16 +145,7 @@ export const bearingInfo: ProductInfo = {
   description,
   productGroups,
   sections: [
-    {
-      kind: "list",
-      eyebrow: "The used of bearing",
-      intro: "The main purpose of a bearing is to:",
-      items: uses,
-      paragraphs: [
-        "For example, in an electric motor, bearings support the motor shaft and allow it to rotate smoothly. In a vehicle wheel, bearings allow the wheel to turn with less friction.",
-        "Simply put: A bearing helps machine parts move smoothly, efficiently, and reliably.",
-      ],
-    },
+    { kind: "text", paragraphs: ["Simply put: A bearing helps machine parts move smoothly, efficiently, and reliably."] },
     {
       kind: "text",
       eyebrow: "Bearing",
@@ -179,23 +170,6 @@ export const bearingInfo: ProductInfo = {
       intro: "If a bearing is damaged, you may notice:",
       items: ["Unusual noise", "Excessive vibration", "High temperature", "Rough shaft rotation"],
       paragraphs: ["Important: Proper lubrication, correct installation, and regular inspection help extend bearing life."],
-    },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Bearings",
-      intro: [
-        "A bearing is used in machines to support rotating parts, reduce friction, and help shafts rotate smoothly. Bearings are widely used in industrial equipment, vehicles, household appliances, and many other machines.",
-      ],
-      subheading: "Common applications of bearings",
-      groups: [
-        { title: "Electric motors", items: ["Support the motor shaft.", "Allow the rotor to rotate smoothly.", "Reduce friction and wear."] },
-        { title: "Pumps", items: ["Support the rotating shaft.", "Help maintain shaft alignment.", "Handle forces generated during operation."] },
-        { title: "Gearboxes", items: ["Support rotating gears and shafts.", "Carry radial and axial loads.", "Help maintain smooth power transmission."] },
-        { title: "Conveyor systems", items: ["Support conveyor rollers and pulleys.", "Allow rollers to rotate easily.", "Help transport materials efficiently."] },
-        { title: "Vehicles", items: ["Support vehicle wheels.", "Allow wheels to rotate smoothly.", "Carry vehicle weight and driving forces."] },
-        { title: "Agitators and mixers", items: ["Support the rotating agitator shaft.", "Help maintain shaft alignment.", "Carry loads generated during mixing."] },
-        { title: "Household appliances", items: ["Support washing machine drums.", "Help fans rotate smoothly.", "Reduce friction in rotating components."] },
-      ],
     },
   ],
 };

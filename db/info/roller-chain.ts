@@ -56,21 +56,5 @@ export const rollerChainInfo: ProductInfo = {
         "Unlike a belt drive, a properly engaged roller chain drive provides a fixed speed ratio with minimal transmission slip.",
       ],
     },
-    {
-      kind: "groups",
-      eyebrow: "Applications of Roller Chain",
-      intro: [
-        "A roller chain is a mechanical component used to transmit power and motion between rotating shafts. It works with toothed wheels called sprockets and is widely used in industrial machinery, conveyors, vehicles and agricultural equipment.",
-      ],
-      subheading: "Common applications of roller chains",
-      groups: [
-        { title: "Conveyor systems", items: ["Transfers power from a motor to a conveyor shaft.", "Moves products and materials along production lines.", "Used in factories, warehouses and packaging facilities."] },
-        { title: "Packaging machines", items: ["Drives moving parts in filling and wrapping machines.", "Helps synchronize machine movements.", "Supports continuous production operations."] },
-        { title: "Motorcycles and bicycles", items: ["Transfers rotational power from the front sprocket to the rear sprocket.", "Drives the rear wheel to move the vehicle.", "Provides efficient mechanical power transmission when properly maintained."] },
-        { title: "Agricultural machinery", items: ["Drives components in harvesters, seeders and other farming machines.", "Transfers power to moving mechanisms.", "Operates in demanding working environments."] },
-        { title: "Industrial machinery", items: ["Transfers power between rotating shafts.", "Used in manufacturing and material-handling equipment.", "Maintains a fixed speed ratio when the chain engages correctly with the sprockets."] },
-        { title: "Material-handling equipment", items: ["Drives bucket elevators and certain lifting or conveying mechanisms.", "Moves bulk materials such as grain and other industrial products.", "Requires a chain specifically rated for the load and operating conditions."] },
-      ],
-    },
   ],
 };

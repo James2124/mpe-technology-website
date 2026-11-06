@@ -4,15 +4,11 @@ import { SiteHeader } from "../components/SiteHeader";
 import { listProducts } from "../../db/products";
 import { getPagePhotoGroups } from "../../db/page-photos";
 import {
-  acMotorApplications,
-  acMotorApplicationsIntro,
   acMotorClosing,
   acMotorDescription,
   acMotorProducts,
   acMotorSimplyPut,
   acMotorTitle,
-  acMotorUses,
-  acMotorUsesIntro,
   productSlug,
 } from "../../db/ac-motor-products";
 
@@ -65,18 +61,6 @@ export default async function AcInductionMotorPage() {
         </div>
       </section>
 
-      <section className="spec-section acm-uses">
-        <div data-reveal="left">
-          <p className="eyebrow"><span /> THE USED OF MOTOR</p>
-          <p className="acm-intro">{acMotorUsesIntro}</p>
-        </div>
-        <ul className="feature-list" data-reveal="stagger" data-reveal-delay="1">
-          {acMotorUses.map((use) => (
-            <li key={use}><span>✓</span>{use}</li>
-          ))}
-        </ul>
-      </section>
-
       <section className="section acm-anatomy">
         <figure className="acm-anatomy-figure" data-reveal="up">
           <img
@@ -89,23 +73,8 @@ export default async function AcInductionMotorPage() {
       </section>
 
       <section className="section acm-applications">
-        <div className="section-heading" data-reveal="up">
-          <p className="eyebrow"><span /> APPLICATIONS OF ELECTRIC MOTORS</p>
-          <p>{acMotorApplicationsIntro}</p>
-        </div>
-        <div className="category-grid acm-application-grid" data-reveal="stagger" data-reveal-delay="1">
-          {acMotorApplications.map((group, index) => (
-            <div className="category-card" key={group.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{group.title}</h3>
-              <ul>
-                {group.items.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="acm-closing" data-reveal="up">
-          {acMotorClosing.map((text) => <p key={text}>{text}</p>)}
+        <div className="acm-closing acm-closing-only" data-reveal="up">
+          {acMotorClosing.filter((text) => !text.startsWith("For example")).map((text) => <p key={text}>{text}</p>)}
           <p className="acm-why"><strong>Simply put:</strong> {acMotorSimplyPut}</p>
         </div>
       </section>
