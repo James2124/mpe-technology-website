@@ -14,6 +14,8 @@ type ProductBackend = {
   deleteProduct(id: number): Promise<Product | null>;
   claimOrCheckAdmin(user: ChatGPTUser): Promise<boolean>;
   getHomeShowcase(): Promise<HomeShowcase>;
+  getSiteSetting(key: string): Promise<unknown>;
+  updateSiteSetting<T>(key: string, update: (current: unknown) => T): Promise<T>;
   updateHomeShowcase(update: (current: HomeShowcase) => HomeShowcase): Promise<HomeShowcase>;
   createEnquiry(input: CreateEnquiryInput): Promise<void>;
   listEnquiries(): Promise<Enquiry[]>;
@@ -59,6 +61,14 @@ export async function updateProduct(
 
 export async function deleteProduct(id: number) {
   return (await backend()).deleteProduct(id);
+}
+
+export async function getSiteSetting(key: string) {
+  return (await backend()).getSiteSetting(key);
+}
+
+export async function updateSiteSetting<T>(key: string, update: (current: unknown) => T) {
+  return (await backend()).updateSiteSetting(key, update);
 }
 
 export async function getHomeShowcase() {

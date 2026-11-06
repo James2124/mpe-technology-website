@@ -1,6 +1,7 @@
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { listProducts } from "../../db/products";
+import { getPagePhotoGroups } from "../../db/page-photos";
 import { productSlug, type InfoSection, type ProductInfo } from "../../db/info/types";
 
 function Section({ section }: { section: InfoSection }) {
@@ -81,9 +82,9 @@ function Section({ section }: { section: InfoSection }) {
 }
 
 export async function ProductInfoPage({ info }: { info: ProductInfo }) {
-  const products = await listProducts();
+  const [products, allPhotoGroups] = await Promise.all([listProducts(), getPagePhotoGroups(info.path)]);
   const liveSlugs = new Set(products.map((product) => product.slug));
-  const photoGroups = (info.photoGroups ?? info.productGroups).filter((group) => group.photos.length > 0);
+  const photoGroups = allPhotoGroups.filter((group) => group.photos.length > 0);
 
   return (
     <main>

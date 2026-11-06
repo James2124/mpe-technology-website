@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { listProducts } from "../../db/products";
+import { getPagePhotoGroups } from "../../db/page-photos";
 import {
   acMotorApplications,
   acMotorApplicationsIntro,
@@ -25,23 +26,9 @@ export const metadata: Metadata = {
   },
 };
 
-const supportPhotos = [
-  "/ac-motor/container-loading-1.jpg",
-  "/ac-motor/crated-motors-1.jpg",
-  "/ac-motor/motor-delivery-2.jpg",
-  "/ac-motor/warehouse-stock-2.jpg",
-  "/ac-motor/three-phase-motor-blue-1.jpg",
-  "/ac-motor/container-loading-3.jpg",
-  "/ac-motor/crated-stock-2.jpg",
-  "/ac-motor/geared-motor-1.jpg",
-  "/ac-motor/three-phase-motor-grey-2.jpg",
-  "/ac-motor/motor-delivery-1.jpg",
-  "/ac-motor/warehouse-shelving.jpg",
-  "/ac-motor/parts-stock-1.jpg",
-];
-
 export default async function AcInductionMotorPage() {
-  const products = await listProducts();
+  const [products, photoGroups] = await Promise.all([listProducts(), getPagePhotoGroups("/ac-induction-motor")]);
+  const supportPhotos = photoGroups.flatMap((group) => group.photos);
   const liveSlugs = new Set(products.map((product) => product.slug));
 
   return (
@@ -123,6 +110,7 @@ export default async function AcInductionMotorPage() {
         </div>
       </section>
 
+      {supportPhotos.length > 0 && (
       <section className="section acm-stock">
         <div className="acm-stock-grid" data-reveal="stagger">
           {supportPhotos.map((src) => (
@@ -132,6 +120,7 @@ export default async function AcInductionMotorPage() {
           ))}
         </div>
       </section>
+      )}
 
       <section className="catalog-cta" data-reveal="up">
         <div><span>{acMotorTitle}</span><strong>Enquire about this product</strong></div>

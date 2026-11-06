@@ -49,6 +49,7 @@ export default async function ManagePage() {
         <div><p>CATALOG / ADMIN</p><h1>Manage products.</h1></div>
         <div className="manage-intro-links">
           <a className="primary-btn" href="/manage/homepage">Edit homepage highlights <span>→</span></a>
+          <a className="primary-btn" href="/manage/photos">Edit page photos <span>→</span></a>
           <a className="text-link" href="/products" target="_blank" rel="noreferrer">View live catalog ↗</a>
         </div>
       </section>

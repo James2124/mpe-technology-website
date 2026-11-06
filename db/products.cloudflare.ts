@@ -238,6 +238,21 @@ export async function updateHomeShowcase(update: (current: HomeShowcase) => Home
   return next;
 }
 
+export async function getSiteSetting(key: string): Promise<unknown> {
+  await ensureProductSchema();
+  const row = await getD1().prepare("SELECT value FROM site_settings WHERE key = ?").bind(key).first<{ value: string }>();
+  return row ? parseJson<unknown>(row.value, undefined) : undefined;
+}
+
+export async function updateSiteSetting<T>(key: string, update: (current: unknown) => T): Promise<T> {
+  const next = update(await getSiteSetting(key));
+  await getD1()
+    .prepare("INSERT INTO site_settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value")
+    .bind(key, JSON.stringify(next))
+    .run();
+  return next;
+}
+
 export async function claimOrCheckAdmin(user: ChatGPTUser): Promise<boolean> {
   await ensureProductSchema();
   const db = getD1();
