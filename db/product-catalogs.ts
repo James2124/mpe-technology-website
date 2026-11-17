@@ -1,10 +1,11 @@
 import type { ProductCatalog } from "../app/lib/types";
 
-/* Catalogs from "MP&E CATALOG", by product slug. PNG sheets were converted to one-page PDFs. */
+/* Catalogs from "MP&E CATALOG", by product slug. PNG sheets were converted to one-page PDFs (sharpened, lossless);
+   photos in the multi-page PDFs were upscaled; every page has a faint MP&E logo watermark. */
 
 const c = (name: string): ProductCatalog => ({
-  pdfPath: `/catalogs/${name}.pdf`,
-  coverImagePath: `/catalogs/${name}-cover.webp`,
+  pdfPath: `/catalogs/hd/${name}.pdf`,
+  coverImagePath: `/catalogs/hd/${name}-cover.webp`,
 });
 
 const bearing6000 = [c("deep-groove-ball-bearing-6000"), c("deep-groove-ball-bearing-6200"), c("deep-groove-ball-bearing-6300")];

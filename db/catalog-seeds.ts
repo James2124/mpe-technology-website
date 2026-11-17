@@ -107,4 +107,9 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
     id: "2026-11-product-catalogs",
     setCatalogs: productCatalogs,
   },
+  {
+    // Sharper catalogs with a larger watermark, under new paths so browsers don't reuse the old files.
+    id: "2026-11-product-catalogs-hd",
+    setCatalogs: productCatalogs,
+  },
 ];
