@@ -2,6 +2,18 @@
 
 import { useEffect, useRef } from "react";
 
+/* Products shown around the company logo, clockwise from the top. */
+const heroProducts = [
+  { name: "AC Induction Motor", href: "/ac-induction-motor", image: "/products/ac-motor/three-phase-b5-flange-mounted.webp" },
+  { name: "Worm Gear Reducer", href: "/gearbox", image: "/products/gearbox/wpa-transparent.webp" },
+  { name: "Water Pump", href: "/water-pump", image: "/products/water-pump/automatic-self-priming-pumps.webp" },
+  { name: "Bearing", href: "/bearing", image: "/products/bearing/skf-ucp.webp" },
+  { name: "Blower Fan", href: "/blower-fan", image: "/products/blower-fan/blower-fan.webp" },
+  { name: "Coupling", href: "/coupling", image: "/products/coupling/fcl-coupling.webp" },
+  { name: "Pulley", href: "/pulley", image: "/products/pulley/taper-lock-pulley.webp" },
+  { name: "Chain Sprocket", href: "/chain-sprocket", image: "/products/chain-sprocket/chain-sprocket-transparent.webp" },
+];
+
 export function HeroVisual() {
   const visualRef = useRef<HTMLDivElement>(null);
 
@@ -225,7 +237,7 @@ export function HeroVisual() {
     <div
       className="hero-visual"
       ref={visualRef}
-      aria-label="Featured worm gear reducer"
+      aria-label="MP&E Technology products"
     >
       <div
         className="visual-grid"
@@ -238,20 +250,39 @@ export function HeroVisual() {
       />
 
       <p className="visual-index">
-        / 01
+        / {String(heroProducts.length).padStart(2, "0")}
       </p>
 
       <div className="hero-product-parallax">
-        <img
-          src="/products/worm-reducer.png"
-          alt="Worm gear speed reducer"
-        />
+        <div className="hero-orbit">
+          <div className="hero-logo-badge">
+            <img src="/mpe-logo-hd.webp" alt="MP&E Technology" />
+          </div>
+
+          {heroProducts.map((product, index) => (
+            <a
+              key={product.href}
+              className="hero-orbit-item"
+              href={product.href}
+              style={{
+                "--orbit-angle": `${(360 / heroProducts.length) * index - 90}deg`,
+                "--orbit-delay": `${(index * 0.45).toFixed(2)}s`,
+              } as React.CSSProperties}
+              aria-label={product.name}
+            >
+              <span className="hero-orbit-float">
+                <img src={product.image} alt="" />
+              </span>
+              <span className="hero-orbit-name">{product.name}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
       <div className="product-note">
-        <span>FEATURED</span>
-        <strong>WP Series</strong>
-        <small>Worm Gear Reducer</small>
+        <span>MP&amp;E TECHNOLOGY</span>
+        <strong>One stop shop</strong>
+        <small>for all industry</small>
       </div>
 
       <div className="orbit-label">
