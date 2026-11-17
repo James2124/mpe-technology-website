@@ -57,24 +57,5 @@ export const gearboxInfo: ProductInfo = {
   title: "Worm Gear Reducer",
   description,
   productGroups: [{ products: gearboxProducts, photos: support }],
-  sections: [
-    {
-      kind: "list",
-      eyebrow: "What is a worm gear speed reducer?",
-      intro: "It consists mainly of two parts:",
-      items: parts,
-      paragraphs: ["These components work together to transfer power between shafts, usually arranged at 90 degrees to each other."],
-    },
-    {
-      kind: "list",
-      eyebrow: "The working process",
-      intro: "The working process is simple:",
-      items: [
-        "The motor rotates the worm shaft at high speed.",
-        "The worm drives the worm wheel through contact between their teeth.",
-        "The worm wheel rotates more slowly than the worm.",
-        "The output shaft delivers lower-speed rotation with higher torque.",
-      ],
-    },
-  ],
+  sections: [],
 };

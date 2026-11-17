@@ -45,7 +45,6 @@ export const beltingInfo: ProductInfo = {
     },
   ],
   sections: [
-    { kind: "text", paragraphs: ["In simple terms: Belting acts as a flexible connection between rotating components, helping machines transfer power or move materials efficiently."] },
     {
       kind: "images",
       eyebrow: "Belt description",

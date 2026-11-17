@@ -72,8 +72,5 @@ export const agitatorInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    { kind: "text", paragraphs: ["An agitator is a mechanical device used to mix, blend, or stir liquids, powders, or liquid-solid mixtures inside a tank. An electric motor is commonly used to drive the agitator and provide the rotational force needed for mixing."] },
-  ],
-  simplyPut: { label: "Simply put:", text: "An agitator keeps the contents of a tank moving and properly mixed for a consistent and efficient process." },
+  sections: [],
 };

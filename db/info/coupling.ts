@@ -66,8 +66,5 @@ export const couplingInfo: ProductInfo = {
     { title: "Chain coupling", photos: galleries.chain },
     { title: "FCL", photos: galleries.fcl },
   ],
-  sections: [
-    { kind: "text", paragraphs: [mechanical] },
-    { kind: "text", paragraphs: ["In simple terms: A coupling acts as a connector between two components, allowing them to work together as one system."] },
-  ],
+  sections: [],
 };

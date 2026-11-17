@@ -52,27 +52,5 @@ export const pulleyInfo: ProductInfo = {
   title: "Pulley",
   description,
   productGroups: [{ products: pulleyProducts, photos: support }],
-  sections: [
-    {
-      kind: "text",
-      paragraphs: [
-        "In industrial machinery, pulleys are commonly used to transfer power from an electric motor to another rotating component, such as a fan, pump or conveyor.",
-      ],
-    },
-    { kind: "list", eyebrow: "Main functions of a pulley", items: functions },
-    {
-      kind: "list",
-      eyebrow: "Belt-and-pulley system",
-      intro: "A typical industrial belt-and-pulley system works as follows:",
-      items: [
-        "The electric motor rotates the driving pulley.",
-        "The belt transfers motion from the driving pulley to the driven pulley.",
-        "The driven pulley rotates and transfers power to the connected machine.",
-        "The pulley diameters determine the speed relationship between the two shafts.",
-      ],
-      paragraphs: [
-        "For example, a small motor pulley connected to a larger driven pulley reduces the driven shaft's speed while increasing its available torque, subject to power losses.",
-      ],
-    },
-  ],
+  sections: [],
 };

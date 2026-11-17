@@ -56,28 +56,5 @@ export const waterPumpInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    {
-      kind: "text",
-      paragraphs: [
-        "Water pumps are commonly used in homes, factories, buildings, farms and water treatment plants. They can supply water, circulate water through pipes, drain flooded areas and support industrial processes.",
-      ],
-    },
-    {
-      kind: "list",
-      eyebrow: "The working process",
-      intro: "The working process is simple:",
-      items: [
-        "Motor starts: An electric motor supplies rotational power to the pump.",
-        "Impeller rotates: The impeller spins inside the pump casing.",
-        "Water enters: Water flows into the pump through the suction inlet.",
-        "Water gains energy: The rotating impeller transfers energy to the water, increasing its pressure and velocity.",
-        "Water exits: The water leaves through the discharge outlet and flows into the piping system.",
-      ],
-      paragraphs: [
-        "Note: Different pump designs work differently. A centrifugal pump generally needs to be properly primed unless it is designed to be self-priming or submerged.",
-      ],
-    },
-
-  ],
+  sections: [],
 };

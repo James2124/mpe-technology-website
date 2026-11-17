@@ -144,32 +144,5 @@ export const bearingInfo: ProductInfo = {
   title: "Bearing",
   description,
   productGroups,
-  sections: [
-    { kind: "text", paragraphs: ["Simply put: A bearing helps machine parts move smoothly, efficiently, and reliably."] },
-    {
-      kind: "text",
-      eyebrow: "Bearing",
-      paragraphs: [
-        "A bearing is a mechanical component that supports a rotating shaft and helps it rotate smoothly with less friction.",
-        "In simple words, a bearing helps a shaft spin easily while supporting its load.",
-      ],
-    },
-    {
-      kind: "list",
-      eyebrow: "Main functions of a bearing",
-      items: [
-        "Reduce friction: Helps rotating parts move smoothly.",
-        "Support loads: Carries the weight or force acting on a shaft.",
-        "Maintain alignment: Keeps the shaft in the correct position.",
-        "Reduce wear: Helps prevent damage to moving machine parts.",
-      ],
-    },
-    {
-      kind: "list",
-      eyebrow: "If a bearing is damaged",
-      intro: "If a bearing is damaged, you may notice:",
-      items: ["Unusual noise", "Excessive vibration", "High temperature", "Rough shaft rotation"],
-      paragraphs: ["Important: Proper lubrication, correct installation, and regular inspection help extend bearing life."],
-    },
-  ],
+  sections: [],
 };
