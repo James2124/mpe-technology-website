@@ -47,9 +47,9 @@ function gearbox(name: string, imagePath: string) {
 
 /* Product names are the original picture file names. */
 export const gearboxProducts = [
-  gearbox("WPA", "/products/gearbox/wpa.webp"),
-  gearbox("WPO", "/products/gearbox/wpo.webp"),
-  gearbox("WPX", "/products/gearbox/wpx.webp"),
+  gearbox("WPA", "/products/gearbox/wpa-transparent.webp"),
+  gearbox("WPO", "/products/gearbox/wpo-transparent.webp"),
+  gearbox("WPX", "/products/gearbox/wpx-transparent.webp"),
 ];
 
 export const gearboxInfo: ProductInfo = {
