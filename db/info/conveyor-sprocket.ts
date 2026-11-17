@@ -18,7 +18,7 @@ export const conveyorSprocketProducts = [
     description: [description, ...paragraphs].join(" "),
     features: [],
     specs: { Type: "Conveyor Sprocket" },
-    imagePath: "/products/conveyor-sprocket/95e99121-6e03-4897-96da-8bedaecbe568.jpg",
+    imagePath: "/products/conveyor-sprocket/95e99121-6e03-4897-96da-8bedaecbe568.webp",
     galleryImages: ["/conveyor-sprocket/support/20211119_170554.jpg", "/conveyor-sprocket/support/20211216_170951.jpg", "/conveyor-sprocket/support/20220704_161630.jpg", "/conveyor-sprocket/support/20260211_171209.jpg"],
   }),
 ];

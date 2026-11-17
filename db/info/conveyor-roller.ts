@@ -22,7 +22,7 @@ export const conveyorRollerProducts = [
     description,
     features: applications,
     specs: { Type: "Conveyor Roller" },
-    imagePath: "/products/conveyor-roller/20240801_111732.jpg",
+    imagePath: "/products/conveyor-roller/20240801_111732.webp",
     galleryImages: ["/conveyor-roller/support/20240801_105742.jpg", "/conveyor-roller/support/20240801_111742.jpg"],
   }),
 ];

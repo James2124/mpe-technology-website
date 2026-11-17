@@ -18,8 +18,9 @@ import type { CreateProductInput } from "./product-store-types";
 /**
  * Changes applied once to catalogs that already exist on the server.
  * A batch adds `products` (skipping slugs that already exist), deletes
- * `removeSlugs`, and replaces the gallery photos of the products named in
- * `setGalleries` (slug → photos). Each batch id is recorded after it runs, so administrators
+ * `removeSlugs`, replaces the gallery photos of the products named in
+ * `setGalleries` (slug → photos), and swaps picture paths listed in
+ * `replaceImages` (old path → new path) wherever they are used. Each batch id is recorded after it runs, so administrators
  * can edit or delete products in /manage without the batch undoing it.
  */
 export type CatalogSeedBatch = {
@@ -27,6 +28,7 @@ export type CatalogSeedBatch = {
   products?: CreateProductInput[];
   removeSlugs?: string[];
   setGalleries?: Record<string, string[]>;
+  replaceImages?: Record<string, string>;
 };
 
 function galleriesBySlug(products: CreateProductInput[]) {
@@ -66,5 +68,18 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
     // in a group shared the same photos.
     id: "2026-11-per-model-galleries",
     setGalleries: galleriesBySlug([...bearingProducts, ...gearboxProducts, ...pulleyProducts]),
+  },
+  {
+    // Background-free (transparent) versions of pictures that were JPEG photos.
+    id: "2026-11-transparent-product-pictures",
+    replaceImages: Object.fromEntries(
+      [
+        "conveyor-roller/20240801_111732",
+        "conveyor-sprocket/95e99121-6e03-4897-96da-8bedaecbe568",
+        "oil-lubrication/20220509_131258",
+        "oil-lubrication/20220902_102019",
+        "roller-chain/roller-chain",
+      ].map((name) => [`/products/${name}.jpg`, `/products/${name}.webp`]),
+    ),
   },
 ];
