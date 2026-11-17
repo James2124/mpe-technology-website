@@ -2,6 +2,7 @@ import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { listProducts } from "../../db/products";
 import { getPagePhotoGroups } from "../../db/page-photos";
+import { CatalogDownloads } from "./CatalogDownloads";
 import { productSlug, type InfoSection, type ProductInfo } from "../../db/info/types";
 
 function Section({ section }: { section: InfoSection }) {
@@ -132,6 +133,11 @@ export async function ProductInfoPage({ info }: { info: ProductInfo }) {
           <p className="acm-why" data-reveal="up"><strong>{info.simplyPut.label}</strong> {info.simplyPut.text}</p>
         </section>
       )}
+
+      <CatalogDownloads
+        products={products}
+        slugs={info.productGroups.flatMap((group) => group.products.map((product) => productSlug(product.name)))}
+      />
 
       {photoGroups.map((group, index) => (
         <section className="section acm-stock" key={group.title ?? index}>

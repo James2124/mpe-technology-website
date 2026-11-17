@@ -2988,3 +2988,6 @@ textarea:focus::placeholder {
   .hero-product-parallax .hero-orbit { width: min(78%, 310px); }
   .hero-orbit-item { width: calc(var(--orbit-size, 22%) * 1.1); }
 }
+
+/* Catalog downloads on product information pages */
+.info-catalogs .catalog-download-card small { color: var(--muted); font-size: 11px; line-height: 1.4; }
