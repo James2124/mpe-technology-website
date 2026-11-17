@@ -2734,7 +2734,7 @@ textarea:focus::placeholder {
 .acm-uses .feature-list { margin: 0; align-self: center; }
 .acm-uses .feature-list li { font-size: 15px; }
 
-.acm-anatomy-figure { margin: 0; background: #fff; border: 1px solid var(--line); padding: clamp(12px,3vw,40px); }
+.acm-anatomy-figure { margin: 0; background: transparent; padding: clamp(12px,3vw,40px) 0; }
 .acm-anatomy-figure img { display: block; width: 100%; height: auto; }
 
 .acm-applications { background: var(--cream); }
@@ -2787,7 +2787,7 @@ textarea:focus::placeholder {
 .info-simply .acm-why { margin: 0; }
 .acm-applications + .info-simply { margin-top: -1px; }
 .info-diagram-grid { margin-top: 48px; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-.info-diagram-grid figure { margin: 0; background: #fff; border: 1px solid var(--line); padding: 20px; display: grid; place-items: center; min-height: 240px; }
+.info-diagram-grid figure { margin: 0; background: transparent; padding: 20px; display: grid; place-items: center; min-height: 240px; }
 .info-diagram-grid img { max-width: 100%; max-height: 300px; object-fit: contain; }
 .acm-stock + .acm-stock { padding-top: 0; }
 

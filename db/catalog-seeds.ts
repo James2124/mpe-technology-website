@@ -82,4 +82,9 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
       ].map((name) => [`/products/${name}.jpg`, `/products/${name}.webp`]),
     ),
   },
+  {
+    // Transparent version of the AC motor exploded-view diagram (was a white JPEG).
+    id: "2026-11-transparent-motor-diagram",
+    replaceImages: { "/ac-motor/motor-exploded-view.jpg": "/ac-motor/motor-exploded-view.webp" },
+  },
 ];
