@@ -1,20 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { HomeShowcaseCard } from "../lib/types";
 
-/* Products shown around the company logo, clockwise from the top. */
-const heroProducts = [
-  { name: "AC Induction Motor", href: "/ac-induction-motor", image: "/products/ac-motor/three-phase-b5-flange-mounted.webp" },
-  { name: "Worm Gear Reducer", href: "/gearbox", image: "/products/gearbox/wpa-transparent.webp" },
-  { name: "Water Pump", href: "/water-pump", image: "/products/water-pump/automatic-self-priming-pumps.webp" },
-  { name: "Bearing", href: "/bearing", image: "/products/bearing/skf-ucp.webp" },
-  { name: "Blower Fan", href: "/blower-fan", image: "/products/blower-fan/blower-fan.webp" },
-  { name: "Coupling", href: "/coupling", image: "/products/coupling/fcl-coupling.webp" },
-  { name: "Pulley", href: "/pulley", image: "/products/pulley/taper-lock-pulley.webp" },
-  { name: "Chain Sprocket", href: "/chain-sprocket", image: "/products/chain-sprocket/chain-sprocket-transparent.webp" },
-];
 
-export function HeroVisual() {
+export function HeroVisual({ products }: { products: HomeShowcaseCard[] }) {
+  // Smaller items when there are many, so neighbours on the ring never overlap.
+  const itemSize = Math.min(22, 230 / Math.max(products.length, 1));
   const visualRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -250,7 +242,7 @@ export function HeroVisual() {
       />
 
       <p className="visual-index">
-        / {String(heroProducts.length).padStart(2, "0")}
+        / {String(products.length).padStart(2, "0")}
       </p>
 
       <div className="hero-product-parallax">
@@ -259,21 +251,22 @@ export function HeroVisual() {
             <img src="/mpe-logo-hd.webp" alt="MP&E Technology" />
           </div>
 
-          {heroProducts.map((product, index) => (
+          {products.map((product, index) => (
             <a
-              key={product.href}
+              key={product.id}
               className="hero-orbit-item"
               href={product.href}
               style={{
-                "--orbit-angle": `${(360 / heroProducts.length) * index - 90}deg`,
+                "--orbit-angle": `${(360 / products.length) * index - 90}deg`,
                 "--orbit-delay": `${(index * 0.45).toFixed(2)}s`,
+                "--orbit-size": `${itemSize.toFixed(2)}%`,
               } as React.CSSProperties}
-              aria-label={product.name}
+              aria-label={product.title}
             >
               <span className="hero-orbit-float">
-                <img src={product.image} alt="" />
+                <img src={product.imagePath} alt="" />
               </span>
-              <span className="hero-orbit-name">{product.name}</span>
+              <span className="hero-orbit-name">{product.title}</span>
             </a>
           ))}
         </div>

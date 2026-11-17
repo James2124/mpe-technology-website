@@ -1,6 +1,7 @@
 import { getCatalogAdmin, unauthorizedAdminResponse } from "../../admin-auth";
-import type { HomeShowcase } from "../../lib/types";
+import type { HomeShowcaseCard } from "../../lib/types";
 import { removeProductImage, saveProductImage, updateHomeShowcase } from "../../../db/products";
+import { updateHeroProducts } from "../../../db/hero-products";
 
 const IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp"];
 const UPLOAD_PREFIX = "/api/product-images/";
@@ -72,20 +73,28 @@ export async function POST(request: Request) {
     return back(request, "feature");
   }
 
+  // Card actions work on the homepage cards or on the products around the logo in the hero.
+  const list = field(form, "list") === "hero" ? "hero" : "cards";
+  const updateList = (update: (cards: HomeShowcaseCard[]) => HomeShowcaseCard[]) =>
+    list === "hero"
+      ? updateHeroProducts(update)
+      : updateHomeShowcase((current) => ({ ...current, cards: update(current.cards) }));
+  const done = (message: string) => back(request, list === "hero" ? `hero-${message}` : message);
+
   if (action === "add-card") {
     const title = field(form, "title", 80);
     const href = cleanLink(field(form, "href", 500));
     if (!title || !href) return bad("Title and a valid link are required.");
     if (!image) return bad("Please choose an image for the new card.");
     const imagePath = `${UPLOAD_PREFIX}${await saveProductImage(image)}`;
-    await updateHomeShowcase((current) => {
+    await updateList((cards) => {
       const position = Number(field(form, "position"));
       const card = { id: crypto.randomUUID().slice(0, 8), title, href, imagePath };
-      const index = position >= 1 ? Math.min(position - 1, current.cards.length) : current.cards.length;
-      current.cards.splice(index, 0, card);
-      return current;
+      const index = position >= 1 ? Math.min(position - 1, cards.length) : cards.length;
+      cards.splice(index, 0, card);
+      return cards;
     });
-    return back(request, "added");
+    return done("added");
   }
 
   const id = field(form, "id", 60);
@@ -98,9 +107,9 @@ export async function POST(request: Request) {
     const newImage = image ? `${UPLOAD_PREFIX}${await saveProductImage(image)}` : null;
     let replaced: string | undefined;
     let found = false;
-    await updateHomeShowcase((current) => {
-      const card = current.cards.find((item) => item.id === id);
-      if (!card) return current;
+    await updateList((cards) => {
+      const card = cards.find((item) => item.id === id);
+      if (!card) return cards;
       found = true;
       if (newImage) {
         replaced = card.imagePath;
@@ -108,40 +117,39 @@ export async function POST(request: Request) {
       }
       card.title = title;
       card.href = href;
-      return current;
+      return cards;
     });
     if (!found) {
       await removeIfUploaded(newImage ?? undefined);
       return bad("Card not found.");
     }
     await removeIfUploaded(replaced);
-    return back(request, "card");
+    return done("card");
   }
 
   if (action === "move-up" || action === "move-down") {
-    await updateHomeShowcase((current) => moveCard(current, id, action === "move-up" ? -1 : 1));
-    return back(request, "order");
+    await updateList((cards) => moveCard(cards, id, action === "move-up" ? -1 : 1));
+    return done("order");
   }
 
   if (action === "delete-card") {
     let removed: string | undefined;
-    await updateHomeShowcase((current) => {
-      removed = current.cards.find((item) => item.id === id)?.imagePath;
-      current.cards = current.cards.filter((item) => item.id !== id);
-      return current;
+    await updateList((cards) => {
+      removed = cards.find((item) => item.id === id)?.imagePath;
+      return cards.filter((item) => item.id !== id);
     });
     await removeIfUploaded(removed);
-    return back(request, "deleted");
+    return done("deleted");
   }
 
   return bad("Unknown action.");
 }
 
-function moveCard(showcase: HomeShowcase, id: string, step: number): HomeShowcase {
-  const from = showcase.cards.findIndex((item) => item.id === id);
+function moveCard(cards: HomeShowcaseCard[], id: string, step: number): HomeShowcaseCard[] {
+  const from = cards.findIndex((item) => item.id === id);
   const to = from + step;
-  if (from < 0 || to < 0 || to >= showcase.cards.length) return showcase;
-  const [card] = showcase.cards.splice(from, 1);
-  showcase.cards.splice(to, 0, card);
-  return showcase;
+  if (from < 0 || to < 0 || to >= cards.length) return cards;
+  const [card] = cards.splice(from, 1);
+  cards.splice(to, 0, card);
+  return cards;
 }

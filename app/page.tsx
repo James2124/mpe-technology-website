@@ -3,6 +3,7 @@ import { HeroVisual } from "./components/HeroVisual";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { getHomeShowcase, listProducts } from "../db/products";
+import { getHeroProducts } from "../db/hero-products";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +35,7 @@ const categories = [
 ];
 
 export default async function Home() {
-  const [products, showcase] = await Promise.all([listProducts(), getHomeShowcase()]);
+  const [products, showcase, heroProducts] = await Promise.all([listProducts(), getHomeShowcase(), getHeroProducts()]);
 
   const featured = products
     .filter((product) => product.featured)
@@ -93,7 +94,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <HeroVisual />
+        <HeroVisual products={heroProducts} />
       </section>
 
       <section

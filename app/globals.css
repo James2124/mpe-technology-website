@@ -14,6 +14,9 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+/* Never scroll sideways: slide-in animations start slightly off to the side. clip keeps sticky elements working. */
+html, body { overflow-x: clip; }
+@supports not (overflow: clip) { html { overflow-x: hidden; } }
 body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--font-geist-sans), Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
@@ -2791,16 +2794,16 @@ textarea:focus::placeholder {
 .info-diagram-grid img { max-width: 100%; max-height: 300px; object-fit: contain; }
 .acm-stock + .acm-stock { padding-top: 0; }
 
-.info-links { margin-top: 22px; display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.info-links { margin-top: 22px; display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
 .info-links a { display: grid; grid-template-columns: 96px 1fr; align-items: center; gap: 20px; background: #eae8df; padding: 20px; transition: transform .45s var(--motion-ease), box-shadow .45s var(--motion-ease); }
 .info-links a:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(20,34,24,.14); }
 .info-links img { width: 96px; height: 84px; object-fit: contain; }
-.info-links strong { display: block; font-size: 19px; letter-spacing: -.03em; }
+.info-links strong { display: block; overflow-wrap: anywhere; font-size: 19px; letter-spacing: -.03em; }
 .info-links small { display: block; margin-top: 10px; font-size: 11px; font-weight: 800; }
 
 @media (max-width: 1020px) {
   .info-diagram-grid { grid-template-columns: repeat(2,1fr); }
-  .info-links { grid-template-columns: repeat(2,1fr); }
+  .info-links { grid-template-columns: repeat(2,minmax(0,1fr)); }
 }
 
 @media (max-width: 680px) {
@@ -2921,7 +2924,7 @@ textarea:focus::placeholder {
   position: absolute;
   left: calc(50% + 46% * cos(var(--orbit-angle)));
   top: calc(50% + 46% * sin(var(--orbit-angle)));
-  width: 22%;
+  width: var(--orbit-size, 22%);
   aspect-ratio: 1;
   translate: -50% -50%;
   display: grid;
@@ -2983,5 +2986,5 @@ textarea:focus::placeholder {
 @media (max-width: 680px) {
   .hero-visual { min-height: 600px; }
   .hero-product-parallax .hero-orbit { width: min(78%, 310px); }
-  .hero-orbit-item { width: 24%; }
+  .hero-orbit-item { width: calc(var(--orbit-size, 22%) * 1.1); }
 }
