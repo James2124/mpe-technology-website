@@ -83,8 +83,19 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
     ),
   },
   {
-    // Transparent version of the AC motor exploded-view diagram (was a white JPEG).
-    id: "2026-11-transparent-motor-diagram",
-    replaceImages: { "/ac-motor/motor-exploded-view.jpg": "/ac-motor/motor-exploded-view.webp" },
+    // Undo the transparent exploded-view diagram (reverted): point the motor galleries back at the original.
+    id: "2026-11-revert-motor-diagram",
+    replaceImages: { "/ac-motor/motor-exploded-view.webp": "/ac-motor/motor-exploded-view.jpg" },
+  },
+  {
+    // New file names for pictures whose backgrounds were removed in place, so browsers and caches
+    // fetch the transparent versions instead of reusing the old white-background copies.
+    id: "2026-11-transparent-picture-names",
+    replaceImages: Object.fromEntries(
+      ["chain-sprocket/chain-sprocket", "gearbox/wpa", "gearbox/wpo", "gearbox/wpx", "pulley/vee-pulley"].map((name) => [
+        `/products/${name}.webp`,
+        `/products/${name}-transparent.webp`,
+      ]),
+    ),
   },
 ];

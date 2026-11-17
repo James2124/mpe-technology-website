@@ -44,7 +44,7 @@ function pulley(name: string, imagePath: string) {
 /* Product names are the original picture file names. */
 export const pulleyProducts = [
   pulley("Taper Lock Pulley", "/products/pulley/taper-lock-pulley.webp"),
-  pulley("Vee Pulley", "/products/pulley/vee-pulley.webp"),
+  pulley("Vee Pulley", "/products/pulley/vee-pulley-transparent.webp"),
 ];
 
 export const pulleyInfo: ProductInfo = {

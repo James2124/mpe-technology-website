@@ -21,7 +21,7 @@ export const chainSprocketProducts = [
     description,
     features: advantages,
     specs: { Type: "Chain Sprocket" },
-    imagePath: "/products/chain-sprocket/chain-sprocket.webp",
+    imagePath: "/products/chain-sprocket/chain-sprocket-transparent.webp",
     galleryImages: ["/chain-sprocket/support/20200620_105558.jpg", "/chain-sprocket/support/20200919_121502.jpg", "/chain-sprocket/support/20220217_113750.jpg", "/chain-sprocket/support/20220804_095107.jpg"],
   }),
 ];
