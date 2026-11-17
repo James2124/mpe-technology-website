@@ -101,6 +101,12 @@ async function applyCatalogSeeds() {
         for (const card of data.homeShowcase.cards) card.imagePath = swap(card.imagePath);
       }
     }
+    if (batch.setCatalogs) {
+      for (const product of data.products) {
+        const catalogs = batch.setCatalogs[product.slug];
+        if (catalogs) product.catalogs = structuredClone(catalogs);
+      }
+    }
     for (const product of batch.products ?? []) {
       const slug = product.slug || slugify(product.name);
       if (data.products.some((item) => item.slug === slug)) continue;

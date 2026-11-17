@@ -13,8 +13,10 @@ import { rollerChainProducts } from "./info/roller-chain";
 import { waterPumpProducts } from "./info/water-pump";
 import { blowerFanProducts } from "./info/blower-fan";
 import type { CreateProductInput } from "./product-store-types";
+import { productCatalogs } from "./product-catalogs";
+import { productSlug } from "./info/types";
 
-export const starterProducts: CreateProductInput[] = [
+const baseStarterProducts: CreateProductInput[] = [
   ...acMotorProducts,
   ...agitatorProducts,
   ...bearingProducts,
@@ -41,3 +43,8 @@ export const starterProducts: CreateProductInput[] = [
     featured: false,
   },
 ];
+
+export const starterProducts: CreateProductInput[] = baseStarterProducts.map((product) => ({
+  ...product,
+  catalogs: productCatalogs[product.slug || productSlug(product.name)] ?? product.catalogs,
+}));

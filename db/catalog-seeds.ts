@@ -13,6 +13,8 @@ import { rollerChainProducts } from "./info/roller-chain";
 import { waterPumpProducts } from "./info/water-pump";
 import { blowerFanProducts } from "./info/blower-fan";
 import { productSlug } from "./info/types";
+import { productCatalogs } from "./product-catalogs";
+import type { ProductCatalog } from "../app/lib/types";
 import type { CreateProductInput } from "./product-store-types";
 
 /**
@@ -20,7 +22,8 @@ import type { CreateProductInput } from "./product-store-types";
  * A batch adds `products` (skipping slugs that already exist), deletes
  * `removeSlugs`, replaces the gallery photos of the products named in
  * `setGalleries` (slug → photos), and swaps picture paths listed in
- * `replaceImages` (old path → new path) wherever they are used. Each batch id is recorded after it runs, so administrators
+ * `replaceImages` (old path → new path) wherever they are used, and sets the
+ * downloadable catalogs of the products named in `setCatalogs` (slug → catalogs). Each batch id is recorded after it runs, so administrators
  * can edit or delete products in /manage without the batch undoing it.
  */
 export type CatalogSeedBatch = {
@@ -29,6 +32,7 @@ export type CatalogSeedBatch = {
   removeSlugs?: string[];
   setGalleries?: Record<string, string[]>;
   replaceImages?: Record<string, string>;
+  setCatalogs?: Record<string, ProductCatalog[]>;
 };
 
 function galleriesBySlug(products: CreateProductInput[]) {
@@ -97,5 +101,10 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
         `/products/${name}-transparent.webp`,
       ]),
     ),
+  },
+  {
+    // Catalogs from "MP&E CATALOG" attached to their products.
+    id: "2026-11-product-catalogs",
+    setCatalogs: productCatalogs,
   },
 ];
