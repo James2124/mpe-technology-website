@@ -74,22 +74,22 @@ function motor(name: string, supply: string, mounting: string, imagePath: string
 /* Product names are the original picture file names. */
 export const acMotorProducts: CreateProductInput[] = [
   motor("Single phase B3 Foot Mounted", "Single phase", "B3 Foot Mounted", "/products/ac-motor/single-phase-b3-foot-mounted.webp", [
-    "/ac-motor/motor-exploded-view.jpg",
+    "/ac-motor/motor-exploded-view.webp",
   ]),
   motor("Single phase B5 flanges mounted", "Single phase", "B5 flanges mounted", "/products/ac-motor/single-phase-b5-flange-mounted.webp", [
-    "/ac-motor/motor-exploded-view.jpg",
+    "/ac-motor/motor-exploded-view.webp",
   ]),
   motor("Three phase B3 Flange Mounted", "Three phase", "B3 Flange Mounted", "/products/ac-motor/three-phase-b3-foot-mounted.webp", [
     "/ac-motor/three-phase-motor-blue-1.jpg",
     "/ac-motor/three-phase-motor-grey-3.jpg",
     "/ac-motor/three-phase-motor-crate.jpg",
-    "/ac-motor/motor-exploded-view.jpg",
+    "/ac-motor/motor-exploded-view.webp",
   ]),
   motor("Three phase B5 Flange Mounted", "Three phase", "B5 Flange Mounted", "/products/ac-motor/three-phase-b5-flange-mounted.webp", [
     "/ac-motor/three-phase-motor-blue-2.jpg",
     "/ac-motor/geared-motor-1.jpg",
     "/ac-motor/geared-motor-2.jpg",
-    "/ac-motor/motor-exploded-view.jpg",
+    "/ac-motor/motor-exploded-view.webp",
   ]),
 ];
 
