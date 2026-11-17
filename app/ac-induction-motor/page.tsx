@@ -4,10 +4,8 @@ import { SiteHeader } from "../components/SiteHeader";
 import { listProducts } from "../../db/products";
 import { getPagePhotoGroups } from "../../db/page-photos";
 import {
-  acMotorClosing,
   acMotorDescription,
   acMotorProducts,
-  acMotorSimplyPut,
   acMotorTitle,
   productSlug,
 } from "../../db/ac-motor-products";
@@ -70,13 +68,6 @@ export default async function AcInductionMotorPage() {
             decoding="async"
           />
         </figure>
-      </section>
-
-      <section className="section acm-applications">
-        <div className="acm-closing acm-closing-only" data-reveal="up">
-          {acMotorClosing.filter((text) => !text.startsWith("For example")).map((text) => <p key={text}>{text}</p>)}
-          <p className="acm-why"><strong>Simply put:</strong> {acMotorSimplyPut}</p>
-        </div>
       </section>
 
       {supportPhotos.length > 0 && (

@@ -70,14 +70,5 @@ export const conveyorRollerInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    {
-      kind: "text",
-      paragraphs: [
-        "In simple words, a conveyor roller helps boxes, cartons, pallets, and other materials move from one place to another with less friction.",
-        "Conveyor rollers are commonly used in factories, warehouses, distribution centers, and production lines.",
-      ],
-    },
-
-  ],
+  sections: [],
 };

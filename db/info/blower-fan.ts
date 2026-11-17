@@ -67,23 +67,5 @@ export const blowerFanInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    {
-      kind: "text",
-      paragraphs: [
-        "In simple words, a blower fan uses an electric motor to move air for ventilation, cooling, drying, or industrial processes.",
-      ],
-    },
-    {
-      kind: "groups",
-      eyebrow: "Main parts of a blower fan",
-      groups: [
-        { title: "Electric motor", items: ["Provides the power needed to rotate the blower's impeller."] },
-        { title: "Impeller", items: ["A rotating wheel with blades that transfers energy to the air and makes it move."] },
-        { title: "Casing or housing", items: ["Surrounds the impeller and guides the airflow toward the outlet."] },
-        { title: "Shaft and bearings", items: ["The shaft transmits rotation to the impeller, while the bearings support the rotating shaft and help it turn smoothly."] },
-      ],
-    },
-
-  ],
+  sections: [],
 };

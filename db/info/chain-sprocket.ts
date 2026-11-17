@@ -44,34 +44,5 @@ export const chainSprocketInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    {
-      kind: "text",
-      paragraphs: [
-        "In simple words, the sprocket teeth engage with the chain links, allowing the motor's rotation to drive another machine or component.",
-        "Chain sprockets are commonly used in industrial machinery, conveyors, motorcycles, bicycles, and material-handling equipment.",
-      ],
-    },
-    {
-      kind: "groups",
-      eyebrow: "Main parts of a chain sprocket system",
-      groups: [
-        { title: "Sprocket", items: ["A toothed wheel that engages with the chain and transfers rotational movement."] },
-        { title: "Chain", items: ["A series of connected metal links that engages with the sprocket teeth to transmit power."] },
-        { title: "Driving and driven sprockets", items: ["The driving sprocket receives power from the motor or gearbox. The driven sprocket transfers that movement to the connected machine."] },
-      ],
-      paragraphs: [
-        "For example, an electric motor rotates a small sprocket. The chain transfers the movement to a larger sprocket connected to a conveyor.",
-        "A larger driven sprocket generally produces lower speed and higher torque.",
-        "A smaller driven sprocket generally produces higher speed and lower torque.",
-        "These effects assume the same chain speed and ideal transmission, before losses.",
-      ],
-    },
-
-    {
-      kind: "list",
-      eyebrow: "Advantages of chain sprockets",
-      items: advantages,
-    },
-  ],
+  sections: [],
 };

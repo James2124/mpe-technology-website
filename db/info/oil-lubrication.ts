@@ -10,17 +10,6 @@ const paragraphs = [
   "Oil lubrication is important because worm gears have considerable sliding contact between their teeth, which can generate heat and friction.",
 ];
 
-const process = [
-  "Oil is added to the gearbox through the designated filling port.",
-  "The worm wheel or worm shaft rotates, depending on the gearbox design.",
-  "Oil is carried to the contact surfaces by gear movement, splashing or other designed lubrication methods.",
-  "An oil film forms between the worm and worm wheel.",
-  "Heat and wear are controlled while the gearbox operates.",
-];
-
-const closing =
-  "Many small worm gear reducers use an oil-bath or splash-lubrication system. Larger or specialized units may use other lubrication arrangements.";
-
 export const oilLubricationProducts = [
   infoProduct({
     name: "Oil Lubrication",
@@ -62,14 +51,5 @@ export const oilLubricationInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    { kind: "text", paragraphs },
-    {
-      kind: "list",
-      eyebrow: "How it works",
-      intro: "The process generally works as follows:",
-      items: process,
-      paragraphs: [closing],
-    },
-  ],
+  sections: [],
 };

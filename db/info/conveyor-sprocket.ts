@@ -89,7 +89,5 @@ export const conveyorSprocketInfo: ProductInfo = {
       ],
     },
   ],
-  sections: [
-    { kind: "text", paragraphs },
-  ],
+  sections: [],
 };
