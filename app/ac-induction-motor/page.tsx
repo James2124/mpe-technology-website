@@ -62,7 +62,7 @@ export default async function AcInductionMotorPage() {
       <section className="section acm-anatomy">
         <figure className="acm-anatomy-figure" data-reveal="up">
           <img
-            src="/ac-motor/motor-exploded-view.webp"
+            src="/ac-motor/motor-exploded-view.jpg"
             alt="AC induction motor cut away"
             loading="lazy"
             decoding="async"
