@@ -3,6 +3,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { listProducts } from "../../db/products";
 import { getPagePhotoGroups } from "../../db/page-photos";
+import { CatalogDownloads } from "../components/CatalogDownloads";
 import {
   acMotorDescription,
   acMotorProducts,
@@ -69,6 +70,8 @@ export default async function AcInductionMotorPage() {
           />
         </figure>
       </section>
+
+      <CatalogDownloads products={products} slugs={acMotorProducts.map((product) => productSlug(product.name))} />
 
       {supportPhotos.length > 0 && (
       <section className="section acm-stock">
