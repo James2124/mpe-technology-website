@@ -73,22 +73,22 @@ export default async function Home() {
 
           <div
             className="category-row"
-            aria-label="Product categories"
+            aria-label="What MP&E does"
           >
             <span>
-              01 <b>Gear Reducers</b>
+              01 <b>Design &amp; Fabricate</b>
             </span>
 
             <span>
-              02 <b>Motors</b>
+              02 <b>Metal Processing &amp; Engineering</b>
             </span>
 
             <span>
-              03 <b>Couplings</b>
+              03 <b>Industry Supply</b>
             </span>
 
             <span>
-              04 <b>Belting</b>
+              04 <b>Service &amp; Repair</b>
             </span>
           </div>
         </div>
