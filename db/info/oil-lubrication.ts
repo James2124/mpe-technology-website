@@ -18,8 +18,8 @@ export const oilLubricationProducts = [
     description: [description, ...paragraphs].join(" "),
     features: [],
     specs: { Type: "Oil Lubrication" },
-    imagePath: "/products/oil-lubrication/20220509_131258.jpg",
-    galleryImages: ["/products/oil-lubrication/20220902_102019.jpg"],
+    imagePath: "/products/oil-lubrication/20220509_131258.webp",
+    galleryImages: ["/products/oil-lubrication/20220902_102019.webp"],
   }),
 ];
 

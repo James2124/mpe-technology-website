@@ -90,6 +90,17 @@ async function applyCatalogSeeds() {
         if (galleryImages) product.galleryImages = galleryImages;
       }
     }
+    if (batch.replaceImages) {
+      const swap = (path: string) => batch.replaceImages?.[path] ?? path;
+      for (const product of data.products) {
+        if (product.imagePath) product.imagePath = swap(product.imagePath);
+        if (product.galleryImages) product.galleryImages = product.galleryImages.map(swap);
+      }
+      if (data.homeShowcase) {
+        data.homeShowcase.feature.imagePath = swap(data.homeShowcase.feature.imagePath);
+        for (const card of data.homeShowcase.cards) card.imagePath = swap(card.imagePath);
+      }
+    }
     for (const product of batch.products ?? []) {
       const slug = product.slug || slugify(product.name);
       if (data.products.some((item) => item.slug === slug)) continue;

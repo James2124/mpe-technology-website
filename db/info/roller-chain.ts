@@ -13,7 +13,7 @@ export const rollerChainProducts = [
     description,
     features: [],
     specs: { Type: "Roller Chain" },
-    imagePath: "/products/roller-chain/roller-chain.jpg",
+    imagePath: "/products/roller-chain/roller-chain.webp",
     galleryImages: ["/roller-chain/support/20250312_162000.jpg", "/roller-chain/support/20250312_162558.jpg", "/roller-chain/support/20250319_100413.jpg", "/roller-chain/support/20250319_100428.jpg"],
   }),
 ];
