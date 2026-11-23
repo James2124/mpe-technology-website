@@ -14,7 +14,7 @@ import { waterPumpProducts } from "./info/water-pump";
 import { blowerFanProducts } from "./info/blower-fan";
 import { productSlug } from "./info/types";
 import { productCatalogs } from "./product-catalogs";
-import type { ProductCatalog } from "../app/lib/types";
+import type { Product, ProductCatalog } from "../app/lib/types";
 import type { CreateProductInput } from "./product-store-types";
 
 /**
@@ -23,7 +23,8 @@ import type { CreateProductInput } from "./product-store-types";
  * `removeSlugs`, replaces the gallery photos of the products named in
  * `setGalleries` (slug → photos), and swaps picture paths listed in
  * `replaceImages` (old path → new path) wherever they are used, and sets the
- * downloadable catalogs of the products named in `setCatalogs` (slug → catalogs). Each batch id is recorded after it runs, so administrators
+ * downloadable catalogs of the products named in `setCatalogs` (slug → catalogs), and
+ * overwrites fields (including the slug) of the products named in `updateProducts` (old slug → fields). Each batch id is recorded after it runs, so administrators
  * can edit or delete products in /manage without the batch undoing it.
  */
 export type CatalogSeedBatch = {
@@ -33,6 +34,7 @@ export type CatalogSeedBatch = {
   setGalleries?: Record<string, string[]>;
   replaceImages?: Record<string, string>;
   setCatalogs?: Record<string, ProductCatalog[]>;
+  updateProducts?: Record<string, Partial<Pick<Product, "slug" | "name" | "subtitle" | "description" | "specs">>>;
 };
 
 function galleriesBySlug(products: CreateProductInput[]) {
@@ -111,5 +113,17 @@ export const catalogSeedBatches: CatalogSeedBatch[] = [
     // Sharper catalogs with a larger watermark, under new paths so browsers don't reuse the old files.
     id: "2026-11-product-catalogs-hd",
     setCatalogs: productCatalogs,
+  },
+  {
+    // The three-phase B3 motor is foot mounted, not flange mounted; oil lubrication keeps only its first sentence.
+    id: "2026-11-b3-foot-and-oil-text",
+    updateProducts: {
+      "three-phase-b3-flange-mounted": {
+        slug: "three-phase-b3-foot-mounted",
+        name: "Three phase B3 Foot Mounted",
+        specs: acMotorProducts[2].specs,
+      },
+      "oil-lubrication": { description: oilLubricationProducts[0].description },
+    },
   },
 ];

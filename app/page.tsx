@@ -11,13 +11,13 @@ const categories = [
   {
     number: "01",
     title: "Gear reducers",
-    copy: "Meg, Pei Gong, Motovario, Varvel, Nord, Sumitomo, Siemens.",
+    copy: "SEW, Toyo, Torks.",
     href: "/products?category=Gear%20Reducers",
   },
   {
     number: "02",
     title: "Electric motors",
-    copy: "Teco, Eledelta, CMG, Electrim, Elprom, ABB, Siemens.",
+    copy: "Elektra, Bavario, Hugemac.",
     href: "/products?category=Motors",
   },
   {

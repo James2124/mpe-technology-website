@@ -79,7 +79,7 @@ export const acMotorProducts: CreateProductInput[] = [
   motor("Single phase B5 flanges mounted", "Single phase", "B5 flanges mounted", "/products/ac-motor/single-phase-b5-flange-mounted.webp", [
     "/ac-motor/motor-exploded-view.jpg",
   ]),
-  motor("Three phase B3 Flange Mounted", "Three phase", "B3 Flange Mounted", "/products/ac-motor/three-phase-b3-foot-mounted.webp", [
+  motor("Three phase B3 Foot Mounted", "Three phase", "B3 Foot Mounted", "/products/ac-motor/three-phase-b3-foot-mounted.webp", [
     "/ac-motor/three-phase-motor-blue-1.jpg",
     "/ac-motor/three-phase-motor-grey-3.jpg",
     "/ac-motor/three-phase-motor-crate.jpg",

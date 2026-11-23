@@ -44,15 +44,15 @@ const services = [
 const brands = [
   {
     category: "Electric motors",
-    names: ["Teco", "Eledelta", "CMG", "Electrim", "Elprom", "ABB", "Siemens"],
+    names: ["Elektra", "Bavario", "Hugemac"],
   },
   {
     category: "Gear reducers",
-    names: ["MEG", "Pei Gong", "Motovario", "Varvel", "Nord", "Sumitomo", "Siemens"],
+    names: ["SEW", "Toyo", "Torks"],
   },
   {
     category: "Pumps",
-    names: ["Electra", "Lowara", "DAB", "Pedrollo", "BG Reich"],
+    names: ["Maro", "Shimge"],
   },
   {
     category: "Bearings",

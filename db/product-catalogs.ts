@@ -14,7 +14,7 @@ const wpxWpo = [c("wpx-wpo")];
 
 export const productCatalogs: Record<string, ProductCatalog[]> = {
   agitator: [c("superc-agitator")],
-  "three-phase-b3-flange-mounted": tecoMotor,
+  "three-phase-b3-foot-mounted": tecoMotor,
   "three-phase-b5-flange-mounted": tecoMotor,
   "fag-6000-series": bearing6000,
   "ntn-6000-series": bearing6000,
