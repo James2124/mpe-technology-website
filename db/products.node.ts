@@ -107,6 +107,12 @@ async function applyCatalogSeeds() {
         if (catalogs) product.catalogs = structuredClone(catalogs);
       }
     }
+    if (batch.updateProducts) {
+      for (const product of data.products) {
+        const fields = batch.updateProducts[product.slug];
+        if (fields) Object.assign(product, structuredClone(fields));
+      }
+    }
     for (const product of batch.products ?? []) {
       const slug = product.slug || slugify(product.name);
       if (data.products.some((item) => item.slug === slug)) continue;

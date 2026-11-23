@@ -5,17 +5,12 @@ import { infoProduct, type ProductInfo } from "./types";
 const description =
   "Oil lubrication is the process of applying oil between moving mechanical parts to reduce friction, wear and heat during operation.";
 
-const paragraphs = [
-  "In a worm gear speed reducer, oil forms a thin protective film between the worm shaft and the worm wheel. This helps the gears operate smoothly and protects them from excessive wear.",
-  "Oil lubrication is important because worm gears have considerable sliding contact between their teeth, which can generate heat and friction.",
-];
-
 export const oilLubricationProducts = [
   infoProduct({
     name: "Oil Lubrication",
     category: "Lubrication",
     subtitle: "Oil Lubrication",
-    description: [description, ...paragraphs].join(" "),
+    description,
     features: [],
     specs: { Type: "Oil Lubrication" },
     imagePath: "/products/oil-lubrication/20220509_131258.webp",
